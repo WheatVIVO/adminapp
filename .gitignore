@@ -2,3 +2,12 @@ custom-vivo/webapp/target/wheatvivo-adminapp/images/placeholders/person.bordered
 custom-vivo/webapp/target/
 custom-vivo/solr/target/
 custom-vivo/home/target/
+/bin/
+custom-vivo/.project
+custom-vivo/.settings/org.eclipse.m2e.core.prefs
+custom-vivo/home/.project
+custom-vivo/home/.settings/org.eclipse.m2e.core.prefs
+custom-vivo/solr/.settings/org.eclipse.m2e.core.prefs
+.project
+custom-vivo/webapp/.settings/org.eclipse.m2e.core.prefs
+.classpath
