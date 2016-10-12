@@ -3,6 +3,20 @@ strong.statusOK {
     font-weight:bold;
 }
 
+strong.statusError {
+    color:red;
+    font-weight:bold;
+}
+
+
 table.adminTable {
     width:100%;
+}
+
+table.adminTable td {
+    padding:1em;
+}
+
+table.adminTable thead td {
+    background-color:#ddddee;
 }
