@@ -16,40 +16,36 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 	</tr>
     </thead>
     <tbody>
+    <#list dataSources as dataSource>
         <tr>
-	    <td>1</td>
-            <td>Prodinra</td>
-	    <td>09 October 2016</td>
-	    <td>16 October 2016</td>
-	    <td><strong class="statusOK">OK</strong></td>
+	    <td>${dataSource?index}</td>
+            <td>${dataSource.name!}</td>
+	    <td>
+	        <#if dataSource.lastUpdate??>
+	            ${dataSource.lastUpdate?datetime}
+	        </#if>
+            </td>
+	    <td>
+	        <#if dataSource.nextUpdate??>
+	            ${dataSource.nextUpdate?datetime}
+		<#else>
+		    ---
+	        </#if>
+            </td>
+	    <td>
+	        <#if dataSource.status.statusOk>
+		    <strong class="statusOK">OK</strong></td>
+		<#else>
+                    <strong class="statusError">ERROR</strong></td>
+		</#if>
+            </td>
 	    <td>
                 <img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
                 <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
 	    </td>
-	</tr>
-	<tr>
-	    <td>2</td>
-            <td>VIVO USDA</td>
-	    <td>02 October 2016</td>
-	    <td>---</td>
-	    <td><strong class="statusError">ERROR</strong></td>
-	    <td>
-                <img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
-                <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
-	    </td>
-	</tr>
-        <tr>
-	    <td>3</td>
-            <td>VIVO Texas A&M University</td>
-	    <td>01 October 2016</td>
-	    <td>15 October 2016</td>
-	    <td><strong class="statusOK">OK</strong></td>
-	    <td>
-                <img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
-                <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
-	    </td>
-	</tr>
 
+	</tr>
+    </#list>
     </tbody>
 </table>
 

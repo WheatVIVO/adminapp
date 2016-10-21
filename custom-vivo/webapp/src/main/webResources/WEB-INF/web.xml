@@ -1342,7 +1342,7 @@
 
   <servlet>
     <servlet-name>AdminFunctionalityController</servlet-name>
-    <servlet-class>org.wheatinitiative.vivo.controller.mockup.AdminFunctionalityController</servlet-class>
+    <servlet-class>org.wheatinitiative.vivo.mockup.controller.AdminFunctionalityController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminFunctionalityController</servlet-name>
