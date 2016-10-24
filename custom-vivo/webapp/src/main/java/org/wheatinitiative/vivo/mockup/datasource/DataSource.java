@@ -7,6 +7,8 @@ public interface DataSource {
     public abstract String getURI();
     
     public abstract String getName();
+
+    public abstract int getPriority();
     
     public abstract Date getLastUpdate();
     
@@ -21,6 +23,8 @@ public interface DataSource {
     public abstract void setURI(String URI);
     
     public abstract void setName(String name);
+    
+    public abstract void setPriority(int priority);
     
     public abstract void setLastUpdate(Date lastUpdate);
     

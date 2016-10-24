@@ -2,6 +2,8 @@ package org.wheatinitiative.vivo.mockup.datasource.impl;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +45,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         DataSource prodinra = new OaiPmhDataSourceMockup();
         prodinra.setURI("http://vivo.wheatinitiative.org/individual/dataSource1");
         prodinra.setName("Prodinra");
+        prodinra.setPriority(1);
         prodinra.setLastUpdate(getDate(-3, 0, 21));
         prodinra.setNextUpdate(getDate(+4, 0, 15));
         DataSourceStatusMockup prodinraStatus = new DataSourceStatusMockup();
@@ -52,6 +55,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         DataSource usda = new VivoDataSourceMockup();
         usda.setURI("http://vivo.wheatinitiative.org/individual/dataSource2");
         usda.setName("VIVO USDA");
+        usda.setPriority(11);
         usda.setLastUpdate(getDate(-6, 1, 35));
         usda.setNextUpdate(null);
         DataSourceStatusMockup usdaStatus = new DataSourceStatusMockup();
@@ -61,6 +65,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         DataSource texasAm = new VivoDataSourceMockup();
         texasAm.setURI("http://vivo.wheatinitiative.org/individual/dataSource3");
         texasAm.setName("VIVO Texas A&M University");
+        texasAm.setPriority(12);
         texasAm.setLastUpdate(getDate(-4, 2, 15));
         prodinra.setNextUpdate(getDate(+3, 2, 01));
         DataSourceStatusMockup texasAmStatus = new DataSourceStatusMockup();
@@ -86,6 +91,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         
         private String uri;
         private String name;
+        private int priority;
         private Date lastUpdate;
         private Date nextUpdate;
         private DataSourceStatus status;
@@ -159,6 +165,16 @@ public class DataSourceManagerMockup implements DataSourceManager {
         public void setUpdateFrequency(
                 DataSourceUpdateFrequency updateFrequency) {
             this.updateFrequency = updateFrequency;
+        }
+
+        @Override
+        public int getPriority() {
+            return this.priority;
+        }
+
+        @Override
+        public void setPriority(int priority) {
+            this.priority = priority;
         }
     }
     
@@ -235,6 +251,23 @@ public class DataSourceManagerMockup implements DataSourceManager {
             this.errorRecords = errorRecords;
         }             
     }
+    
+    private class DataSourcePriorityComparator implements Comparator<DataSource> {
+
+        @Override
+        public int compare(DataSource o1, DataSource o2) {
+            if(o1 == null && o2 != null) {
+                return 1;
+            } else if (o2 == null && o1 != null) {
+                return -1;
+            } else if (o1 == null && o1 == null) {
+                return 0;
+            } else {
+                return o1.getPriority() - o2.getPriority();
+            }
+        }
+        
+    }
 
     private class OaiPmhDataSourceMockup extends DataSourceMockup 
     implements OaiPmhDataSource {
@@ -258,7 +291,9 @@ public class DataSourceManagerMockup implements DataSourceManager {
 
     @Override
     public List<DataSource> listDataSources() {
-        return new ArrayList<DataSource>(dataSourceMap.values());
+        List<DataSource> dataSources = new ArrayList<DataSource>(dataSourceMap.values());
+        Collections.sort(dataSources, new DataSourcePriorityComparator());
+        return dataSources;
     }
 
     @Override
