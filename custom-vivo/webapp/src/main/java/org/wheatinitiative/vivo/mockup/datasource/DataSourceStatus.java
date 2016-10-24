@@ -6,4 +6,14 @@ public interface DataSourceStatus {
     
     public abstract String getMessage();
     
+    public abstract boolean isRunning();
+    
+    public abstract int getCompletionPercentage();
+    
+    public abstract int getTotalRecords();
+    
+    public abstract int getProcessedRecords();
+    
+    public abstract int getErrorRecords();
+    
 }

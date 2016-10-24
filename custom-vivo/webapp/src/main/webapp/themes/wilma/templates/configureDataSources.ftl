@@ -19,7 +19,15 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
     <#list dataSources as dataSource>
         <tr>
 	    <td>${dataSource?index}</td>
-            <td>${dataSource.name!}</td>
+            <td>
+	        <a href="${urls.base}/adminFunctionality?feature=editDataSource&uri=${dataSource.URI?url}">
+		    <#if dataSource.name??>
+		        ${dataSource.name!}
+		    <#else>
+		        ${dataSource.URI}
+	            </#if>
+		</a>
+	    </td>
 	    <td>
 	        <#if dataSource.lastUpdate??>
 	            ${dataSource.lastUpdate?datetime}

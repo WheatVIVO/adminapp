@@ -8,7 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.mockup.datasource.DataSourceManagerMockup;
+import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerMockup;
 
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
@@ -38,7 +38,7 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
         Map<String, Object> data = new HashMap<String, Object>();
         
         if("configureDataSources".equals(featureName)) {
-            DataSourceManager dsm = new DataSourceManagerMockup();
+            DataSourceManager dsm = DataSourceManagerMockup.getInstance();
             List<DataSource> dataSources = dsm.listDataSources();
             data.put("dataSources", dataSources);
         } else {
