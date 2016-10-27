@@ -1,0 +1,9 @@
+@prefix display: <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ 
+ <freemarker:individual--foaf-person.ftl> display:hasDataGetter display:individualProvenanceDataGetter .
+ <freemarker:individual.ftl> display:hasDataGetter display:individualProvenanceDataGetter .
+  
+  display:individualProvenanceDataGetter
+      a <java:org.wheatinitiative.vivo.mockup.datagetter.IndividualProvenanceDataGetter> .

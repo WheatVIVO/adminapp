@@ -24,6 +24,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
 
     private static DataSourceManagerMockup instance;
     private Map<String, DataSource> dataSourceMap;
+    private Map<String, DataSource> graphToSourceMap;
     
     public static DataSourceManagerMockup getInstance() {
         if(instance == null) {
@@ -33,25 +34,37 @@ public class DataSourceManagerMockup implements DataSourceManager {
     }
     
     private DataSourceManagerMockup() {
-        dataSourceMap = new HashMap<String, DataSource>();
         try {
-            initializeDataSourceMap();
+            initializeDataSourceMaps();
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
     
-    private void initializeDataSourceMap() throws ParseException {
+    private void initializeDataSourceMaps() throws ParseException {
+        dataSourceMap = new HashMap<String, DataSource>();
+        graphToSourceMap = new HashMap<String, DataSource>();
         DataSource prodinra = new OaiPmhDataSourceMockup();
         prodinra.setURI("http://vivo.wheatinitiative.org/individual/dataSource1");
         prodinra.setName("Prodinra");
         prodinra.setPriority(1);
         prodinra.setLastUpdate(getDate(-3, 0, 21));
         prodinra.setNextUpdate(getDate(+4, 0, 15));
+        prodinra.setServiceURL("http://oai.prodinra.inra.fr/ft");
         DataSourceStatusMockup prodinraStatus = new DataSourceStatusMockup();
         prodinraStatus.setStatusOk(true);
+        prodinraStatus.setCompletionPercentage(100);
+        prodinraStatus.setProcessedRecords(392);
+        prodinraStatus.setTotalRecords(392);
+        prodinraStatus.setErrorRecords(0);
         prodinra.setStatus(prodinraStatus);
         dataSourceMap.put(prodinra.getURI(), prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra", prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra-affiliations-anon", prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra-affiliations-named", prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra-constructions", prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra-named", prodinra);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/Prodinra-types", prodinra);
         DataSource usda = new VivoDataSourceMockup();
         usda.setURI("http://vivo.wheatinitiative.org/individual/dataSource2");
         usda.setName("VIVO USDA");
@@ -299,6 +312,11 @@ public class DataSourceManagerMockup implements DataSourceManager {
     @Override
     public DataSource getDataSource(String URI) {
         return dataSourceMap.get(URI);
+    }
+    
+    @Override 
+    public DataSource getDataSourceByGraphURI(String graphURI) {
+        return graphToSourceMap.get(graphURI);
     }
     
 }

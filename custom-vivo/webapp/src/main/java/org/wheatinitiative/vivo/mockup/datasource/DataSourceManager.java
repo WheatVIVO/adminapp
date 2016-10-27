@@ -8,4 +8,6 @@ public interface DataSourceManager {
  
     public abstract DataSource getDataSource(String URI);
     
+    public abstract DataSource getDataSourceByGraphURI(String graphURI);
+    
 }
