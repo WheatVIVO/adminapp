@@ -85,14 +85,30 @@ public class DataSourceManagerMockup implements DataSourceManager {
         texasAmStatus.setStatusOk(true);
         texasAm.setStatus(texasAmStatus);
         dataSourceMap.put(texasAm.getURI(), texasAm);
+        DataSource rcuk = new OaiPmhDataSourceMockup();
+        rcuk.setURI("http://vivo.wheatinitiative.org/individual/dataSource4");
+        rcuk.setName("RCUK");
+        rcuk.setPriority(2);
+        rcuk.setLastUpdate(getDate(-2, 0, 19));
+        rcuk.setNextUpdate(getDate(+5, 0, 16));
+        rcuk.setServiceURL("http://http://gtr.rcuk.ac.uk/gtr/api/");
+        DataSourceStatusMockup rcukStatus = new DataSourceStatusMockup();
+        rcukStatus.setStatusOk(true);
+        rcukStatus.setCompletionPercentage(17);
+        rcukStatus.setProcessedRecords(100);
+        rcukStatus.setTotalRecords(592);
+        rcukStatus.setErrorRecords(0);
+        rcuk.setStatus(rcukStatus);
+        dataSourceMap.put(rcuk.getURI(), rcuk);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/RCUK", rcuk);
     } 
     
     private Date getDate(int daysOffset, int hours, int minutes) {
         DateTime dt = new DateTime();
         if(daysOffset >= 0) {
-            dt.plusDays(daysOffset);
+            dt = dt.plusDays(daysOffset);
         } else {
-            dt.minusDays(daysOffset);
+            dt = dt.minusDays(Math.abs(daysOffset));
         }
         MutableDateTime mdt = dt.toMutableDateTimeISO();
         mdt.setHourOfDay(hours);
