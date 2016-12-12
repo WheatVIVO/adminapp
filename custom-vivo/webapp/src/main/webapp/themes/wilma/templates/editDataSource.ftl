@@ -29,7 +29,21 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 	    <input type="hidden" name="uri" value="${dataSource.URI}"/>
 	    <input type="hidden" name="feature" value="editDataSource"/>
 	    <br/> <!-- This is what other VIVO forms do... -->
+	    <!--
 	    <input type="submit" name="submit" class="submit" value="Save"/>
 	    <input type="submit" name="cancel" class="delete" value="Cancel"/>
+	    -->
+
+	    <label for="deploymentURL">Deployment URL</label><input type="text" id="deploymentURL" name="deploymentURL" value="${deploymentURL!}"/>
+	    <label for="sparqlEndpointURL">SPARQL Endpoint URL</label><input type="text" id="sparqlEndpointURL" name="sparqlEndpointURL" value="${sparqlEndpointURL!}"/>
+	    <label for="endpointUsername">SPARQL Endpoint Username</label><input type="text" id="endpointUsername" name="endpointUsername" value="${endpointUsername!}"/>
+	    <label for="endpointPassword">SPARQL Endpoint Password</label><input type="text" id="endpointPassword" name="endpointPassword" value="${endpointPassword!}"/>
+	    <label for="resultsGraphURI">Results Graph URI</label><input type="text" id="resultsGraphURI" name="resultsGraphURI" value="${resultsGraphURI!}"/>
+            <br />
+            <#if dataSource.status.running>
+	       <input type="submit" name="stop" class="submit" value="Stop"/>
+	    <#else>   
+	       <input type="submit" name="start" class="submit" value="Start"/>
+	    </#if>
 </form>
 

@@ -16,4 +16,6 @@ public interface DataSourceStatus {
     
     public abstract int getErrorRecords();
     
+    public abstract void setRunning(boolean running);
+    
 }

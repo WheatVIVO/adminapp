@@ -18,6 +18,8 @@ public interface DataSource {
     
     public abstract String getServiceURL();
     
+    public abstract String getDeploymentURL();
+    
     public abstract DataSourceUpdateFrequency getUpdateFrequency();
     
     public abstract void setURI(String URI);
@@ -33,6 +35,8 @@ public interface DataSource {
     public abstract void setStatus(DataSourceStatus status);
     
     public abstract void setServiceURL(String serviceURL);
+    
+    public abstract void setDeploymentURL(String deploymentURL);
     
     public abstract void setUpdateFrequency(DataSourceUpdateFrequency updateFrequency);
     

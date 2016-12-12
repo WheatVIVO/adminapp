@@ -92,6 +92,8 @@ public class DataSourceManagerMockup implements DataSourceManager {
         rcuk.setLastUpdate(getDate(-2, 0, 19));
         rcuk.setNextUpdate(getDate(+5, 0, 16));
         rcuk.setServiceURL("http://http://gtr.rcuk.ac.uk/gtr/api/");
+        rcuk.setDeploymentURL(
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/rcuk");
         DataSourceStatusMockup rcukStatus = new DataSourceStatusMockup();
         rcukStatus.setStatusOk(true);
         rcukStatus.setCompletionPercentage(17);
@@ -125,6 +127,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         private Date nextUpdate;
         private DataSourceStatus status;
         private String serviceURL;
+        private String deploymentURL;
         private DataSourceUpdateFrequency updateFrequency;
         
         public String getURI() {
@@ -153,6 +156,11 @@ public class DataSourceManagerMockup implements DataSourceManager {
         @Override
         public String getServiceURL() {
             return this.serviceURL;
+        }
+        
+        @Override
+        public String getDeploymentURL() {
+            return this.deploymentURL;
         }
 
         @Override
@@ -188,6 +196,11 @@ public class DataSourceManagerMockup implements DataSourceManager {
         @Override
         public void setServiceURL(String serviceURL) {
             this.serviceURL = serviceURL;
+        }
+        
+        @Override
+        public void setDeploymentURL(String deploymentURL) {
+            this.deploymentURL = deploymentURL;
         }
 
         @Override

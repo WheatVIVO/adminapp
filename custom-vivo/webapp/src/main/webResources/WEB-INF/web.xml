@@ -1349,6 +1349,24 @@
     <url-pattern>/adminFunctionality</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>RcukService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.rcuk.RcukService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RcukService</servlet-name>
+    <url-pattern>/dataSource/rcuk/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ServiceInvoker</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.mockup.controller.ServiceInvoker</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceInvoker</servlet-name>
+    <url-pattern>/invokeService</url-pattern>
+  </servlet-mapping>
+
   <!-- end Wheat VIVO extensions -->
     
   <!-- ============================== servlet-mappings ======================== -->

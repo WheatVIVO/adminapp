@@ -41,10 +41,10 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 	        </#if>
             </td>
 	    <td>
-	        <#if dataSource.status.statusOk>
-		    <strong class="statusOK">OK</strong></td>
+	        <#if dataSource.status.running>
+		    <strong class="statusOK">RUNNING</strong></td>
 		<#else>
-                    <strong class="statusError">ERROR</strong></td>
+                    <strong class="statusError">IDLE</strong></td>
 		</#if>
             </td>
 	    <td>
