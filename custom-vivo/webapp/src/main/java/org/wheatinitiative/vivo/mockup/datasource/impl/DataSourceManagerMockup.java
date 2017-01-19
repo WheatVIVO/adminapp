@@ -103,6 +103,24 @@ public class DataSourceManagerMockup implements DataSourceManager {
         rcuk.setStatus(rcukStatus);
         dataSourceMap.put(rcuk.getURI(), rcuk);
         graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/RCUK", rcuk);
+        DataSource wi = new DataSourceMockup();
+        wi.setURI("http://vivo.wheatinitiative.org/individual/dataSource5");
+        wi.setName("Wheat Initiative Website");
+        wi.setPriority(5);
+        wi.setLastUpdate(getDate(-3, 0, 17));
+        wi.setNextUpdate(getDate(+4, 0, 19));
+        wi.setServiceURL("http://www.wheatinitiative.org/administration/users/csv");
+        wi.setDeploymentURL(
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/wheatinitiative");
+        DataSourceStatusMockup wiStatus = new DataSourceStatusMockup();
+        wiStatus.setStatusOk(true);
+        wiStatus.setCompletionPercentage(100);
+        wiStatus.setProcessedRecords(88);
+        wiStatus.setTotalRecords(88);
+        wiStatus.setErrorRecords(0);
+        wi.setStatus(wiStatus);
+        dataSourceMap.put(wi.getURI(), wi);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/WheatInitiative", wi);
     } 
     
     private Date getDate(int daysOffset, int hours, int minutes) {

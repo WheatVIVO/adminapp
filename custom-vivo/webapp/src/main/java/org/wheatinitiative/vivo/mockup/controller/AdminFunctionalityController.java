@@ -8,7 +8,9 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wheatinitiative.vivo.datasource.DataSourceConfiguration;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
+import org.wheatinitiative.vivo.datasource.DataSourceStatus;
 import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
@@ -173,7 +175,17 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
         DataSourceDescriptionSerializer serializer = 
                 new DataSourceDescriptionSerializer();
         String result = httpUtils.getHttpResponse(serviceURL);
-        return serializer.unserialize(result);  
+        // TODO add wrapper / convenience method that retains status code
+        try {
+            return serializer.unserialize(result);
+        } catch (Exception e) {
+            log.error(e, e);
+            DataSourceDescription error = new DataSourceDescription();
+            DataSourceStatus errorStatus = new DataSourceStatus();
+            errorStatus.setStatusOk(false);
+            error.setStatus(errorStatus);
+            return error;
+        }
     }
     
     private DataSourceDescription updateService(

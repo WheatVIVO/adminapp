@@ -1359,6 +1359,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>WheatInitiativeService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.wheatinitiative.WheatInitiativeService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WheatInitiativeService</servlet-name>
+    <url-pattern>/dataSource/wheatinitiative/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>ServiceInvoker</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.mockup.controller.ServiceInvoker</servlet-class>
   </servlet>
