@@ -51,6 +51,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         prodinra.setLastUpdate(getDate(-3, 0, 21));
         prodinra.setNextUpdate(getDate(+4, 0, 15));
         prodinra.setServiceURL("http://oai.prodinra.inra.fr/ft");
+        prodinra.setDeploymentURL("http://localhost:8080/wheatvivo-adminapp/dataSource/prodinra");
         DataSourceStatusMockup prodinraStatus = new DataSourceStatusMockup();
         prodinraStatus.setStatusOk(true);
         prodinraStatus.setCompletionPercentage(100);
@@ -71,6 +72,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         usda.setPriority(11);
         usda.setLastUpdate(getDate(-6, 1, 35));
         usda.setNextUpdate(null);
+        usda.setDeploymentURL("http://localhost:8080/wheatvivo-adminapp/dataSource/usda");
         DataSourceStatusMockup usdaStatus = new DataSourceStatusMockup();
         usdaStatus.setStatusOk(false);
         usda.setStatus(usdaStatus);
@@ -120,7 +122,7 @@ public class DataSourceManagerMockup implements DataSourceManager {
         wiStatus.setErrorRecords(0);
         wi.setStatus(wiStatus);
         dataSourceMap.put(wi.getURI(), wi);
-        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/WheatInitiative", wi);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/wheatinitiative", wi);
     } 
     
     private Date getDate(int daysOffset, int hours, int minutes) {

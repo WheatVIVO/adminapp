@@ -1368,6 +1368,26 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>UsdaService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.usda.UsdaService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsdaService</servlet-name>
+    <url-pattern>/dataSource/usda/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProdinraService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.prodinra.ProdinraService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProdinraService</servlet-name>
+    <url-pattern>/dataSource/prodinra/*</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
     <servlet-name>ServiceInvoker</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.mockup.controller.ServiceInvoker</servlet-class>
   </servlet>
