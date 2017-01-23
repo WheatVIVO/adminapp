@@ -100,8 +100,7 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
                 updateDataSource(dataSource, vreq);
                 List<String> queryTerms = new ArrayList<String>();
                 queryTerms.add("wheat");
-                description.getConfiguration().getParameterMap().put(
-                        "queryTerms", queryTerms);
+                description.getConfiguration().setQueryTerms(queryTerms);
                 this.startService(dataSource.getDeploymentURL(), description);
                 // "forward" to list of data sources
                 return doConfigureDataSources(data, vreq);
@@ -124,7 +123,7 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
         String endpointURI = vreq.getParameter("sparqlEndpointURL");
         String endpointUsername = vreq.getParameter("endpointUsername");
         String endpointPassword = vreq.getParameter("endpointPassword");
-        String resultsGraphURI = vreq.getParameter("resulsGraphURI");
+        String resultsGraphURI = vreq.getParameter("resultsGraphURI");
         params.setEndpointURI(endpointURI);
         params.setEndpointUpdateURI(endpointURI);
         params.setUsername(endpointUsername);
