@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wheatinitiative.vivo.datasource.DataSourceConfiguration;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.DataSourceStatus;
 import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
@@ -17,6 +16,8 @@ import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerMockup;
+
+import com.fasterxml.jackson.core.JsonParseException;
 
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
@@ -100,6 +101,10 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
                 updateDataSource(dataSource, vreq);
                 List<String> queryTerms = new ArrayList<String>();
                 queryTerms.add("wheat");
+                queryTerms.add("triticum");
+                queryTerms.add("tritici");
+                // queryTerms.add("blé");
+                queryTerms.add("ble");                
                 description.getConfiguration().setQueryTerms(queryTerms);
                 this.startService(dataSource.getDeploymentURL(), description);
                 // "forward" to list of data sources
@@ -194,7 +199,13 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
         String json = serializer.serialize(description);
         String result = httpUtils.getHttpPostResponse(
                 serviceURL, json, "application/json");
-        return serializer.unserialize(result);
+        try {
+            DataSourceDescription desc = serializer.unserialize(result);
+            return desc;
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Exception parsing response from " + serviceURL + ": \n" + result);
+        }
     }
     
 }
