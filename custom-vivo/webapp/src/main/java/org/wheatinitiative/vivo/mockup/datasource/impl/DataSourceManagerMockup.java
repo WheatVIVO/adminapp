@@ -73,6 +73,8 @@ public class DataSourceManagerMockup implements DataSourceManager {
         usda.setLastUpdate(getDate(-6, 1, 35));
         usda.setNextUpdate(null);
         usda.setDeploymentURL("http://localhost:8080/wheatvivo-adminapp/dataSource/usda");
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/usda", usda);
+        graphToSourceMap.put("http://vitro.mannlib.cornell.edu/a/graph/USDA", usda);
         DataSourceStatusMockup usdaStatus = new DataSourceStatusMockup();
         usdaStatus.setStatusOk(false);
         usda.setStatus(usdaStatus);
