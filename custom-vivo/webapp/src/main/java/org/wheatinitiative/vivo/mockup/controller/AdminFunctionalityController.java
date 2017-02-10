@@ -129,7 +129,14 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
         String endpointUsername = vreq.getParameter("endpointUsername");
         String endpointPassword = vreq.getParameter("endpointPassword");
         String resultsGraphURI = vreq.getParameter("resultsGraphURI");
-        params.setEndpointURI(endpointURI);
+        // TODO remove once second parameter is included
+        if(endpointURI != null && endpointURI.endsWith("sparqlUpdate")) {
+            // drop "Update" from the end of the read endpoint and add "Query"
+            params.setEndpointURI(endpointURI.substring(0, endpointURI.length()
+                    - "Update".length()) + "Query");            
+        } else {
+            params.setEndpointURI(endpointURI);
+        }
         params.setEndpointUpdateURI(endpointURI);
         params.setUsername(endpointUsername);
         params.setPassword(endpointPassword);
