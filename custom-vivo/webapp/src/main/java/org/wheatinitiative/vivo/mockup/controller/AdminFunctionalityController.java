@@ -15,9 +15,7 @@ import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializ
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerMockup;
-
-import com.fasterxml.jackson.core.JsonParseException;
+import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerImpl;
 
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
@@ -61,7 +59,7 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
     
     private TemplateResponseValues doConfigureDataSources(
             Map<String, Object> data, VitroRequest vreq) throws IOException {
-        DataSourceManager dsm = DataSourceManagerMockup.getInstance();
+        DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
         List<DataSource> dataSources = dsm.listDataSources();
         dataSources = pollStatus(dataSources);
         data.put("dataSources", dataSources);
@@ -83,7 +81,7 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
     
     private TemplateResponseValues doEditDataSource( 
             Map<String, Object> data, VitroRequest vreq) throws IOException {
-        DataSourceManager dsm = DataSourceManagerMockup.getInstance();
+        DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
         String dataSourceURI = vreq.getParameter("uri");
         DataSource dataSource = dsm.getDataSource(dataSourceURI);
         String deploymentURL = dataSource.getDeploymentURL();

@@ -22,6 +22,14 @@ public interface DataSource {
     
     public abstract DataSourceUpdateFrequency getUpdateFrequency();
     
+    public abstract String getEndpointURL();
+    
+    public abstract String getEndpointUsername();
+    
+    public abstract String getEndpointPassword();
+    
+    public abstract String getResultsGraphURI();
+    
     public abstract void setURI(String URI);
     
     public abstract void setName(String name);
@@ -40,4 +48,11 @@ public interface DataSource {
     
     public abstract void setUpdateFrequency(DataSourceUpdateFrequency updateFrequency);
     
+    public abstract void setEndpointURL(String endpointURL);
+    
+    public abstract void setEndpointUsername(String endpointUsername);
+    
+    public abstract void setEndpointPassword(String endpointPassword);
+    
+    public abstract void setResultsGraphURI(String resultsGraphURI);
 }

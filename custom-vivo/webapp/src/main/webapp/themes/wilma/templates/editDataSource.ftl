@@ -35,10 +35,10 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 	    -->
 
 	    <label for="deploymentURL">Deployment URL</label><input type="text" id="deploymentURL" name="deploymentURL" value="${deploymentURL!}"/>
-	    <label for="sparqlEndpointURL">SPARQL Endpoint URL</label><input type="text" id="sparqlEndpointURL" name="sparqlEndpointURL" value="${sparqlEndpointURL!}"/>
-	    <label for="endpointUsername">SPARQL Endpoint Username</label><input type="text" id="endpointUsername" name="endpointUsername" value="${endpointUsername!}"/>
-	    <label for="endpointPassword">SPARQL Endpoint Password</label><input type="text" id="endpointPassword" name="endpointPassword" value="${endpointPassword!}"/>
-	    <label for="resultsGraphURI">Results Graph URI</label><input type="text" id="resultsGraphURI" name="resultsGraphURI" value="${resultsGraphURI!}"/>
+	    <label for="sparqlEndpointURL">SPARQL Endpoint URL</label><input type="text" id="sparqlEndpointURL" name="sparqlEndpointURL" value="${dataSource.sparqlEndpointURL!}"/>
+	    <label for="endpointUsername">SPARQL Endpoint Username</label><input type="text" id="endpointUsername" name="endpointUsername" value="${dataSource.endpointUsername!}"/>
+	    <label for="endpointPassword">SPARQL Endpoint Password</label><input type="text" id="endpointPassword" name="endpointPassword" value="${dataSource.endpointPassword!}"/>
+	    <label for="resultsGraphURI">Results Graph URI</label><input type="text" id="resultsGraphURI" name="resultsGraphURI" value="${dataSource.resultsGraphURI!}"/>
             <br />
             <#if dataSource.status.running>
 	       <input type="submit" name="stop" class="submit" value="Stop"/>

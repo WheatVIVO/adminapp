@@ -240,6 +240,54 @@ public class DataSourceManagerMockup implements DataSourceManager {
         public void setPriority(int priority) {
             this.priority = priority;
         }
+
+        @Override
+        public String getEndpointURL() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public String getEndpointUsername() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public String getEndpointPassword() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public String getResultsGraphURI() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public void setEndpointURL(String endpointURL) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void setEndpointUsername(String endpointUsername) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void setEndpointPassword(String endpointPassword) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void setResultsGraphURI(String resultsGraphURI) {
+            // TODO Auto-generated method stub
+            
+        }
     }
     
     private class DataSourceStatusMockup implements DataSourceStatus {
