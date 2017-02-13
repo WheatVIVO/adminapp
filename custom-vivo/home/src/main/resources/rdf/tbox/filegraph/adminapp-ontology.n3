@@ -128,7 +128,7 @@ _:genid8 a owl:Restriction ;
 	owl:onProperty :username ;
 	owl:allValuesFrom xsd:string .
 
-:SparqlEndpoint rdfs:subClassOf _:genid9 .
+:DataSource rdfs:subClassOf _:genid9 .
 
 _:genid9 a owl:Restriction ;
 	owl:onProperty :usesSparqlEndpoint ;

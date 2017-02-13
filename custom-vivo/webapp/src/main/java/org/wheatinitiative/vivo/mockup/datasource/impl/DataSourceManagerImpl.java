@@ -40,8 +40,8 @@ public class DataSourceManagerImpl implements DataSourceManager {
     private static final String NEXTUPDATE = ADMIN_APP_TBOX + "nextUpdate";
     private static final String SERVICEURI = ADMIN_APP_TBOX + "serviceURI";
     private static final String ENDPOINTURI = ADMIN_APP_TBOX + "endpointURI";
-    private static final String ENDPOINTUSERNAME = ADMIN_APP_TBOX + "endpointUsername";
-    private static final String ENDPOINTPASSWORD = ADMIN_APP_TBOX + "endpointPassword";
+    private static final String ENDPOINTUSERNAME = ADMIN_APP_TBOX + "username";
+    private static final String ENDPOINTPASSWORD = ADMIN_APP_TBOX + "password";
     private static final String GRAPHURI = ADMIN_APP_TBOX + "graphURI";
     
     private static final Log log = LogFactory.getLog(DataSourceManager.class);
@@ -60,7 +60,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
             "    ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
             "    ?endpoint ?endpointP ?endpointO \n" +
             "} WHERE { \n" +
-            "    ?dataSource a <" + SPARQLENDPOINT + "> . \n" +
+            "    ?dataSource a <" + DATASOURCE + "> . \n" +
             "    ?dataSource ?p ?o . \n" +
             "    OPTIONAL { ?dataSource <" + PRIORITY + "> ?priority } \n" +
             "    OPTIONAL { \n" +
@@ -72,6 +72,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
     String DATASOURCE_BY_GRAPH = "CONSTRUCT { \n" +
             "    ?dataSource ?p ?o . \n" +
             "    ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
+            "    ?endpoint a <" + SPARQLENDPOINT + "> . \n" +
             "    ?endpoint ?endpointP ?endpointO \n" +
             "} WHERE { \n" +
             "    ?dataSource <" + GRAPHURI + "> ?graphURI . \n" +
@@ -138,7 +139,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
                     ds.setEndpointURL(getStringValue(endpoint, ENDPOINTURI, model));
                     ds.setEndpointUsername(getStringValue(endpoint, ENDPOINTUSERNAME, model));
                     ds.setEndpointPassword(getStringValue(endpoint, ENDPOINTPASSWORD, model));
-                    ds.setEndpointURL(getStringValue(URI, GRAPHURI, model));  
+                    ds.setResultsGraphURI(getStringValue(URI, GRAPHURI, model));  
                     break;
                 }                   
             }
