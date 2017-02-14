@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.semarglproject.vocab.XSD;
 import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceStatus;
@@ -62,12 +63,11 @@ public class DataSourceManagerImpl implements DataSourceManager {
             "} WHERE { \n" +
             "    ?dataSource a <" + DATASOURCE + "> . \n" +
             "    ?dataSource ?p ?o . \n" +
-            "    OPTIONAL { ?dataSource <" + PRIORITY + "> ?priority } \n" +
             "    OPTIONAL { \n" +
             "        ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
             "        ?endpoint ?endpointP ?endpointO \n" +
             "    } \n" +
-            "} ORDER BY ?priority \n";
+            "} \n";
     
     String DATASOURCE_BY_GRAPH = "CONSTRUCT { \n" +
             "    ?dataSource ?p ?o . \n" +
@@ -77,12 +77,11 @@ public class DataSourceManagerImpl implements DataSourceManager {
             "} WHERE { \n" +
             "    ?dataSource <" + GRAPHURI + "> ?graphURI . \n" +
             "    ?dataSource ?p ?o . \n" +
-            "    OPTIONAL { ?dataSource <" + PRIORITY + "> ?priority } \n" +
             "    OPTIONAL { \n" +
             "        ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
             "        ?endpoint ?endpointP ?endpointO \n" +
             "    } \n" +
-            "} ORDER BY ?priority \n";
+            "} \n";
     
     @Override
     public List<DataSource> listDataSources() { 
@@ -214,7 +213,9 @@ public class DataSourceManagerImpl implements DataSourceManager {
     @Override
     public DataSource getDataSourceByGraphURI(String graphURI) {
         String dataSourceQuery = DATASOURCE_BY_GRAPH
-                .replaceAll("\\?graphURI", "<" + graphURI + ">");
+                .replaceAll("\\?graphURI", "\"" + graphURI + "\"^^<" + 
+                        XSD.ANY_URI + ">");
+        log.debug(dataSourceQuery);
         List<DataSource> dataSources = listDataSources(
                 construct(dataSourceQuery));
         if(dataSources.isEmpty()) {

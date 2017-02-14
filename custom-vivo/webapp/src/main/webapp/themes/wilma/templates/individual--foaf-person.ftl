@@ -26,12 +26,14 @@
         
 <section id="individual-intro" class="vcard person" role="region">
 
+<#if sources?has_content>
 <h2>Data sources for this individual</h2>
 <ul>
 <#list sources as source>
-    <li><a href="${urls.base}/adminFunctionality?feature=editDataSource&uri=${source.uri?url}">${source.name}</a></li>
+    <li><a href="${urls.base}/individual?uri=${source.uri?url}">${source.name}</a></li>
 </#list>
 </ul>
+</#if>
 
     <section id="share-contact" role="region"> 
         <!-- Image -->           

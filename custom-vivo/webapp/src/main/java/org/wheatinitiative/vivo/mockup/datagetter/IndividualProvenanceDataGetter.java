@@ -11,7 +11,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerMockup;
+import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerImpl;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -25,6 +25,9 @@ import edu.cornell.mannlib.vitro.webapp.web.templatemodels.individual.Individual
 
 public class IndividualProvenanceDataGetter implements DataGetter {
 
+    private static final String KB2_GRAPH = "http://vitro.mannlib.cornell.edu/default/vitro-kb-kb2";
+    private static final String INF_GRAPH = "http://vitro.mannlib.cornell.edu/default/vitro-kb-inf";
+    
     private VitroRequest vreq;
     private DataSourceManager mgr;
     
@@ -38,7 +41,7 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         try {
             log.info("Constructing datagetter");
             this.vreq = vreq; 
-            this.mgr = DataSourceManagerMockup.getInstance();
+            this.mgr = new DataSourceManagerImpl(vreq.getRDFService());
         } catch (Exception e) {
             // because the code that invokes this by reflection is stupid
             // and doesn't log the nested exception
@@ -64,6 +67,7 @@ public class IndividualProvenanceDataGetter implements DataGetter {
     }
     
     private List<Source> getSources(IndividualTemplateModel ind) {
+        long start = System.currentTimeMillis();
         List<Source> sources = new ArrayList<Source>();
         String individualURI = ind.getUri();
         String query = "SELECT DISTINCT ?graph WHERE { GRAPH ?graph { <" + 
@@ -76,13 +80,28 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         }
         Set<DataSource> dataSources = new HashSet<DataSource>();
         for (String graphURI : graphGetter.getGraphURIs()) {
+            if(KB2_GRAPH.equals(graphURI) || INF_GRAPH.equals(graphURI)) {
+                continue;
+            }
             DataSource dataSource = mgr.getDataSourceByGraphURI(graphURI);
             if (dataSource != null) {
+                log.debug("Found data source " + dataSource.getName() + 
+                        " for individual " + individualURI);
                 dataSources.add(dataSource);
             }
         }
         for (DataSource dataSource : dataSources) {
             sources.add(new Source(dataSource.getName(), dataSource.getURI()));
+        }
+        long duration = System.currentTimeMillis() - start;
+        String logMessage = duration + " ms to get graphs for individual "
+                + individualURI;
+        if(duration <= 50) {
+            log.debug(logMessage);
+        } else if (duration < 250) {
+            log.info(logMessage);
+        } else {
+            log.warn(logMessage);
         }
         return sources;
     }

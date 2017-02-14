@@ -29,12 +29,14 @@
     <#assign overview = propertyGroups.pullProperty("http://www.w3.org/2004/02/skos/core#related")!> 
 </#if>
 
+<#if sources?has_content>
 <h2>Data sources for this individual</h2>
 <ul>
 <#list sources as source>
-    <li><a href="${urls.base}/adminFunctionality?feature=editDataSource&uri=${source.uri?url}">${source.name}</a></li>
+    <li><a href="${urls.base}/individual?uri=${source.uri?url}">${source.name}</a></li>
 </#list>
 </ul>
+</#if>
 
 <#include "individual-vitro.ftl">
 <script>

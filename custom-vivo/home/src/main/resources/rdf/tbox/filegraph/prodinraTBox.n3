@@ -15,520 +15,524 @@
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 @prefix c4o:   <http://purl.org/spar/c4o/> .
 
+
+<http://record.prodinra.inra.fr/ProdinraThing> 
+        a       <http://www.w3.org/2002/07/owl#Class> .
+
 <http://www.openarchives.org/OAI/2.0/OAI-PMH>
         a       <http://www.w3.org/2002/07/owl#Class> .
 
-<http://record.prodinra.inra.frcomplements>
+<http://record.prodinra.inra.fr/complements>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frbacker>
+<http://record.prodinra.inra.fr/backer>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frmeeting>
+<http://record.prodinra.inra.fr/meeting>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frarticleInfos>
+<http://record.prodinra.inra.fr/articleInfos>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/resumptionToken>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frperiod>
+<http://record.prodinra.inra.fr/period>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frreviewer>
+<http://record.prodinra.inra.fr/reviewer>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frgraduateSchool>
+<http://record.prodinra.inra.fr/graduateSchool>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frjuryComposition>
+<http://record.prodinra.inra.fr/juryComposition>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frspecialIssue>
+<http://record.prodinra.inra.fr/specialIssue>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frkeywords>
+<http://record.prodinra.inra.fr/keywords>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frgrant>
+<http://record.prodinra.inra.fr/grant>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frrecord>
+<http://record.prodinra.inra.fr/record>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcity>
+<http://record.prodinra.inra.fr/city>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpartners>
+<http://record.prodinra.inra.fr/partners>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frproduit>
+<http://record.prodinra.inra.fr/produit>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frproceedingsType>
+<http://record.prodinra.inra.fr/proceedingsType>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frnoriaData>
+<http://record.prodinra.inra.fr/noriaData>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcollection>
+<http://record.prodinra.inra.fr/collection>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frattachment>
+<http://record.prodinra.inra.fr/attachment>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/metadata>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frcenter>
+<http://record.prodinra.inra.fr/center>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlanguageLabel>
+<http://record.prodinra.inra.fr/languageLabel>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frorder>
+<http://record.prodinra.inra.fr/order>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpagination>
+<http://record.prodinra.inra.fr/pagination>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frjelCode>
+<http://record.prodinra.inra.fr/jelCode>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/header>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frauthor>
+<http://record.prodinra.inra.fr/author>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfirstReviewer>
+<http://record.prodinra.inra.fr/firstReviewer>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frexperimentalUnit>
+<http://record.prodinra.inra.fr/experimentalUnit>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpmid>
+<http://record.prodinra.inra.fr/pmid>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdocumentLocation>
+<http://record.prodinra.inra.fr/documentLocation>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/ListRecords>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frexternalAffiliation>
+<http://record.prodinra.inra.fr/externalAffiliation>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frthematic>
+<http://record.prodinra.inra.fr/thematic>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frreportNumber>
+<http://record.prodinra.inra.fr/reportNumber>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinraClassification>
+<http://record.prodinra.inra.fr/inraClassification>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/request>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frevent>
+<http://record.prodinra.inra.fr/event>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frorganizer>
+<http://record.prodinra.inra.fr/organizer>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frsubTitle>
+<http://record.prodinra.inra.fr/subTitle>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frauthorityType>
+<http://record.prodinra.inra.fr/authorityType>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublishing>
+<http://record.prodinra.inra.fr/publishing>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frhalClassification>
+<http://record.prodinra.inra.fr/halClassification>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfp>
+<http://record.prodinra.inra.fr/fp>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdepartment>
+<http://record.prodinra.inra.fr/department>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frunit>
+<http://record.prodinra.inra.fr/unit>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frrole>
+<http://record.prodinra.inra.fr/role>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpages>
+<http://record.prodinra.inra.fr/pages>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdepositor>
+<http://record.prodinra.inra.fr/depositor>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpersonIdentifier>
+<http://record.prodinra.inra.fr/personIdentifier>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frtitle>
+<http://record.prodinra.inra.fr/title>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdegree>
+<http://record.prodinra.inra.fr/degree>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frorganizationDegree>
+<http://record.prodinra.inra.fr/organizationDegree>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcreator>
+<http://record.prodinra.inra.fr/creator>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frproceedingsTitle>
+<http://record.prodinra.inra.fr/proceedingsTitle>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcountry>
+<http://record.prodinra.inra.fr/country>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frissue>
+<http://record.prodinra.inra.fr/issue>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frotherReportType>
+<http://record.prodinra.inra.fr/otherReportType>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/record>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-<http://record.prodinra.inra.frhostLaboratory>
+<http://record.prodinra.inra.fr/hostLaboratory>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frabstract>
+<http://record.prodinra.inra.fr/abstract>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpaperNumber>
+<http://record.prodinra.inra.fr/paperNumber>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frbookType>
+<http://record.prodinra.inra.fr/bookType>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fraffiliation>
+<http://record.prodinra.inra.fr/affiliation>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinraAffiliation>
+<http://record.prodinra.inra.fr/inraAffiliation>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fralternateTitle>
+<http://record.prodinra.inra.fr/alternateTitle>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fremail>
+<http://record.prodinra.inra.fr/email>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frarticleNumber>
+<http://record.prodinra.inra.fr/articleNumber>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fraffiliationPartners>
+<http://record.prodinra.inra.fr/affiliationPartners>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpaperProceedingsType>
+<http://record.prodinra.inra.fr/paperProceedingsType>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublication>
+<http://record.prodinra.inra.fr/publication>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frsignatureDate>
+<http://record.prodinra.inra.fr/signatureDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 vitro:value  a  <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frcontactAuthor>
+<http://record.prodinra.inra.fr/contactAuthor>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frgenericTerm>
+<http://record.prodinra.inra.fr/genericTerm>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frreportDirector>
+<http://record.prodinra.inra.fr/reportDirector>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frutKey>
+<http://record.prodinra.inra.fr/utKey>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfirstName>
+<http://record.prodinra.inra.fr/firstName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frunitCode>
+<http://record.prodinra.inra.fr/unitCode>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/cursor>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frbookDirector>
+<http://record.prodinra.inra.fr/bookDirector>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frendDate>
+<http://record.prodinra.inra.fr/endDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdirectorIssue>
+<http://record.prodinra.inra.fr/directorIssue>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/identifier>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frlibraryUnit>
+<http://record.prodinra.inra.fr/libraryUnit>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.w3.org/2001/XMLSchema-instancetype>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frinternshipSupervisor>
+<http://record.prodinra.inra.fr/internshipSupervisor>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frissn>
+<http://record.prodinra.inra.fr/issn>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frp1Id>
+<http://record.prodinra.inra.fr/p1Id>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frnotes>
+<http://record.prodinra.inra.fr/notes>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frname>
+<http://record.prodinra.inra.fr/name>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlocation>
+<http://record.prodinra.inra.fr/location>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frnumber>
+<http://record.prodinra.inra.fr/number>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.openarchives.org/OAI/2.0/datestamp>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frorigin>
+<http://record.prodinra.inra.fr/origin>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpaperType>
+<http://record.prodinra.inra.fr/paperType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frisbn>
+<http://record.prodinra.inra.fr/isbn>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfileMimeType>
+<http://record.prodinra.inra.fr/fileMimeType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fryear>
+<http://record.prodinra.inra.fr/year>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlastName>
+<http://record.prodinra.inra.fr/lastName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlaboratory>
+<http://record.prodinra.inra.fr/laboratory>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frsection>
+<http://record.prodinra.inra.fr/section>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frjournalLink>
+<http://record.prodinra.inra.fr/journalLink>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frengTerm>
+<http://record.prodinra.inra.fr/engTerm>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frunitName>
+<http://record.prodinra.inra.fr/unitName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frrecordAccessCondition>
+<http://record.prodinra.inra.fr/recordAccessCondition>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/completeListSize>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
@@ -536,409 +540,409 @@ vitro:value  a  <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://www.openarchives.org/OAI/2.0/responseDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.fracronym>
+<http://record.prodinra.inra.fr/acronym>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfunding>
+<http://record.prodinra.inra.fr/funding>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://www.w3.org/2001/XMLSchema-instanceschemaLocation>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.fren>
+<http://record.prodinra.inra.fr/en>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frjointOrganization>
+<http://record.prodinra.inra.fr/jointOrganization>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublisherCity>
+<http://record.prodinra.inra.fr/publisherCity>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlink>
+<http://record.prodinra.inra.fr/link>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frstartDate>
+<http://record.prodinra.inra.fr/startDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpeerReviewed>
+<http://record.prodinra.inra.fr/peerReviewed>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublisherName>
+<http://record.prodinra.inra.fr/publisherName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frsupervisor>
+<http://record.prodinra.inra.fr/supervisor>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fridGraduateSchool>
+<http://record.prodinra.inra.fr/idGraduateSchool>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frusedTerm>
+<http://record.prodinra.inra.fr/usedTerm>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frhalIdentifier>
+<http://record.prodinra.inra.fr/halIdentifier>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinraIdentifier>
+<http://record.prodinra.inra.fr/inraIdentifier>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinraLaboratory>
+<http://record.prodinra.inra.fr/inraLaboratory>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frworkflowStatus>
+<http://record.prodinra.inra.fr/workflowStatus>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfundingDepartment>
+<http://record.prodinra.inra.fr/fundingDepartment>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/verb>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.fridentifier>
+<http://record.prodinra.inra.fr/identifier>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frrenown>
+<http://record.prodinra.inra.fr/renown>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frtype>
+<http://record.prodinra.inra.fr/type>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpeps>
+<http://record.prodinra.inra.fr/peps>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frresearchReportType>
+<http://record.prodinra.inra.fr/researchReportType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinvitedConference>
+<http://record.prodinra.inra.fr/invitedConference>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frupdateDate>
+<http://record.prodinra.inra.fr/updateDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frwosCitation>
+<http://record.prodinra.inra.fr/wosCitation>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frthesisDirector>
+<http://record.prodinra.inra.fr/thesisDirector>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fropenAccess>
+<http://record.prodinra.inra.fr/openAccess>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frattachmentId>
+<http://record.prodinra.inra.fr/attachmentId>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/expirationDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frversion>
+<http://record.prodinra.inra.fr/version>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcode>
+<http://record.prodinra.inra.fr/code>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcontract>
+<http://record.prodinra.inra.fr/contract>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlibraryCenter>
+<http://record.prodinra.inra.fr/libraryCenter>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fritemType>
+<http://record.prodinra.inra.fr/itemType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfrench>
+<http://record.prodinra.inra.fr/french>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fraccessCondition>
+<http://record.prodinra.inra.fr/accessCondition>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frtransmissionDate>
+<http://record.prodinra.inra.fr/transmissionDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frtargetAudience>
+<http://record.prodinra.inra.fr/targetAudience>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frvalidationDate>
+<http://record.prodinra.inra.fr/validationDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdissertationDirector>
+<http://record.prodinra.inra.fr/dissertationDirector>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfileSize>
+<http://record.prodinra.inra.fr/fileSize>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 vitro:position  a  <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.fraudioType>
+<http://record.prodinra.inra.fr/audioType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfirstValidationDate>
+<http://record.prodinra.inra.fr/firstValidationDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdissertationType>
+<http://record.prodinra.inra.fr/dissertationType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frmedia>
+<http://record.prodinra.inra.fr/media>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinraClassificationIdentifier>
+<http://record.prodinra.inra.fr/inraClassificationIdentifier>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcontractAcronym>
+<http://record.prodinra.inra.fr/contractAcronym>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frhalSending>
+<http://record.prodinra.inra.fr/halSending>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublisherCountry>
+<http://record.prodinra.inra.fr/publisherCountry>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frembargo>
+<http://record.prodinra.inra.fr/embargo>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frshortTitle>
+<http://record.prodinra.inra.fr/shortTitle>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlibraryClassificationMark>
+<http://record.prodinra.inra.fr/libraryClassificationMark>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frvolume>
+<http://record.prodinra.inra.fr/volume>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlibraryName>
+<http://record.prodinra.inra.fr/libraryName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frarticleType>
+<http://record.prodinra.inra.fr/articleType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frorderType>
+<http://record.prodinra.inra.fr/orderType>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fridCollection>
+<http://record.prodinra.inra.fr/idCollection>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/status>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frdefenseDate>
+<http://record.prodinra.inra.fr/defenseDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frspeciality>
+<http://record.prodinra.inra.fr/speciality>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frwosCitationLink>
+<http://record.prodinra.inra.fr/wosCitationLink>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.fridPublisher>
+<http://record.prodinra.inra.fr/idPublisher>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frimpactFactor5>
+<http://record.prodinra.inra.fr/impactFactor5>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfr>
+<http://record.prodinra.inra.fr/fr>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frgroup>
+<http://record.prodinra.inra.fr/group>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frtag>
+<http://record.prodinra.inra.fr/tag>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frfileName>
+<http://record.prodinra.inra.fr/fileName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frdoi>
+<http://record.prodinra.inra.fr/doi>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frgrantNumber>
+<http://record.prodinra.inra.fr/grantNumber>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frlanguage>
+<http://record.prodinra.inra.fr/language>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublished>
+<http://record.prodinra.inra.fr/published>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frpublicationName>
+<http://record.prodinra.inra.fr/publicationName>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frduration>
+<http://record.prodinra.inra.fr/duration>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frinitial>
+<http://record.prodinra.inra.fr/initial>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frimpactFactor2>
+<http://record.prodinra.inra.fr/impactFactor2>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frassociatedTerm>
+<http://record.prodinra.inra.fr/associatedTerm>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
 <http://ingest.mannlib.cornell.edu/generalizedXMLtoRDF/0.1/metadataPrefix>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 
-<http://record.prodinra.inra.frenglish>
+<http://record.prodinra.inra.fr/english>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frkeyword>
+<http://record.prodinra.inra.fr/keyword>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frsource>
+<http://record.prodinra.inra.fr/source>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .
 
-<http://record.prodinra.inra.frcreationDate>
+<http://record.prodinra.inra.fr/creationDate>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
-                <http://www.w3.org/2002/07/owl#Thing> .
+                <http://record.prodinra.inra.fr/ProdinraThing> .

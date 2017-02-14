@@ -4,6 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
 
 <http://vivo.wheatinitiative.org/ontology/adminapp/> a owl:Ontology ;
         rdfs:label "Admin Application Ontology"@en .
@@ -20,6 +21,8 @@
 
 :deploymentURI a owl:DatatypeProperty ;
 	rdfs:range xsd:anyURI ;
+	vitro:displayRankAnnot 50 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "deployment URI"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/endpointURI
@@ -27,40 +30,57 @@
 :endpointURI a owl:DatatypeProperty ;
 	rdfs:domain :SparqlEndpoint ;
 	rdfs:range xsd:anyURI ;
+	vitro:displayRankAnnot 10 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "endpoint URI"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/endpointUpdateURI
 
 :endpointUpdateURI a owl:DatatypeProperty ;
 	rdfs:domain :SparqlEndpoint ;
+	rdfs:range xsd:anyURI ;
+	vitro:displayRankAnnot 11 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "endpoint update URI"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/graphURI
 
 :graphURI a owl:DatatypeProperty ;
 	rdfs:range xsd:anyURI ;
+	vitro:displayRankAnnot 70 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "graph URI"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/password
 
 :password a owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	vitro:displayRankAnnot 21 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "password"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/priority
 
 :priority a owl:DatatypeProperty ;
 	rdfs:range xsd:int ;
+	vitro:displayRankAnnot 10 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "priority"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI
 
 :serviceURI a owl:DatatypeProperty ;
 	rdfs:range xsd:anyURI ;
+	vitro:displayRankAnnot 20 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "service URI"@en .
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/username
 
 :username a owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	vitro:displayRankAnnot 20 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:label "username"@en .
 # 
 # 
@@ -142,6 +162,9 @@ _:genid9 a owl:Restriction ;
 
 :usesSparqlEndpoint a owl:ObjectProperty ;
         rdfs:label "uses SPARQL endpoint"@en ;
+	vitro:displayRankAnnot 60 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
 	rdfs:range :SparqlEndpoint .
 
 # 

@@ -31,6 +31,8 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 	    <td>
 	        <#if dataSource.lastUpdate??>
 	            ${dataSource.lastUpdate?datetime}
+		<#else>
+		    ---
 	        </#if>
             </td>
 	    <td>
@@ -48,7 +50,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 		</#if>
             </td>
 	    <td>
-                <img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
+	        <a href="${urls.base}/individual?uri=${dataSource.URI?url}"><img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
                 <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
 	    </td>
 
