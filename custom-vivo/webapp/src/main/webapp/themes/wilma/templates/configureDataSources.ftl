@@ -8,6 +8,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
     <thead>
         <tr>
 	    <td>Priority</td>
+	    <td></td>
             <td>Source</td>
 	    <td>Last updated</td>
 	    <td>Next update</td>
@@ -20,24 +21,35 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
         <tr>
 	    <td>${dataSource?index}</td>
             <td>
-	        <a href="${urls.base}/adminFunctionality?feature=editDataSource&uri=${dataSource.URI?url}">
-		    <#if dataSource.name??>
-		        ${dataSource.name!}
+	        <form method="post" action="${urls.base}/adminFunctionality">
+		    <input type="hidden" name="uri" value="${dataSource.configuration.URI}"/>
+		    <input type="hidden" name="feature" value="editDataSource"/>
+                    <#if dataSource.status.running>
+                        <input type="submit" name="stop"  class="submit" value="Stop"/>
+                    <#else>
+                        <input type="submit" name="start" class="submit" value="Start"/>
+                    </#if>
+		</form>
+	    </td>
+            <td>
+	        <a href="${urls.base}/individual?uri=${dataSource.configuration.URI?url}">
+		    <#if dataSource.configuration.name??>
+		        ${dataSource.configuration.name!}
 		    <#else>
-		        ${dataSource.URI}
+		        ${dataSource.configuration.URI}
 	            </#if>
 		</a>
 	    </td>
 	    <td>
-	        <#if dataSource.lastUpdate??>
-	            ${dataSource.lastUpdate?datetime}
+	        <#if dataSource.status.lastUpdate??>
+	            ${dataSource.status.lastUpdate?datetime}
 		<#else>
 		    ---
 	        </#if>
             </td>
 	    <td>
-	        <#if dataSource.nextUpdate??>
-	            ${dataSource.nextUpdate?datetime}
+	        <#if dataSource.configuration.nextUpdate??>
+	            ${dataSource.configuration.nextUpdate?datetime}
 		<#else>
 		    ---
 	        </#if>
@@ -50,7 +62,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 		</#if>
             </td>
 	    <td>
-	        <a href="${urls.base}/individual?uri=${dataSource.URI?url}"><img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
+	        <a href="${urls.base}/individual?uri=${dataSource.configuration.URI?url}"><img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
                 <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
 	    </td>
 

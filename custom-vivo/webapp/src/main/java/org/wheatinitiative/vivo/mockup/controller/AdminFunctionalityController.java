@@ -13,7 +13,6 @@ import org.wheatinitiative.vivo.datasource.DataSourceStatus;
 import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
-import org.wheatinitiative.vivo.mockup.datasource.DataSource;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerImpl;
 
@@ -32,8 +31,6 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
 
     private static final String CONFIGURE_DATA_SOURCES_TEMPLATE = 
             "configureDataSources.ftl";
-    private static final String EDIT_DATA_SOURCE_TEMPLATE = 
-            "editDataSource.ftl";
     private static final Log log = LogFactory.getLog(
             AdminFunctionalityController.class);
     private static HttpUtils httpUtils = new HttpUtils();
@@ -60,18 +57,18 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
     private TemplateResponseValues doConfigureDataSources(
             Map<String, Object> data, VitroRequest vreq) throws IOException {
         DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
-        List<DataSource> dataSources = dsm.listDataSources();
+        List<DataSourceDescription> dataSources = dsm.listDataSources();
         dataSources = pollStatus(dataSources);
         data.put("dataSources", dataSources);
         return new TemplateResponseValues(CONFIGURE_DATA_SOURCES_TEMPLATE, data);
     }
     
-    private List<DataSource> pollStatus(List<DataSource> dataSources) 
+    private List<DataSourceDescription> pollStatus(List<DataSourceDescription> dataSources) 
             throws IOException {
-        for (DataSource dataSource : dataSources) {
-            if (dataSource.getDeploymentURL() != null) {
+        for (DataSourceDescription dataSource : dataSources) {
+            if (dataSource.getConfiguration().getDeploymentURI() != null) {
                 DataSourceDescription description = pollService(
-                        dataSource.getDeploymentURL());
+                        dataSource.getConfiguration().getDeploymentURI());
                 dataSource.getStatus().setRunning(
                         description.getStatus().isRunning());
             }
@@ -83,100 +80,31 @@ public class AdminFunctionalityController extends FreemarkerHttpServlet {
             Map<String, Object> data, VitroRequest vreq) throws IOException {
         DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
         String dataSourceURI = vreq.getParameter("uri");
-        DataSource dataSource = dsm.getDataSource(dataSourceURI);
-        String deploymentURL = dataSource.getDeploymentURL();
-        if(deploymentURL == null) {
-            deploymentURL = vreq.getParameter("deploymentURL");
-        }
+        DataSourceDescription dataSource = dsm.getDataSource(dataSourceURI);
+        String deploymentURL = dataSource.getConfiguration().getDeploymentURI();
         if(deploymentURL != null) {
-            data.put("deploymentURL", deploymentURL);
-            DataSourceDescription description = pollService(deploymentURL);
-            addParameters(description, vreq, data);
-            // pipe the running status from the real status to the mockup
-            dataSource.getStatus().setRunning(description.getStatus().isRunning());
-            if(deploymentURL != null && vreq.getParameter("start") != null) {
+            if(vreq.getParameter("start") != null) {
                 log.info("Starting data source");
-                updateDataSource(dataSource, vreq);
-                List<String> queryTerms = new ArrayList<String>();
-                queryTerms.add("wheat");
-                queryTerms.add("triticum");
-                queryTerms.add("tritici");
-                // queryTerms.add("blé");
-                queryTerms.add("ble");                
-                description.getConfiguration().setQueryTerms(queryTerms);
-                this.startService(dataSource.getDeploymentURL(), description);
+                this.startService(dataSource);
                 // "forward" to list of data sources
-                return doConfigureDataSources(data, vreq);
             } else if (vreq.getParameter("stop") != null) {
                 log.info("Stopping data source");
-                updateDataSource(dataSource, vreq);
-                this.stopService(dataSource.getDeploymentURL(), description);
-                return doConfigureDataSources(data, vreq);
+                this.stopService(dataSource);
             }
-        }    
-        data.put("dataSource", dataSource);
-        String templateName = getTemplateName(dataSource);
-        return new TemplateResponseValues(templateName, data);
-    }
-    
-    private void addParameters(DataSourceDescription description, 
-            VitroRequest vreq, Map<String, Object> data) {
-        SparqlEndpointParams params = description.getConfiguration()
-                .getEndpointParameters();
-        String endpointURI = vreq.getParameter("sparqlEndpointURL");
-        String endpointUsername = vreq.getParameter("endpointUsername");
-        String endpointPassword = vreq.getParameter("endpointPassword");
-        String resultsGraphURI = vreq.getParameter("resultsGraphURI");
-        // TODO remove once second parameter is included
-        if(endpointURI != null && endpointURI.endsWith("sparqlUpdate")) {
-            // drop "Update" from the end of the read endpoint and add "Query"
-            params.setEndpointURI(endpointURI.substring(0, endpointURI.length()
-                    - "Update".length()) + "Query");            
-        } else {
-            params.setEndpointURI(endpointURI);
         }
-        params.setEndpointUpdateURI(endpointURI);
-        params.setUsername(endpointUsername);
-        params.setPassword(endpointPassword);
-        description.getConfiguration().setResultsGraphURI(resultsGraphURI);
-        data.put("sparqlEndpointURL", endpointURI);
-        data.put("endpointUsername", endpointUsername);
-        data.put("endpointPassword", endpointPassword);
-        data.put("resultsGraphURI", resultsGraphURI);
-    }
-    
-    private void updateDataSource(DataSource dataSource, VitroRequest vreq) {
-        String name = vreq.getParameter("name");
-        if(name != null) {
-            dataSource.setName(name);
-        }
-        String priorityStr = vreq.getParameter("priority");
-        int priority = -1;
-        try {
-            priority = Integer.parseInt(priorityStr);
-        } catch (NumberFormatException e) {
-            log.error(e, e);
-        }
-        if(priority > -1) {
-            dataSource.setPriority(priority);
-        }
-    }
-    
-    // for returning a template based on the subclass of DataSource
-    private String getTemplateName(DataSource dataSource) {
-        return EDIT_DATA_SOURCE_TEMPLATE; // for now we have only one
+        return doConfigureDataSources(data, vreq);
     }
 
-    private DataSourceDescription startService(String serviceURL, 
-            DataSourceDescription description) {
+    private DataSourceDescription startService(DataSourceDescription description) {
         description.getStatus().setRunning(true);
-        return updateService(serviceURL, description);
+        return updateService(description.getConfiguration().getDeploymentURI(),
+                description);
     }
     
-    private DataSourceDescription stopService(String serviceURL, 
-            DataSourceDescription description) {
+    private DataSourceDescription stopService(DataSourceDescription description) {
         description.getStatus().setRunning(false);
-        return updateService(serviceURL, description);         
+        return updateService(description.getConfiguration().getDeploymentURI(),
+                description);         
     }
     
     private DataSourceDescription pollService(String serviceURL) 

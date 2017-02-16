@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wheatinitiative.vivo.mockup.datasource.DataSource;
+import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerImpl;
 
@@ -78,20 +78,21 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         } catch (RDFServiceException e) {
             throw new RuntimeException(e);
         }
-        Set<DataSource> dataSources = new HashSet<DataSource>();
+        Set<DataSourceDescription> dataSources = new HashSet<DataSourceDescription>();
         for (String graphURI : graphGetter.getGraphURIs()) {
             if(KB2_GRAPH.equals(graphURI) || INF_GRAPH.equals(graphURI)) {
                 continue;
             }
-            DataSource dataSource = mgr.getDataSourceByGraphURI(graphURI);
+            DataSourceDescription dataSource = mgr.getDataSourceByGraphURI(graphURI);
             if (dataSource != null) {
-                log.debug("Found data source " + dataSource.getName() + 
+                log.debug("Found data source " + dataSource.getConfiguration().getName() + 
                         " for individual " + individualURI);
                 dataSources.add(dataSource);
             }
         }
-        for (DataSource dataSource : dataSources) {
-            sources.add(new Source(dataSource.getName(), dataSource.getURI()));
+        for (DataSourceDescription dataSource : dataSources) {
+            sources.add(new Source(dataSource.getConfiguration().getName(), 
+                    dataSource.getConfiguration().getURI()));
         }
         long duration = System.currentTimeMillis() - start;
         String logMessage = duration + " ms to get graphs for individual "
