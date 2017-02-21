@@ -1394,6 +1394,16 @@
     <url-pattern>/dataSource/prodinra/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>PublisherService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.publish.PublisherService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublisherService</servlet-name>
+    <url-pattern>/dataSource/publish/*</url-pattern>
+  </servlet-mapping>
+
+
   <!-- end Wheat VIVO extensions -->
     
   <!-- ============================== servlet-mappings ======================== -->
