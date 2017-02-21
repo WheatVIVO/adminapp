@@ -1,4 +1,4 @@
-package org.wheatinitiative.vivo.mockup.datasource.impl;
+package org.wheatinitiative.vivo.adminapp.datasource.impl;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,9 +8,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.semarglproject.vocab.XSD;
+import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
-import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDateTime;
 import com.hp.hpl.jena.rdf.model.Literal;
@@ -32,6 +32,8 @@ public class DataSourceManagerImpl implements DataSourceManager {
     private static final String ADMIN_APP_TBOX = 
             "http://vivo.wheatinitiative.org/ontology/adminapp/";
     private static final String DATASOURCE = ADMIN_APP_TBOX + "DataSource";
+    private static final String MERGESOURCE = ADMIN_APP_TBOX + "MergeDataSource";
+    private static final String PUBLISHSOURCE = ADMIN_APP_TBOX + "PublishDataSource";
     private static final String SPARQLENDPOINT = ADMIN_APP_TBOX + "SparqlEndpoint";
     private static final String USESSPARQLENDPOINT = ADMIN_APP_TBOX + "usesSparqlEndpoint";
     private static final String USESQUERYTERMSET = ADMIN_APP_TBOX + "usesQueryTermSet";
@@ -50,27 +52,38 @@ public class DataSourceManagerImpl implements DataSourceManager {
     private static final Log log = LogFactory.getLog(DataSourceManager.class);
     
     private RDFService rdfService;
+    private final String dataSourcesQuery = getDataSourcesQuery();
+    private final String mergeSourcesQuery = getDataSourcesQuery(MERGESOURCE);
+    private final String publishSourcesQuery = getDataSourcesQuery(PUBLISHSOURCE);
     
     public DataSourceManagerImpl(RDFService rdfService) {
         this.rdfService = rdfService;
     }
     
-    String DATASOURCES_QUERY = "CONSTRUCT { \n" +
-            "    ?dataSource ?p ?o . \n" +
-            "    ?endpoint ?endpointP ?endpointO . \n" +
-            "    ?queryTermSet ?queryTermP ?queryTermO \n" +
-            "} WHERE { \n" +
-            "    ?dataSource a <" + DATASOURCE + "> . \n" +
-            "    ?dataSource ?p ?o . \n" +
-            "    OPTIONAL { \n" +
-            "        ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
-            "        ?endpoint ?endpointP ?endpointO \n" +
-            "    } \n" +
-            "    OPTIONAL { \n" +
-            "        ?dataSource <" + USESQUERYTERMSET +"> ?queryTermSet . \n" +
-            "        ?queryTermSet ?queryTermP ?queryTermO \n" +
-            "    } \n" +
-            "} \n";
+    public String getDataSourcesQuery() {
+        return getDataSourcesQuery(DATASOURCE);
+    }
+    
+    public String getDataSourcesQuery(String dataSourceSubclass) {
+        
+        return "CONSTRUCT { \n" +
+                "    ?dataSource ?p ?o . \n" +
+                "    ?endpoint ?endpointP ?endpointO . \n" +
+                "    ?queryTermSet ?queryTermP ?queryTermO \n" +
+                "} WHERE { \n" +
+                "    ?dataSource a <" + dataSourceSubclass + "> . \n" +
+                "    ?dataSource ?p ?o . \n" +
+                "    OPTIONAL { \n" +
+                "        ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
+                "        ?endpoint ?endpointP ?endpointO \n" +
+                "    } \n" +
+                "    OPTIONAL { \n" +
+                "        ?dataSource <" + USESQUERYTERMSET +"> ?queryTermSet . \n" +
+                "        ?queryTermSet ?queryTermP ?queryTermO \n" +
+                "    } \n" +
+                "} \n";
+            
+    }
     
     String DATASOURCE_BY_GRAPH = "CONSTRUCT { \n" +
             "    ?dataSource ?p ?o . \n" +
@@ -91,8 +104,20 @@ public class DataSourceManagerImpl implements DataSourceManager {
     
     @Override
     public List<DataSourceDescription> listDataSources() { 
-        return listDataSources(construct(DATASOURCES_QUERY));
+        return listDataSources(construct(dataSourcesQuery));
     }
+    
+    @Override
+    public List<DataSourceDescription> listMergeDataSources() {
+        return listDataSources(construct(mergeSourcesQuery));
+    }
+    
+    @Override 
+    public List<DataSourceDescription> listPublishDataSources() {
+        return listDataSources(construct(publishSourcesQuery));
+    }
+    
+    
     
     private List<DataSourceDescription> listDataSources(Model model) {
         List<DataSourceDescription> dataSources = new ArrayList<DataSourceDescription>();
@@ -119,7 +144,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
 
     @Override
     public DataSourceDescription getDataSource(String URI) {
-        String dataSourceQuery = DATASOURCES_QUERY
+        String dataSourceQuery = dataSourcesQuery
                 .replaceAll("\\?dataSource", "<" + URI + ">");
         return getDataSource(URI, construct(dataSourceQuery));
     }

@@ -1,4 +1,4 @@
-package org.wheatinitiative.vivo.mockup.datagetter;
+package org.wheatinitiative.vivo.adminapp.datagetter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
+import org.wheatinitiative.vivo.adminapp.datasource.impl.DataSourceManagerImpl;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
-import org.wheatinitiative.vivo.mockup.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.mockup.datasource.impl.DataSourceManagerImpl;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -39,7 +39,7 @@ public class IndividualProvenanceDataGetter implements DataGetter {
     public IndividualProvenanceDataGetter(VitroRequest vreq, Model displayModel, 
             String dataGetterURI){
         try {
-            log.info("Constructing datagetter");
+            log.debug("Constructing datagetter");
             this.vreq = vreq; 
             this.mgr = new DataSourceManagerImpl(vreq.getRDFService());
         } catch (Exception e) {

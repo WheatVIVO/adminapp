@@ -1341,12 +1341,21 @@
   <!-- begin Wheat VIVO extensions -->
 
   <servlet>
-    <servlet-name>AdminFunctionalityController</servlet-name>
-    <servlet-class>org.wheatinitiative.vivo.mockup.controller.AdminFunctionalityController</servlet-class>
+    <servlet-name>DataSourceListController</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.adminapp.controller.DataSourceListController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminFunctionalityController</servlet-name>
-    <url-pattern>/adminFunctionality</url-pattern>
+    <servlet-name>DataSourceListController</servlet-name>
+    <url-pattern>/listDataSources</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ServiceInvoker</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.adminapp.controller.ServiceInvoker</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceInvoker</servlet-name>
+    <url-pattern>/invokeService</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -1383,17 +1392,6 @@
   <servlet-mapping>
     <servlet-name>ProdinraService</servlet-name>
     <url-pattern>/dataSource/prodinra/*</url-pattern>
-  </servlet-mapping>
-
-
-
-  <servlet>
-    <servlet-name>ServiceInvoker</servlet-name>
-    <servlet-class>org.wheatinitiative.vivo.mockup.controller.ServiceInvoker</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServiceInvoker</servlet-name>
-    <url-pattern>/invokeService</url-pattern>
   </servlet-mapping>
 
   <!-- end Wheat VIVO extensions -->

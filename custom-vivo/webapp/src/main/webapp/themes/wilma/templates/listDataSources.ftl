@@ -21,9 +21,11 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
         <tr>
 	    <td>${dataSource?index}</td>
             <td>
-	        <form method="post" action="${urls.base}/adminFunctionality">
+	        <form method="post" action="${urls.base}/invokeService">
 		    <input type="hidden" name="uri" value="${dataSource.configuration.URI}"/>
-		    <input type="hidden" name="feature" value="editDataSource"/>
+		    <#if type?hasContent>
+		        <input type="hidden" name="type" value="${type}"/>
+		    </#if>
                     <#if dataSource.status.running>
                         <input type="submit" name="stop"  class="submit" value="Stop"/>
                     <#else>

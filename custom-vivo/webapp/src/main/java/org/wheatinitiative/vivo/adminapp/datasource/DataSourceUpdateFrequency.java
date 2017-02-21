@@ -1,4 +1,4 @@
-package org.wheatinitiative.vivo.mockup.datasource;
+package org.wheatinitiative.vivo.adminapp.datasource;
 
 public enum DataSourceUpdateFrequency {
 

@@ -2,7 +2,8 @@
         <h3>Wheat VIVO Administration</h3>
         
         <ul role="navigation">                        
-                <li role="listitem"><a href="./adminFunctionality?feature=configureDataSources" title="Data sources">Data sources</a></li>
-                <li role="listitem"><a href="./adminFunctionality?feature=publish" title="Publish data">Merge and publish data</a></li>
+                <li role="listitem"><a href="./listDataSources" title="Data sources">Ingest data</a></li>
+                <li role="listitem"><a href="./listDataSources?type=merge" title="merge data">Merge data</a></li>
+                <li role="listitem"><a href="./listDataSources?type=publish" title="publish data">Publish data</a></li>
         </ul>
     </section>

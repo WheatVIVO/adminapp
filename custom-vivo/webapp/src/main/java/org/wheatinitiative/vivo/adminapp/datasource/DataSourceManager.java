@@ -1,4 +1,4 @@
-package org.wheatinitiative.vivo.mockup.datasource;
+package org.wheatinitiative.vivo.adminapp.datasource;
 
 import java.util.List;
 
@@ -11,5 +11,9 @@ public interface DataSourceManager {
     public abstract DataSourceDescription getDataSource(String URI);
     
     public abstract DataSourceDescription getDataSourceByGraphURI(String graphURI);
+    
+    public abstract List<DataSourceDescription> listMergeDataSources();
+    
+    public abstract List<DataSourceDescription> listPublishDataSources();
     
 }
