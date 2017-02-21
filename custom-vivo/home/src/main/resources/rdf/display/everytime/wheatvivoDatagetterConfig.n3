@@ -6,4 +6,4 @@
  <freemarker:individual.ftl> display:hasDataGetter display:individualProvenanceDataGetter .
   
   display:individualProvenanceDataGetter
-      a <java:org.wheatinitiative.vivo.mockup.datagetter.IndividualProvenanceDataGetter> .
+      a <java:org.wheatinitiative.vivo.adminapp.datagetter.IndividualProvenanceDataGetter> .
