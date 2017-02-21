@@ -65,13 +65,19 @@ public class DataSourceManagerImpl implements DataSourceManager {
     }
     
     public String getDataSourcesQuery(String dataSourceSubclass) {
-        
         return "CONSTRUCT { \n" +
                 "    ?dataSource ?p ?o . \n" +
                 "    ?endpoint ?endpointP ?endpointO . \n" +
                 "    ?queryTermSet ?queryTermP ?queryTermO \n" +
                 "} WHERE { \n" +
                 "    ?dataSource a <" + dataSourceSubclass + "> . \n" +
+                ((DATASOURCE.equals(dataSourceSubclass)) ? 
+                        "    FILTER NOT EXISTS { \n" +
+                        "        ?dataSource a ?subclass . \n" +
+                        "        ?subclass <" + RDFS.subClassOf + "> "
+                                + "<" + DATASOURCE + "> \n" +
+                        "     } \n"
+                    : "") +
                 "    ?dataSource ?p ?o . \n" +
                 "    OPTIONAL { \n" +
                 "        ?dataSource <" + USESSPARQLENDPOINT +"> ?endpoint . \n" +
@@ -81,8 +87,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
                 "        ?dataSource <" + USESQUERYTERMSET +"> ?queryTermSet . \n" +
                 "        ?queryTermSet ?queryTermP ?queryTermO \n" +
                 "    } \n" +
-                "} \n";
-            
+                "} \n";        
     }
     
     String DATASOURCE_BY_GRAPH = "CONSTRUCT { \n" +
@@ -116,9 +121,7 @@ public class DataSourceManagerImpl implements DataSourceManager {
     public List<DataSourceDescription> listPublishDataSources() {
         return listDataSources(construct(publishSourcesQuery));
     }
-    
-    
-    
+      
     private List<DataSourceDescription> listDataSources(Model model) {
         List<DataSourceDescription> dataSources = new ArrayList<DataSourceDescription>();
         ResIterator resIt = model.listResourcesWithProperty(

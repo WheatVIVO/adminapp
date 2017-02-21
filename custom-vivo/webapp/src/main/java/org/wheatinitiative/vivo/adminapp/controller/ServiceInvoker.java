@@ -15,6 +15,8 @@ import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
+import edu.cornell.mannlib.vitro.webapp.auth.permissions.SimplePermission;
+import edu.cornell.mannlib.vitro.webapp.auth.requestedAction.AuthorizationRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.RedirectResponseValues;
@@ -25,6 +27,13 @@ public class ServiceInvoker extends FreemarkerHttpServlet {
     private static final Log log = LogFactory.getLog(ServiceInvoker.class);
     private static final String REDIRECT_PAGE = "/listDataSources";
     private HttpUtils httpUtils = new HttpUtils();
+    protected static final AuthorizationRequest REQUIRED_ACTIONS = 
+            SimplePermission.USE_MISCELLANEOUS_ADMIN_PAGES.ACTION;
+    
+    @Override
+    protected AuthorizationRequest requiredActions(VitroRequest vreq) {
+        return REQUIRED_ACTIONS;
+    }
     
     // It would be awfully nice to send an error if someone tries to GET this 
     // servlet, but it would mean overriding everything in FreemarkerHttpServlet,

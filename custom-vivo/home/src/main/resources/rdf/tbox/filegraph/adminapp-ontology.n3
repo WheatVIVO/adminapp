@@ -126,6 +126,13 @@ _:genid4 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI .
 
 :DataSource rdfs:label "Data Source"@en .
+
+:MergeDataSource rdfs:label "Merge Data Source" ;
+        a owl:Class ; rdfs:subClassOf :DataSource .
+
+:PublishDataSource rdfs:label "Publish Data Source" ;
+        a owl:Class ; rdfs:subClassOf :DataSource .
+
 # 
 # http://vivo.wheatinitiative.org/ontology/adminapp/SparqlEndpoint
 
