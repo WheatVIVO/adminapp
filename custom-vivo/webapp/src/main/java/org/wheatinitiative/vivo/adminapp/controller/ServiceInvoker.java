@@ -3,15 +3,15 @@ package org.wheatinitiative.vivo.adminapp.controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.utils.URIBuilder;
 import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.adminapp.datasource.impl.DataSourceManagerImpl;
+import org.wheatinitiative.vivo.adminapp.datasource.RDFServiceModelConstructor;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
+import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
@@ -51,7 +51,8 @@ public class ServiceInvoker extends FreemarkerHttpServlet {
     public ResponseValues processRequest(VitroRequest request) 
             throws IOException, URISyntaxException {
         VitroRequest vreq = new VitroRequest(request);
-        DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
+        DataSourceDao dsm = new DataSourceDao(
+                new RDFServiceModelConstructor(vreq.getRDFService()));
         String dataSourceURI = vreq.getParameter("uri");
         DataSourceDescription dataSource = dsm.getDataSource(dataSourceURI);
         String deploymentURL = dataSource.getConfiguration().getDeploymentURI();

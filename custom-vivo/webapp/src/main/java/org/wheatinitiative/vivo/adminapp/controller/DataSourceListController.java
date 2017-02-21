@@ -8,10 +8,10 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.adminapp.datasource.impl.DataSourceManagerImpl;
-import org.wheatinitiative.vivo.datasource.DataSource;
+import org.wheatinitiative.vivo.adminapp.datasource.RDFServiceModelConstructor;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.DataSourceStatus;
+import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
@@ -46,7 +46,8 @@ public class DataSourceListController extends FreemarkerHttpServlet {
     @Override
     protected ResponseValues processRequest(VitroRequest vreq) 
             throws IOException {
-        DataSourceManager dsm = new DataSourceManagerImpl(vreq.getRDFService());
+        DataSourceDao dsm = new DataSourceDao(
+                new RDFServiceModelConstructor(vreq.getRDFService()));
         String type = vreq.getParameter("type");
         log.debug("Data source type: " + type);
         List<DataSourceDescription> sources;

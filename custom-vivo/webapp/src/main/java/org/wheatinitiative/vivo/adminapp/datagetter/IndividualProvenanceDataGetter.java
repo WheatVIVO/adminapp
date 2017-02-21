@@ -10,8 +10,9 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
-import org.wheatinitiative.vivo.adminapp.datasource.impl.DataSourceManagerImpl;
+import org.wheatinitiative.vivo.adminapp.datasource.RDFServiceModelConstructor;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
+import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -29,7 +30,7 @@ public class IndividualProvenanceDataGetter implements DataGetter {
     private static final String INF_GRAPH = "http://vitro.mannlib.cornell.edu/default/vitro-kb-inf";
     
     private VitroRequest vreq;
-    private DataSourceManager mgr;
+    private DataSourceDao mgr;
     
     private static final Log log = LogFactory.getLog(IndividualProvenanceDataGetter.class);
     
@@ -41,7 +42,8 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         try {
             log.debug("Constructing datagetter");
             this.vreq = vreq; 
-            this.mgr = new DataSourceManagerImpl(vreq.getRDFService());
+            this.mgr = new DataSourceDao(new RDFServiceModelConstructor(
+                    vreq.getRDFService()));
         } catch (Exception e) {
             // because the code that invokes this by reflection is stupid
             // and doesn't log the nested exception
