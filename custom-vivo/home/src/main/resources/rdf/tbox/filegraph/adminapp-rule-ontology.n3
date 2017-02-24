@@ -1,0 +1,117 @@
+@prefix : <http://vivo.wheatinitiative.org/ontology/adminapp/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+
+:matchDegree a owl:DatatypeProperty ;
+	rdfs:domain :MergeRuleAtom ;
+	rdfs:range xsd:integer ;
+	vitro:displayRankAnnot 30 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	rdfs:label "match percentage"@en .
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+
+:MergeRule rdfs:label "Merge Rule"@en ;
+        a owl:Class ; 
+	rdfs:subClassOf _:genid2 ;
+	rdfs:subClassOf _:genid3 ;
+	rdfs:subClassOf _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty :priority ;
+	owl:allValuesFrom xsd:integer .
+
+_:genid2 a owl:Restriction ;
+        owl:onProperty :hasAtom ;
+	owl:someValuesFrom :MergeRuleAtom .
+
+_:genid3 a owl:Restriction ;
+        owl:onProperty :mergeRuleClass ;
+	owl:someValuesFrom owl:Class .
+
+:MergeRuleAtom rdfs:label "Merge Rule Pattern"@en ;
+        a owl:Class ;
+	rdfs:subClassOf _:genid4 ;
+	rdfs:subClassOf _:genid5 ;
+	rdfs:subCLassOf _:genid7 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :mergeAtomDataProperty ;
+	owl:allValuesFrom owl:DatatypeProperty .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :mergeAtomObjectProperty ;
+	owl:allValuesFrom owl:ObjectProperty .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty :matchDegree ;
+	owl:allValuesFrom xsd:integer .
+
+:MergeDataSource rdfs:label "Merge Data Source"@en ;
+        a owl:Class ; rdfs:subClassOf _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :hasMergeRule ;
+	owl:someValuesFrom :MergeRule .
+
+#####################
+# Object properties #
+#####################
+
+:hasMergeRule a owl:ObjectProperty ;
+        rdfs:label "merge rule"@en ;
+	vitro:displayRankAnnot 10 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
+	rdfs:range :MergeRule .
+
+:hasAtom a owl:ObjectProperty ;
+        rdfs:label "merge rule pattern"@en ;
+	vitro:displayRankAnnot 15 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
+	rdfs:range :MergeRuleAtom .
+
+:mergeRuleClass a owl:ObjectProperty ;
+        rdfs:label "merges individuals of class"@en ;
+	vitro:displayRankAnnot 10 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
+	rdfs:range owl:Class .
+
+:mergeAtomDataProperty a owl:ObjectProperty ;
+        rdfs:label "merges on data property"@en ;
+	vitro:displayRankAnnot 20 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
+	rdfs:range owl:DataTypeProperty .
+
+:mergeAtomObjectProperty a owl:ObjectProperty ;
+        rdfs:label "merges on object property"@en ;
+	vitro:displayRankAnnot 22 ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:offerCreateNewOptionAnnot true ;
+	rdfs:range owl:ObjectProperty .
+
+#### Hack
+
+rdfs:label a owl:DatatypeProperty .
+

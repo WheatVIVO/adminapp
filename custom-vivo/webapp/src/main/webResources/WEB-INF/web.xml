@@ -1403,6 +1403,14 @@
     <url-pattern>/dataSource/publish/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>MergeDataSourceService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.merge.MergeDataSourceService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MergeDataSourceService</servlet-name>
+    <url-pattern>/dataSource/merge/*</url-pattern>
+  </servlet-mapping>
 
   <!-- end Wheat VIVO extensions -->
     
