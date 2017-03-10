@@ -15,5 +15,4 @@ public interface DataSourceManager {
     public abstract List<DataSourceDescription> listMergeDataSources();
     
     public abstract List<DataSourceDescription> listPublishDataSources();
-    
 }

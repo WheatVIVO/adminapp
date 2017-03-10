@@ -1366,6 +1366,15 @@
     <servlet-name>RcukService</servlet-name>
     <url-pattern>/dataSource/rcuk/*</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>CordisService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.cordis.CordisService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CordisService</servlet-name>
+    <url-pattern>/dataSource/cordis/*</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>WheatInitiativeService</servlet-name>

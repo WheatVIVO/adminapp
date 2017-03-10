@@ -7,8 +7,8 @@
             <properties>
                 <app-name>wheatvivo-adminapp</app-name>
 
-                <vivo-dir>C:/Users/Brian Lowe/Documents/var/local/vitrofiles/wheatvivo-adminapp</vivo-dir>
-                <tomcat-dir>C:/Users/Brian Lowe/Documents/var/local/tomcat</tomcat-dir>
+                <vivo-dir>C:/vivo_home_for_adminapp</vivo-dir>
+                <tomcat-dir>C:/apache-tomcat-9.0.0.M17</tomcat-dir>
 
                 <default-theme>wilma</default-theme>
             </properties>
