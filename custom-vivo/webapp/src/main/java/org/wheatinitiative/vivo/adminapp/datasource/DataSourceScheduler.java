@@ -6,8 +6,7 @@ import java.util.concurrent.ScheduledFuture;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import edu.cornell.mannlib.vitro.webapp.rdfservice.ChangeListener;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.ModelChange;
@@ -16,7 +15,7 @@ import edu.cornell.mannlib.vitro.webapp.rdfservice.impl.RDFServiceUtils;
 
 public class DataSourceScheduler implements ServletContextListener, ChangeListener {
     
-    TaskScheduler scheduler = new DefaultManagedTaskScheduler();
+    ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
     
     private HashMap<String, DataSourceTask> uriToTask = 
             new HashMap<String, DataSourceTask>();
@@ -25,20 +24,29 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        for(ScheduledFuture<?> f : this.taskToFuture.values()) {
-            f.cancel(true);
-        }
-        sce.getServletContext().setAttribute(this.getClass().getName(), null);
         try {
+        for(ScheduledFuture<?> f : this.taskToFuture.values()) {
+            f.cancel(true);        
+        }
+        scheduler.shutdown();
+        scheduler.destroy();
+        } catch (Exception e) {
+            // ignore for now
+        }
+        
+        try {
+            sce.getServletContext().setAttribute(this.getClass().getName(), null);
             RDFServiceUtils.getRDFServiceFactory(
                     sce.getServletContext()).unregisterListener(this);
-        } catch (RDFServiceException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+//            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        scheduler.setPoolSize(20);
+        scheduler.initialize();
         sce.getServletContext().setAttribute(this.getClass().getName(), this);
         try {
             RDFServiceUtils.getRDFServiceFactory(
