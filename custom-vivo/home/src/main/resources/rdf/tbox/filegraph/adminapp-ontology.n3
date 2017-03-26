@@ -86,7 +86,13 @@
 :queryTerm a owl:DatatypeProperty ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:domain :QueryTermSet ;
-	rdfs:label "query term" .
+	rdfs:label "query term"@en .
+
+:nextUpdate a owl:DatatypeProperty ;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	rdfs:range xsd:dateTime ;
+	rdfs:label "next scheduled update" ;
+	vitro:displayRankAnnot 30 .
 	
 # 
 # 
@@ -182,6 +188,12 @@ _:genid10 a owl:Restriction ;
 _:genid11 a owl:Restriction ;
 	owl:onProperty :usesQueryTermSet ;
 	owl:allValuesFrom :QueryTermSet .
+
+:DataSource rdfs:subClassOf _:genid12 .
+
+_:genid12 a owl:Restriction ;
+        owl:onProperty :nextUpdate ;
+	owl:allValuesFrom xsd:dateTime .
 
 #####################
 # Object properties #
