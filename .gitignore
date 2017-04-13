@@ -11,3 +11,4 @@ custom-vivo/solr/.settings/org.eclipse.m2e.core.prefs
 .project
 custom-vivo/webapp/.settings/org.eclipse.m2e.core.prefs
 .classpath
+custom-vivo/settings.xml

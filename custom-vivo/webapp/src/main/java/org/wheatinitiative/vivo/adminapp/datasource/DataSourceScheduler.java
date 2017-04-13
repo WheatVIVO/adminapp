@@ -186,7 +186,7 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     
     @Override
     public void notifyEvent(String arg0, Object arg1) {
-        // TODO Auto-generated method stub
+        // nothing to do right now
     }
 
     @Override
