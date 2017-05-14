@@ -1395,6 +1395,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>OrcidConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.orcid.OrcidConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrcidConnectorService</servlet-name>
+    <url-pattern>/dataSource/orcid/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>PublisherService</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.datasource.publish.PublisherService</servlet-class>
   </servlet>
