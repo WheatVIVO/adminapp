@@ -102,13 +102,14 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 20 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
-	rdfs:range owl:DataTypeProperty .
+	rdfs:range owl:DatatypeProperty .
 
 :mergeAtomObjectProperty a owl:ObjectProperty ;
         rdfs:label "merges on object property"@en ;
 	vitro:displayRankAnnot 22 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:customEntryFormAnnot "org.wheatinitiative.vivo.adminapp.form.generator.MergesOnObjectPropertyGenerator"^^xsd:string ;
 	rdfs:range owl:ObjectProperty .
 
 #### Hack
