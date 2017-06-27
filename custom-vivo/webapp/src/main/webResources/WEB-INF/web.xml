@@ -1421,6 +1421,15 @@
     <url-pattern>/dataSource/merge/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>FauxPropertyContextExport</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.adminapp.controller.FauxPropertyContextExportController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FauxPropertyContextExport</servlet-name>
+    <url-pattern>/fauxPropertyContexts</url-pattern>
+  </servlet-mapping>
+
   <!-- end Wheat VIVO extensions -->
     
   <!-- ============================== servlet-mappings ======================== -->
