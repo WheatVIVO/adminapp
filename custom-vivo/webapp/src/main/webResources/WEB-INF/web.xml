@@ -1404,6 +1404,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>ConceptDataSourceService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.concept.ConceptDataSourceService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConceptDataSourceService</servlet-name>
+    <url-pattern>/dataSource/concept/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>PublisherService</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.datasource.publish.PublisherService</servlet-class>
   </servlet>
@@ -1419,6 +1428,15 @@
   <servlet-mapping>
     <servlet-name>MergeDataSourceService</servlet-name>
     <url-pattern>/dataSource/merge/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PostmergeDataSourceService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.postmerge.PostmergeDataSourceService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostmergeDataSourceService</servlet-name>
+    <url-pattern>/dataSource/postmerge/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
