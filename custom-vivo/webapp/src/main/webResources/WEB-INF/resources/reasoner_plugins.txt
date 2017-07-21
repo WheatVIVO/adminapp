@@ -1,1 +1,1 @@
-#edu.cornell.mannlib.vitro.webapp.reasoner.plugin.DisableSameAs
+edu.cornell.mannlib.vitro.webapp.reasoner.plugin.DisableSameAs

@@ -21,6 +21,14 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+	    <plugin>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <configuration>
+	            <source>1.7</source>
+		    <target>1.7</target>
+		    <encoding>UTF-8</encoding>
+	        </configuration>
+	    </plugin>
         </plugins>
     </build>
 
@@ -41,6 +49,11 @@
                     <plugin>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <version>3.1</version>
+			<configuration>
+                          <source>1.7</source>
+                          <target>1.7</target>
+		          <encoding>UTF-8</encoding>
+			</configuration>
                         <executions>
                             <execution>
                                 <id>default-compile</id>
