@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
+import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelNames;
 import edu.cornell.mannlib.vitro.webapp.utils.logging.ToString;
 
 /**
@@ -41,23 +42,35 @@ public class JoinedOntModelCache implements OntModelCache {
 //		}
 	}
 
-
+    protected boolean isKnownSecondaryModel(String name) {
+        return (ModelNames.USER_ACCOUNTS.equals(name)
+                || ModelNames.DISPLAY.equals(name) 
+                || ModelNames.DISPLAY_DISPLAY.equals(name)
+                || ModelNames.DISPLAY_TBOX.equals(name)
+                );
+    }
+	
     /*
 	 * Local mod: Calling getModelNames() under TDB is very expensive
 	 */
 	@Override
 	public OntModel getOntModel(String name) {
-	    OntModel sec = secondary.getOntModel(name);
-	    if(sec.isEmpty()) {
-	        return primary.getOntModel(name);
+	    if(isKnownSecondaryModel(name)) {
+	        return secondary.getOntModel(name);
 	    } else {
-	        OntModel pri = primary.getOntModel(name);
-	        if(!pri.isEmpty()) {
-	            return pri;
-	        } else {
-	            return sec;
-	        }
+    	    OntModel sec = secondary.getOntModel(name);
+    	    if(sec.isEmpty()) {
+    	        return primary.getOntModel(name);
+    	    } else {
+    	        OntModel pri = primary.getOntModel(name);
+    	        if(!pri.isEmpty()) {
+    	            return pri;
+    	        } else {
+    	            return sec;
+    	        }
+    	    }
 	    }
+	    //original logic
 		//if (primary.getModelNames().contains(name)) {
 		//	return primary.getOntModel(name);
 		//}
