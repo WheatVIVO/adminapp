@@ -5,10 +5,10 @@
         <profile>
             <id>defaults</id>
             <properties>
-                <app-name>vivo</app-name>
+                <app-name>adminapp</app-name>
 
-                <vivo-dir>/usr/local/vivo/home</vivo-dir>
-                <tomcat-dir>/usr/local/tomcat</tomcat-dir>
+                <vivo-dir>/home/tdk/Work/onto/vivo-data/adminapp</vivo-dir>
+                <tomcat-dir>/home/tdk/Programs/tomcat-9.0.2</tomcat-dir>
 
                 <default-theme>wilma</default-theme>
             </properties>
