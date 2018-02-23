@@ -73,15 +73,6 @@ var browseByVClass = {
             return false;
         });
 
-        // save the selected vclass in location hash so we can reset the selection
-        // if the user navigates with the back button
-        this.browseVClasses.children('li').each( function() {
-           $(this).find('a').click(function () {
-                // the extra space is needed to prevent odd scrolling behavior
-                location.hash = $(this).attr('data-uri') + ' ';
-           });
-        });
-
         // Call the pagination listener
         this.paginationListener();
     },
@@ -156,6 +147,7 @@ var browseByVClass = {
                 // And then add the new content
                 browseByVClass.individualsInVClass.append(individualList);
 
+                if (!alpha) alpha = 'all';
 
                 if (fromEvent !== 'popstate') {
                   // used only when event is 'pageLoad' || not specified
@@ -163,11 +155,11 @@ var browseByVClass = {
                   var pathInHistoryState;
 
                   if (browseByVClass.hasPaginationSuffix()) {
-                    // remove the suffix
-                    var part = window.location.pathname.split('/').slice(0, -1).join('/')
+                    // remove ending:  /category/suffix
+                    var part = window.location.pathname.split('/').slice(0, -2).join('/')
 
-                    // add new suffix and save it to variable
-                    pathInHistoryState = part + '/' + alpha + '-' + page;
+                    // add currentCategory/newSuffix and save it to variable
+                    pathInHistoryState = part + '/' + results.vclass.name.toLowerCase() + '/' + alpha + '-' + page;
                   } else {
                     pathInHistoryState = window.location.pathname + '/' + results.vclass.name.toLowerCase() + '/' + alpha + '-' + page;
                   }
@@ -270,7 +262,7 @@ var browseByVClass = {
     // Toggle the active letter so it's clear which is selected
     selectedAlpha: function(alpha) {
         // if no alpha argument sent, assume all
-        if ( alpha == null ) {
+        if ( !alpha ) {
             alpha = "all";
         }
         // Remove active class on all letters
@@ -310,7 +302,7 @@ var browseByVClass = {
 $(document).ready(function() {
     browseByVClass.onLoad();
     window.addEventListener('popstate', function(e) {
-      
+
       if ( typeof e.state === 'object' && e.state !== null && typeof e.state.uri == 'string') {
         var params = e.state;
         browseByVClass.getIndividuals(params.uri, params.alpha, params.page, params.scroll, 'popstate');
