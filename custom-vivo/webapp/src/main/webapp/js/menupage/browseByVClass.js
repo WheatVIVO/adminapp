@@ -3,18 +3,43 @@
 var browseByVClass = {
 
     onLoad: function() {
-        // check for paginationSuffix to identify if page is loaded due to click on back/fwd buttons
+        // page is not loaded first time ever (has artificial /categName/alpha-page added to url)
         if (this.hasPaginationSuffix()) {
 
           this.mergeFromTemplate();
           this.initObjects();
           this.bindEventListeners();
 
+          // page is loaded due to back/fwd buttons
+          if ( typeof window.history.state === 'object' &&
+                window.history.state !== null &&
+                typeof window.history.state.uri == 'string'
+              ) {
 
-          browseByVClass.getIndividuals( window.history.state.uri, window.history.state.alpha,
+            this.getIndividuals( window.history.state.uri, window.history.state.alpha,
               window.history.state.page, window.history.state.scroll, 'pageLoad');
 
-        } else {
+          } else { // page is loaded due to clicking on a shared link
+            // get activeCategory from url
+            var splittedPath = this.splitPath();
+            var activeCategory = splittedPath[splittedPath.length-2].split('--').join(' ');
+
+            // find it in browse-list and take the url
+            var uri = Array.from(this.browseVClassLinks) //asumption that we will always have template like: 'categ name <span>(xx number)</span>'
+              .find(x => x.innerHTML.split(' <span')[0].toLowerCase() == activeCategory)
+              .dataset.uri
+
+            var lastInPathComponents = splittedPath[splittedPath.length-1].split('-')
+            var alpha = lastInPathComponents[0]
+            var page = lastInPathComponents[1]
+
+            this.getIndividuals( uri, alpha,
+              page, false, 'pageLoad');
+          }
+
+
+
+        } else { // page loaded first time ever
           this.mergeFromTemplate();
           this.initObjects();
           this.bindEventListeners();
@@ -23,8 +48,12 @@ var browseByVClass = {
 
     },
 
+    splitPath: function() {
+      return window.location.pathname.split('/')
+    },
+
     hasPaginationSuffix: function() {
-      var splittedPath = window.location.pathname.split('/');
+      var splittedPath = this.splitPath();
       var lastInPath = splittedPath[splittedPath.length-1];
       var lastInPathMatch = lastInPath.match(/([a-z]{1}|all)\-{1}[1-9]{1,3}/);
 
@@ -153,15 +182,17 @@ var browseByVClass = {
                   // used only when event is 'pageLoad' || not specified
 
                   var pathInHistoryState;
+                  var activeCategory = results.vclass.name.toLowerCase()
+                                      .split(' ').join('--'); // to be safely rendered as url
 
                   if (browseByVClass.hasPaginationSuffix()) {
                     // remove ending:  /category/suffix
                     var part = window.location.pathname.split('/').slice(0, -2).join('/')
 
                     // add currentCategory/newSuffix and save it to variable
-                    pathInHistoryState = part + '/' + results.vclass.name.toLowerCase() + '/' + alpha + '-' + page;
+                    pathInHistoryState = part + '/' + activeCategory + '/' + alpha + '-' + page;
                   } else {
-                    pathInHistoryState = window.location.pathname + '/' + results.vclass.name.toLowerCase() + '/' + alpha + '-' + page;
+                    pathInHistoryState = window.location.pathname + '/' + activeCategory + '/' + alpha + '-' + page;
                   }
 
                 }
