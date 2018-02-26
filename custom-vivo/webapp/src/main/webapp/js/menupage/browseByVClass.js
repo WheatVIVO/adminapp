@@ -11,10 +11,7 @@ var browseByVClass = {
           this.bindEventListeners();
 
           // page is loaded due to back/fwd buttons
-          if ( typeof window.history.state === 'object' &&
-                window.history.state !== null &&
-                typeof window.history.state.uri == 'string'
-              ) {
+          if (this.hasBrowsedClasses(window.history)) {
 
             this.getIndividuals( window.history.state.uri, window.history.state.alpha,
               window.history.state.page, window.history.state.scroll, 'pageLoad');
@@ -22,12 +19,12 @@ var browseByVClass = {
           } else { // page is loaded due to clicking on a shared link
             // get activeCategory from url
             var splittedPath = this.splitPath();
-            var activeCategory = splittedPath[splittedPath.length-2].split('--').join(' ');
+            var activeCategory = splittedPath[splittedPath.length-2];
 
             // find it in browse-list and take the url
-            var uri = Array.from(this.browseVClassLinks) //asumption that we will always have template like: 'categ name <span>(xx number)</span>'
-              .find(x => x.innerHTML.split(' <span')[0].toLowerCase() == activeCategory)
-              .dataset.uri
+            var activeLi = Array.from(this.browseVClasses.children())
+                                .find(x => x.id == activeCategory)
+            var uri = activeLi.querySelector('a').dataset.uri
 
             var lastInPathComponents = splittedPath[splittedPath.length-1].split('-')
             var alpha = lastInPathComponents[0]
@@ -46,6 +43,12 @@ var browseByVClass = {
           this.defaultVClass();
         }
 
+    },
+
+    hasBrowsedClasses: function(historyOrEvent) {
+      return (typeof historyOrEvent.state === 'object') &&
+            (historyOrEvent.state !== null) &&
+            (typeof historyOrEvent.state.uri == 'string')
     },
 
     splitPath: function() {
@@ -178,24 +181,22 @@ var browseByVClass = {
 
                 if (!alpha) alpha = 'all';
 
-                if (fromEvent !== 'popstate') {
-                  // used only when event is 'pageLoad' || not specified
+                var pathInHistoryState;
+                var newCategory = results.vclass.name.trim().split(' ')
+                    newCategory[0] = newCategory[0].toLowerCase();
+                    newCategory = newCategory.join('');
 
-                  var pathInHistoryState;
-                  var activeCategory = results.vclass.name.toLowerCase()
-                                      .split(' ').join('--'); // to be safely rendered as url
+                if (browseByVClass.hasPaginationSuffix()) {
+                  // remove ending:  /category/suffix
+                  var part = window.location.pathname.split('/').slice(0, -2).join('/')
 
-                  if (browseByVClass.hasPaginationSuffix()) {
-                    // remove ending:  /category/suffix
-                    var part = window.location.pathname.split('/').slice(0, -2).join('/')
-
-                    // add currentCategory/newSuffix and save it to variable
-                    pathInHistoryState = part + '/' + activeCategory + '/' + alpha + '-' + page;
-                  } else {
-                    pathInHistoryState = window.location.pathname + '/' + activeCategory + '/' + alpha + '-' + page;
-                  }
-
+                  // add currentCategory/newSuffix and save it to variable
+                  pathInHistoryState = part + '/' + newCategory + '/' + alpha + '-' + page;
+                } else {
+                  pathInHistoryState = window.location.pathname + '/' + newCategory + '/' + alpha + '-' + page;
                 }
+
+
 
 
                 switch(fromEvent) {
@@ -334,9 +335,8 @@ $(document).ready(function() {
     browseByVClass.onLoad();
     window.addEventListener('popstate', function(e) {
 
-      if ( typeof e.state === 'object' && e.state !== null && typeof e.state.uri == 'string') {
-        var params = e.state;
-        browseByVClass.getIndividuals(params.uri, params.alpha, params.page, params.scroll, 'popstate');
+      if (browseByVClass.hasBrowsedClasses(e)) {
+        browseByVClass.getIndividuals(e.state.uri, e.state.alpha, e.state.page, e.state.scroll, 'popstate');
       }
     })
 });
