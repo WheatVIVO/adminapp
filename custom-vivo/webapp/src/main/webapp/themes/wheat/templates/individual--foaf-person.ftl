@@ -30,7 +30,11 @@
         <h2>Data sources for this individual</h2>
         <ul>
         <#list sources as source>
-            <li><a href="${urls.base}/individual?uri=${source.uri?url}">${source.name}</a></li>
+            <li><a href="${urls.base}/individual?uri=${source.uri?url}">${source.name}</a>
+	    <#if source.dateTime?has_content>
+              (retrieved ${source.dateTime})
+	    </#if>
+	    </li>
         </#list>
         </ul>
     </#if>
