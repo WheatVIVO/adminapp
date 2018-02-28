@@ -73,15 +73,21 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         List<Source> sources = new ArrayList<Source>();
         String individualURI = ind.getUri();
         String query = "SELECT DISTINCT ?graph WHERE { GRAPH ?graph { <" + 
-                individualURI + "> ?p ?o } }";
+                individualURI + "> ?p ?o } } ORDER BY DESC(?g)";
         GraphURIGetter graphGetter = new GraphURIGetter();
         try {
             vreq.getRDFService().sparqlSelectQuery(query, graphGetter);
         } catch (RDFServiceException e) {
             throw new RuntimeException(e);
         }
-        Set<DataSourceDescription> dataSources = new HashSet<DataSourceDescription>();
-        for (String graphURI : graphGetter.getGraphURIs()) {
+        Set<String> graphURISet = new HashSet<String>();
+        for (String graph : graphGetter.getGraphURIs()) {
+            String[] graphParts = graph.split("-", 2);
+            String graphURI = graphParts[0];
+            String dateTime = null;
+            if(graphParts.length > 1) {
+                dateTime = graphParts[1].replaceAll("T", " ");
+            }
             if(KB2_GRAPH.equals(graphURI) || INF_GRAPH.equals(graphURI)) {
                 continue;
             }
@@ -89,12 +95,12 @@ public class IndividualProvenanceDataGetter implements DataGetter {
             if (dataSource != null) {
                 log.debug("Found data source " + dataSource.getConfiguration().getName() + 
                         " for individual " + individualURI);
-                dataSources.add(dataSource);
+                if(!graphURISet.contains(graphURI)) {
+                    graphURISet.add(graphURI);
+                    sources.add(new Source(dataSource.getConfiguration().getName(), 
+                        dataSource.getConfiguration().getURI(), dateTime));
+                }
             }
-        }
-        for (DataSourceDescription dataSource : dataSources) {
-            sources.add(new Source(dataSource.getConfiguration().getName(), 
-                    dataSource.getConfiguration().getURI()));
         }
         long duration = System.currentTimeMillis() - start;
         String logMessage = duration + " ms to get graphs for individual "
@@ -127,10 +133,12 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         
         private String name;
         private String uri;
+        private String dateTime;
         
-        public Source(String name, String uri) {
+        public Source(String name, String uri, String dateTime) {
             this.name = name;
             this.uri = uri;
+            this.dateTime = dateTime;
         }
         
         public String getName() {
@@ -139,6 +147,10 @@ public class IndividualProvenanceDataGetter implements DataGetter {
         
         public String getUri() {
             return this.uri;
+        }
+        
+        public String getDateTime() {
+            return this.dateTime;
         }
         
     }
