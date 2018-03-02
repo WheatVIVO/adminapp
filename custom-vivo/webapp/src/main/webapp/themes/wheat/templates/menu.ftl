@@ -4,15 +4,28 @@
 
 <#include "developer.ftl">
 
-<nav role="navigation">
-    <ul id="main-nav" role="list">
+<nav id="top-nav" role="navigation" class="bg-main-l">
+    <input type="checkbox" id="mobile-menu-toggler" class='dn'/>
+    <ul id="main-nav" role="list" class="pa3 bg-main dn db-ns pa0-ns nowrap-m overflow-scroll-m dt-l center-l">
         <#list menu.items as item>
-            <li role="listitem"><a href="${item.url}" title="${item.linkText} ${i18n().menu_item}" <#if item.active> class="selected" </#if>>${item.linkText}</a></li>
+            <li role="listitem" class="dib-ns bb b--main-lighter bn-ns fl-l">
+              <a href="${item.url}"
+                  class="db pv2 no-underline white-80 fw7 pa3-ns dib-ns hover-bg-main-darker"
+                  title="${item.linkText} ${i18n().menu_item}"
+                  <#if item.active> class="selected" </#if>
+                  >
+                  ${item.linkText}
+              </a>
+            </li>
         </#list>
+        <li role="listitem" class="pt2 dn-ns">
+          <a href="${urls.login}" class="db white-80 no-underline fw7 pv2"><span class="fw5 white-80">Are you an admin?</span> Login!</a>
+        </li>
     </ul>
+
 </nav>
 
-<div id="wrapper-content" role="main">        
+<div id="wrapper-content" role="main">
     <#if flash?has_content>
         <#if flash?starts_with(i18n().menu_welcomestart) >
             <section  id="welcome-msg-container" role="container">
@@ -24,7 +37,7 @@
             </section>
         </#if>
     </#if>
-    
+
     <!--[if lte IE 8]>
     <noscript>
         <p class="ie-alert">This site uses HTML elements that are not recognized by Internet Explorer 8 and below in the absence of JavaScript. As a result, the site will not be rendered appropriately. To correct this, please either enable JavaScript, upgrade to Internet Explorer 9, or use another browser. Here are the <a href="http://www.enable-javascript.com"  title="java script instructions">instructions for enabling JavaScript in your web browser</a>.</p>

@@ -1,9 +1,9 @@
 <#-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
 
-    <div id="leaderboard-wrapper">
+    <div id="leaderboard-wrapper" class="dn db-l pv5-l ph4-l cf">
         <div class="container clearfix">
-          <div class="region region-leaderboard"><div class="region-inner clearfix"><div id="block-search-form" class="block block-search no-title"  role="search"><div class="block-inner clearfix">  
-  
+          <div class="region region-leaderboard"><div class="region-inner clearfix"><div id="block-search-form" class="block block-search no-title"  role="search"><div class="block-inner clearfix">
+
   <div class="block-content content"><form class="search-form" role="search" action="${urls.search}" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
       <h2 class="element-invisible">Search form</h2>
     <div class="form-type-textfield form-item-search-block-form">
@@ -15,9 +15,9 @@
 </div>
 </div></form></div>
   </div></div>
-  
-<div id="block-block-33" class="block block-block no-title" ><div class="block-inner clearfix">  
-  
+
+<div id="block-block-33" class="block block-block no-title" ><div class="block-inner clearfix">
+
 <div class="block-content content">
     <ul>
         <li><a href="https://www.youtube.com/channel/UCxHIrfpWx-44r4NQ6EItmEA" class="youtube">Youtube</a></li>
@@ -29,16 +29,16 @@
 
 </div></div>
 
-<div id="block-block-23" class="block block-block no-title" ><div class="block-inner clearfix">  
+<div id="block-block-23" class="block block-block no-title" ><div class="block-inner clearfix">
      <nav role="navigation">
         <ul id="header-nav" role="list">
             <#include "languageSelector.ftl">
             <li role="listitem"><a href="${urls.index}" title="${i18n().identity_index}">${i18n().identity_index}</a></li>
             <#if user.loggedIn>
-                <#-- COMMENTING OUT THE EDIT PAGE LINK FOR RELEASE 1.5. WE NEED TO IMPLEMENT THIS IN A MORE 
+                <#-- COMMENTING OUT THE EDIT PAGE LINK FOR RELEASE 1.5. WE NEED TO IMPLEMENT THIS IN A MORE
                      USER FRIENDLY WAY. PERHAPS INCLUDE A LINK ON THE PAGES THEMSELVES AND DISPLAY IF THE
                      USER IS A SITE ADMIN. tlw72
-                     
+
                      <#if (page??) && (page?is_hash || page?is_hash_ex) && (page.URLToEditPage??) >
                         <li role="listitem"><a href="${page.URLToEditPage}" title="${i18n().identity_edit}">${i18n().identity_edit}</a></li>
                      </#if>
@@ -61,25 +61,37 @@
                             </li>
                          </ul>
                      </li>
-                     
 
-                
+
+
                 ${scripts.add('<script type="text/javascript" src="${urls.base}/js/userMenu/userMenuUtils.js"></script>')}
-                
+
             <#else>
                 <li role="listitem"><a class="log-out" title="${i18n().menu_loginfull}" href="${urls.login}">${i18n().menu_login}</a></li>
             </#if>
         </ul>
-        
-    </nav> 
+
+    </nav>
   </div></div></div></div>        </div>
       </div>
 
-<header id="branding" role="banner">
+<header id="branding" class="mobile-menu-toggle-holder overflow-hidden h3 pa2
+                              pa0-l absolute-l top-1-l left-2-l w5-l h4-l"
+role="banner">
 
-    <h1 class="vivo-logo"><span class="siteName">${siteName}</span></h1>
+    <h1 class="vivo-logo w-30 fl h-100 w-100-l">
+      <span class="siteName dn dib-ns absolute-m right-half-m top-1-m f2-m dn-l">
+      ${siteName}
+      </span>
+    </h1>
+
+    <div class="w-30 fr tr dn-ns">
+      <label for="mobile-menu-toggler" class="mobile-menu-toggle-btn dib h-100 mt2">
+        <i class="fas fa-bars fa-2x"></i>
+        </label>
+    </div>
+
     <#-- Since we are using a graphic text for the tagline, we won't render ${siteTagline}
     <#if siteTagline?has_content>
         <em>${siteTagline}</em>
     </#if>-->
-

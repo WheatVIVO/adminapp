@@ -11,15 +11,17 @@
 <#if openSocial??>
     <#if openSocial.visible>
         <#-- Required to add these BEFORE stylesheets.flt and headScripts.ftl are processed -->
-        ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/openSocial/gadgets.css" />')}			
+        ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/openSocial/gadgets.css" />')}
         ${headScripts.add('<script type="text/javascript" src="${openSocial.containerJavascriptSrc}"></script>',
                           '<script type="text/javascript" language="javascript">${openSocial.gadgetJavascript}</script>',
                           '<script type="text/javascript" src="${urls.base}/js/openSocial/orng.js"></script>')}
-    </#if>	
-</#if>	
+    </#if>
+</#if>
+
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic" />
+
 <#include "stylesheets.ftl">
 <link rel="stylesheet" href="${urls.theme}/css/screen.css" />
 
@@ -31,12 +33,13 @@
     ${metaTags.list()}
 </#if>
 
-<!--[if (gte IE 6)&(lte IE 8)]>
-<script type="text/javascript" src="${urls.base}/js/selectivizr.js"></script>
-<![endif]-->
 
-<#-- Inject head content specified in the controller. Currently this is used only to generate an rdf link on 
+<#-- add meta for mobile viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<#-- Inject head content specified in the controller. Currently this is used only to generate an rdf link on
 an individual profile page. -->
 ${headContent!}
 
 <link rel="shortcut icon" type="image/x-icon" href="${urls.base}/favicon.ico">
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
