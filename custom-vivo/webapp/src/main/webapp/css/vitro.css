@@ -328,34 +328,34 @@ p#mngLabelsText {
 }
 
 /* SEARCH HOME------>  */
-#search-home {
+/* #search-home {
 		margin-top: 2em;
 		width: 570px;
-}
+} */
 
-#search-home h3 {
+/* #search-home h3 {
 		padding-left: 24px;
-}
+} */
 #search-homepage {
 		position: relative;
-		padding-left: 24px;
+		/* padding-left: 24px; */
 }
-#search-home-field {
+/* #search-home-field {
 		width: 530px;
 		height: 44px;
-}
-#search-home-field input.search {
+} */
+/* #search-home-field input.search {
 	 	text-decoration: none;
 		font-size: 18px;
 		border: none;
 	  padding-left: 13px;
 	  padding-top: 8px;
 	  cursor: pointer;
-}
+} */
 span.search-filter-selected {
 		display: none;
 }
-input.search-homepage {
+/* input.search-homepage {
 		float: left;
 		height: 20px;
 		border: 0;
@@ -366,17 +366,15 @@ input.search-homepage {
 		margin-top: 2px;
 		width: 351px;
 		background-position: right;
-}
+} */
 a.filter-search {
 		position: absolute;
-		vertical-align: middle;
 		display: inline-block;
 		width: 39px;
-		height: 43px;
-		z-index: 9999;
+		height: 36px;
+		/* z-index: 9999; */
 		top: 0;
-		right: 135px;
-		z-index: 9999;
+		/* right: 135px; */
 }
 .filter-default {
 
@@ -417,36 +415,36 @@ a.filter-search {
 }
 
 /* HOME STATS----->  */
-#home-stats {
+/* #home-stats {
 		margin-top: 1em;
 		width: 921px;
 		height: 213px;
 		clear: both;
-}
+} */
 .home-sections h4 {
 		margin-top: 0;
 		height: 34px;
 		font-size: 18px;
 		text-align: center;
-		margin-left: 35px;
+		/* margin-left: 35px; */
 		padding: 0;
 		line-height: 35px;
 }
-#home-stats h4 {
+/* #home-stats h4 {
     display: inline;
     padding: 3px 10px;
-}
-#stats {
+} */
+/* #stats {
 		margin: 0 auto;
 		width: 875px;
-}
-#stats li {
+} */
+/* #stats li {
 		float: left;
 		width: 108px;
 		height: 102px;
 		margin-top: 35px;
 		margin-right: 25px;
-}
+} */
 #stats p {
 
 }
@@ -456,9 +454,9 @@ a.filter-search {
 #stats li a:hover {
 
 }
-#stats li:first-child {
+/* #stats li:first-child {
 		margin-left: 50px;
-}
+} */
 #stats .stats-count {
 		text-align: center;
 		font-size: 42px;

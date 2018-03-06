@@ -31,56 +31,58 @@
 
         <#include "menu.ftl">
 
-        <section id="intro" role="region">
-            <h2>${i18n().intro_title}</h2>
 
-            <p>${i18n().intro_para1}</p>
-            <p>${i18n().intro_para2}</p>
-
-            <section id="search-home" role="region">
-                <h3>${i18n().intro_searchvivo} <span class="search-filter-selected">filteredSearch</span></h3>
-
-                <fieldset>
-                    <legend>${i18n().search_form}</legend>
-                    <form id="search-homepage" action="${urls.search}" name="search-home" role="search" method="post" >
-                        <div id="search-home-field">
-                            <input type="text" name="querytext" class="search-homepage" value="" autocapitalize="off" />
-                            <input type="submit" value="${i18n().search_button}" class="search" />
-                            <input type="hidden" name="classgroup"  value="" autocapitalize="off" />
-                        </div>
-
-                        <a class="filter-search filter-default" href="#" title="${i18n().intro_filtersearch}">
-                            <span class="displace">${i18n().intro_filtersearch}</span>
-                        </a>
-
-                        <ul id="filter-search-nav">
-                            <li><a class="active" href="">${i18n().all_capitalized}</a></li>
-                            <@lh.allClassGroupNames vClassGroups! />
-                        </ul>
-                    </form>
-                </fieldset>
-            </section> <!-- #search-home -->
-
-        </section> <!-- #intro -->
-
-
-
-        <!-- List of research classes: e.g., articles, books, collections, conference papers -->
-        <@lh.researchClasses />
-
-        <!-- List of four randomly selected faculty members -->
-        <@lh.facultyMbrHtml />
-
-        <!-- List of randomly selected academic departments -->
-        <@lh.academicDeptsHtml />
+        <h2 class="f3 f2-ns mb4 tc">${i18n().intro_title}</h2>
 
         <#if geoFocusMapsEnabled >
             <!-- Map display of researchers' areas of geographic focus. Must be enabled in runtime.properties -->
             <@lh.geographicFocusHtml />
         </#if>
 
-        <!-- Statistical information relating to property groups and their classes; displayed horizontally, not vertically-->
-        <@lh.allClassGroups vClassGroups! />
+        <section id="intro" role="region" class="fl-l w-30-l">
+
+            <p class="mb3">${i18n().intro_para1}</p>
+            <p>${i18n().intro_para2}</p>
+
+            <section id="search-home" role="region" class="mt4 center cf">
+                <h3 class="f3 mb3">${i18n().intro_searchvivo} <span class="search-filter-selected mb3">filteredSearch</span></h3>
+
+                <form id="search-homepage" action="${urls.search}" name="search-home" role="search" method="post" >
+                    <div id="search-home-field cf">
+                        <input type="text" name="querytext" class="search-homepage fl dib pa2 w-70" value="" autocapitalize="off" />
+                        <input type="submit" value="${i18n().search_button}"
+                          class="search dib fl pa2 w-30 input-reset white bg-black bb bb-0 b--black br2 br--right" />
+                        <input type="hidden" name="classgroup"  value="" autocapitalize="off" />
+                    </div>
+
+                    <a class="filter-search filter-default" href="#" title="${i18n().intro_filtersearch}"></a>
+
+                    <ul id="filter-search-nav">
+                        <li><a class="active" href="">${i18n().all_capitalized}</a></li>
+                        <@lh.allClassGroupNames vClassGroups! />
+                    </ul>
+                </form>
+
+            </section> <!-- #search-home -->
+
+        </section> <!-- #intro -->
+
+
+        <div class="mt4 cb flex flex-wrap justify-around-ns">
+
+          <!-- List of research classes: e.g., articles, books, collections, conference papers -->
+          <@lh.researchClasses />
+
+          <!-- List of four randomly selected faculty members -->
+          <@lh.facultyMbrHtml />
+
+          <!-- List of randomly selected academic departments -->
+          <@lh.academicDeptsHtml />
+
+          <!-- Statistical information relating to property groups and their classes; displayed horizontally, not vertically-->
+          <@lh.allClassGroups vClassGroups! />
+
+        </div>
 
         <#include "footer.ftl">
         <#-- builds a json object that is used by js to render the academic departments section -->

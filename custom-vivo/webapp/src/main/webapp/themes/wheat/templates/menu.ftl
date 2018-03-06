@@ -4,7 +4,7 @@
 
 <#include "developer.ftl">
 
-<nav id="top-nav" role="navigation" class="bg-main-l">
+<nav id="top-nav" role="navigation" class="bg-main-l mb3 mb5-ns">
     <input type="checkbox" id="mobile-menu-toggler" class='dn'/>
     <ul id="main-nav" role="list" class="pa3 bg-main dn db-ns pa0-ns nowrap-m overflow-scroll-m dt-l center-l">
         <#list menu.items as item>
@@ -25,7 +25,7 @@
 
 </nav>
 
-<div id="wrapper-content" role="main">
+<div id="wrapper-content" class="ph3" role="main">
     <#if flash?has_content>
         <#if flash?starts_with(i18n().menu_welcomestart) >
             <section  id="welcome-msg-container" role="container">
