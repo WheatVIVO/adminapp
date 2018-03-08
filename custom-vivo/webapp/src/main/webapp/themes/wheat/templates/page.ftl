@@ -20,7 +20,7 @@
 		</#if>
 
         ${body}
-
+        
         <#include "footer.ftl">
     </body>
 </html>
