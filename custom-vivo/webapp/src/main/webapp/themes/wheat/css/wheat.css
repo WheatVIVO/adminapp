@@ -46,7 +46,7 @@ ul#header-nav a:visited,
   box-shadow: 0px 3px 2px -2px var(--th-gray);
 
   white-space: nowrap;
-  overflow-y: scroll;
+  overflow-x: scroll;
   z-index: 5;
 }
 .pagination.menupage li a {
@@ -178,6 +178,8 @@ h5 {
 /* widths and heights */
 .w5 { width: 16rem; }
 .h4 { height: 8rem; }
+
+.right--4 { right: -4rem; }
 
 .h-2half { height: 2.5rem; }
 .line-2half { height: 2.5rem; line-height: 2.5rem;}
@@ -675,8 +677,15 @@ hr.formDivider {
 .vivo-logo {
   background: url(../images/wheatinitiative-logo.png) 0 50% no-repeat;
   background-size: contain;
+  width: 135px;
+  height: 50px;
 }
-
+@media screen and (min-width: 60em) {
+  .vivo-logo {
+    width: 12rem;
+    height: 5rem;
+  }
+}
 /* h1.vivo-logo {
     position: absolute;
     width: 248px;
@@ -701,6 +710,10 @@ h1.vivo-logo a {
     font-weight: normal;
     color: #bbb;
 } */
+.siteName {
+  position: absolute;
+  left: -999px;
+}
 /* HEADER NAV------>  */
 ul#header-nav {
     float: right;
@@ -1502,7 +1515,7 @@ ul#find-filters a.selected {
 #browse-by .main-nav {
   z-index: 7;
 }
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
   #browse-classes,
   #alpha-browse-container,
   .pagination.menupage {
