@@ -91,6 +91,9 @@
         var i18nStrings = {
             researcherString: '${i18n().researcher}',
             researchersString: '${i18n().researchers}',
+	    researcherOrOrganization: '${i18n().researcher_or_organization}',
+	    researchersOrOrganizations: '${i18n().researchers_or_organizations}',
+	    withKnownLocations: '${i18n().with_known_locations}',
             currentlyNoResearchers: '${i18n().currently_no_researchers}',
             countriesAndRegions: '${i18n().countries_and_regions}',
             countriesString: '${i18n().countries}',
