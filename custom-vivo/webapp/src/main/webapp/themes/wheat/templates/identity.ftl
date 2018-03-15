@@ -76,13 +76,13 @@
       </div>
 
 <header id="branding" class="mobile-menu-toggle-holder flex justify-between items-center overflow-hidden h3 pa2
-                              pa0-l absolute-l top-1-l left-2-l w6-l h4-l"
+                              pa0-l absolute-l top-1-l left-2-l w6-l h4-l mb4 mb0-m"
 role="banner">
 
     <h1 class="vivo-logo overflow-hidden">
       <span class="siteName">${siteName}</span>
     </h1>
-    <span class="dib f3 ph2 th-gray f2-l ml2-l">${siteName}</span>
+    <span class="dib f3 ph2 th-gray f2-l ml2-l green">${siteName}</span>
 
 
     <label for="mobile-menu-toggler" class="mobile-menu-toggle-btn dib ph2 dn-m dn-l">
