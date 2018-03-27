@@ -13,7 +13,7 @@
 
 <section id="browse-by" role="region" class="cf">
     <nav role="navigation" class="main-nav mb4 sticky top-0 top-2-l w5-l fl-l">
-        <ul id="browse-classes" class="bg-main nowrap overflow-scroll">
+        <ul id="browse-classes" class="bg-main nowrap overflow-y-auto-l">
             <#list vClassGroup?sort_by("displayRank") as vClass>
                 <#------------------------------------------------------------
                 Need to replace vClassCamel with full URL that allows function
@@ -38,7 +38,7 @@
     </nav>
 
     <div class="fr-l w-70-l" role="main">
-      <nav id="alpha-browse-container" role="navigation" class="sticky top-0 bg-white nowrap overflow-scroll">
+      <nav id="alpha-browse-container" role="navigation" class="sticky top-0 bg-white nowrap overflow-x-scroll">
           <h3 class="selected-class"></h3>
           <#assign alphabet = ["A", "B", "C", "D", "E", "F", "G" "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] />
 

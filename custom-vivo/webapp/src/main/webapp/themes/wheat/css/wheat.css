@@ -46,7 +46,7 @@ ul#header-nav a:visited,
   box-shadow: 0px 3px 2px -2px var(--th-gray);
 
   white-space: nowrap;
-  overflow-y: scroll;
+  overflow-x: scroll;
   z-index: 5;
 }
 .pagination.menupage li a {
@@ -63,6 +63,11 @@ li.individual a {
   padding: 1rem;
   display: block;
 }
+li.individual a:hover {
+  background: var(--main-color);
+  color: #fff;
+}
+
 #individuals-in-class span.title {
   margin: 0 0 1rem 1rem;
   display: inline-block;
@@ -145,17 +150,24 @@ h5 {
   --main-darker: #395d7f;
   --main-lighter: #2da1c1;
 
-  --main-contrast: #706a66;
-
   --th-gray: #2d3535; /*theme-gray*/
+  --th-gray-l1: #706a66;
+  --th-gray-l2: #dfe6e5;
+
+  --th-green: #8bae28;
 }
+
 .bg-main { background-color: var(--main-color) }
 .bg-th-gray { background-color: var(--th-gray) }
 
-.b--main-lighter { border-color: var(--main-lighter)}
-.b--th-gray { border-color: var(--th-gray)}
+.b--main-lighter { border-color: var(--main-lighter) }
+.b--th-gray { border-color: var(--th-gray) }
+.b--th-gray-2 { border-color: var(--th-gray-l2) }
 
 .th-gray { color: var(--th-gray) }
+.th-gray-l1 { color: var(--th-gray-l1) }
+
+.green { color: var(--th-green) }
 
 @media screen and (min-width: 60em) {
   .bg-main-l { background-color: var(--main-color); }
@@ -179,6 +191,8 @@ h5 {
 .w5 { width: 16rem; }
 .h4 { height: 8rem; }
 
+.right--4 { right: -4rem; }
+
 .h-2half { height: 2.5rem; }
 .line-2half { height: 2.5rem; line-height: 2.5rem;}
 .top-2half {top: 2.5rem; }
@@ -190,6 +204,11 @@ h5 {
   .h4-l { height: 8rem; }
 }
 /* end widths and heights */
+.mr-3 { margin-right: -3px; }
+.z7 { z-index: 7; }
+.shadow-1 { box-shadow: 0px 3px 2px -2px var(--th-gray); }
+
+
 
 /* counter for now box-sizing border-box from tachyons */
 #leaderboard-wrapper * { box-sizing: content-box; }
@@ -675,8 +694,15 @@ hr.formDivider {
 .vivo-logo {
   background: url(../images/wheatinitiative-logo.png) 0 50% no-repeat;
   background-size: contain;
+  width: 135px;
+  height: 50px;
 }
-
+@media screen and (min-width: 60em) {
+  .vivo-logo {
+    width: 12rem;
+    height: 5rem;
+  }
+}
 /* h1.vivo-logo {
     position: absolute;
     width: 248px;
@@ -701,6 +727,10 @@ h1.vivo-logo a {
     font-weight: normal;
     color: #bbb;
 } */
+.siteName {
+  position: absolute;
+  left: -999px;
+}
 /* HEADER NAV------>  */
 ul#header-nav {
     float: right;
@@ -780,7 +810,6 @@ input.search-vivo {
     display: block;
     width: 100%;
     height: 51px;
-    border: 1px solid #dce4e3;
     background-color: #008db4;
     margin: auto;
     list-style: none;
@@ -981,7 +1010,7 @@ p.password-note {
     border: 1px dotted #E2C822;
     background-color: #FFF9D7;
     padding: .5em;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 #welcome-message {
     border: 1px dotted #E2C822;
@@ -1313,7 +1342,7 @@ ul#footer-nav li {
 }
 ul#footer-nav li:last-child,
 ul#header-nav li.last,
-ul#individual-hasResearchArea li:last-child,
+/* ul#individual-hasResearchArea li:last-child, */
 ul#individual-facultyMemberships li:last-child {
     border-right: none;
 }
@@ -1416,10 +1445,10 @@ ul#individual-tools-people li a {
 
 /* VISUAL GRAPH------>  */
 /* #menupage-intro, */
-.property-group {
+/* .property-group {
     width: 920px;
     background: #fff;
-}
+} */
 #menupage-intro h2 {
     font-size: 1.375em;
     color: #064d68;
@@ -1502,13 +1531,19 @@ ul#find-filters a.selected {
 #browse-by .main-nav {
   z-index: 7;
 }
-@media screen and (min-width: 1300px) {
-  #browse-classes,
+@media screen and (min-width: 1200px) {
   #alpha-browse-container,
   .pagination.menupage {
     overflow: hidden;
     white-space: normal;
   }
+}
+@media screen and (min-width: 1200px and min-height: 500px)  {
+  #browse-classes {
+    overflow: hidden;
+    white-space: normal;
+  }
+
 }
 
 #browse-by h2 {
@@ -1518,7 +1553,7 @@ ul#find-filters a.selected {
 }
 /* BROWSE CLASSES ------>  */
 #browse-classes {
-  max-height: 500px; /* to be able to scroll-y when has position fixed */
+  max-height: 640px; /* to be able to scroll-y when has position fixed */
 }
 /* ul#browse-classes {
     border: 1px solid #dde4e3;
@@ -1558,8 +1593,8 @@ ul#vgraph-classes .count-classes {
 }
 .alphaIndex,
 .pagination.menupage,
-/* ul#alpha-browse-individuals li,  */
-tr.editformcell td select {
+tr.editformcell td select,
+ul#alpha-browse-individuals li {
     font-size: .8em;
 }
 #alpha-browse-container {
@@ -1629,6 +1664,8 @@ article.property ul.property-list {
 /* ADMIN PANEL ------>  */
 #admin {
     background-color: #f2f9fb;
+    position: absolute;
+    left: 35%;
 }
 #admin h3 {
     background: #2485AE;
@@ -1645,9 +1682,12 @@ article.property ul.property-list {
 .preferred {
     padding-top: .2em;
 }
-#individual-intro h1 {
+/* #individual-intro h1 {
     font-size: 1.375em;
     color: #2485ae;
+} */
+@media screen and (max-width: 40em) {
+  #individual-intro span.display-title { display: none; }
 }
 #individual-intro span.display-title,
 h1.fn .display-title {
@@ -1690,7 +1730,7 @@ ul.individual-urls-people {
     list-style: url(../../../images/individual/arrow-grey.gif);
 }
 /* INDIVIDUAL RIGHT CONTENT ------>  */
-#individual-info,
+/* #individual-info,
 #property-group-menu a,
 .grey,
 .pagination.menupage li.selected,
@@ -1698,7 +1738,7 @@ h2#mainImage,
 #share-contact h2,
 h3.internal-auth {
     color: #5e6363;
-}
+} */
 #individual-info h1.fn {
     font-size: 1.375em;
     color: #595B5B;
@@ -1720,15 +1760,55 @@ ul#individual-personInPosition {
 ul#individual-personInPosition li {
     line-height: 1.8em;
 }
-.individual-overview {
+/* .individual-overview {
     font-size: 1em;
     padding-right: 10px;
     padding-top: 10px;
     width: 100%;
-}
-ul#individual-hasResearchArea li {
+} */
+/* ul#individual-hasResearchArea li {
     border-right: 1px solid #A6B1B0;
+} */
+
+/* can't css through classes */
+#individual-hasResearchArea:after {
+  content: '';
+  display: block;
+  clear: both;
 }
+#individual-hasResearchArea li {
+  padding: 0 1rem;
+  float: left;
+  margin-right: 1rem;
+}
+@media screen and (min-width: 30em) {
+  #individual-hasResearchArea li {
+    padding: 0 .5rem;
+    width: 50%;
+    margin-right: 0;
+  }
+  #individual-hasResearchArea li a {
+    display: block;
+    text-decoration: none;
+    color: var(--th-gray);
+    padding: .5rem;
+  }
+  #individual-hasResearchArea li a:hover {
+    background: var(--main-color);
+    color: #fff;
+  }
+}
+@media screen and (min-width: 45em) {
+  #individual-hasResearchArea li {
+    width: 33%;
+  }
+}
+@media screen and (min-width: 60em) {
+  #individual-hasResearchArea li {
+    width: 25%;
+  }
+}
+
 ul#individual-facultyMemberships li {
     border-right: 1px solid #A6B1B0;
 }
@@ -1766,8 +1846,11 @@ img.co-author {
 #property-group-menu li {
     background: url(../../../images/individual/separator-property-group-nav.jpg) right 10px no-repeat;
 }
-ul.propertyTabsList li {
+/* ul.propertyTabsList li {
     text-transform: uppercase;
+} */
+.selectedGroupTab {
+  background: var(--main-darker)
 }
 #property-group-menu a:hover {
     color: #002b44;
@@ -1776,15 +1859,15 @@ ul.propertyTabsList li {
     background: none;
 }
 /* PROPERTY GROUP ------>  */
-section.property-group h2,
+/* section.property-group h2, */
 #menupage-content h4 {
     font-size: 1.25em;
     color: #2485ae;
     font-weight: normal;
 }
-article.property {
+/* article.property {
     width: 852px;
-}
+} */
 article.property h3 {
     background: #fafaf9;
     font-size: 1.063em;

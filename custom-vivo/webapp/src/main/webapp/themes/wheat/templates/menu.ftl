@@ -6,13 +6,12 @@
 
 <nav id="top-nav" role="navigation" class="bg-main-l mb3 mb5-ns">
     <input type="checkbox" id="mobile-menu-toggler" class='dn'/>
-    <ul id="main-nav" role="list" class="pa3 bg-main dn db-ns pa0-ns nowrap-m overflow-scroll-m dt-l center-l">
+    <ul id="main-nav" role="list" class="pa3 bg-main dn nt4 mt0-ns db-ns pa0-ns nowrap-m overflow-auto-m dt-l center-l">
         <#list menu.items as item>
             <li role="listitem" class="dib-ns bb b--main-lighter bn-ns fl-l">
               <a href="${item.url}"
-                  class="db pv2 no-underline white-80 fw7 pa3-ns dib-ns hover-bg-main-darker"
+                  class="db pv2 no-underline white-80 fw7 pa3-ns dib-ns hover-bg-main-darker <#if item.active>bg-main-darker</#if>"
                   title="${item.linkText} ${i18n().menu_item}"
-                  <#if item.active> class="selected" </#if>
                   >
                   ${item.linkText}
               </a>
