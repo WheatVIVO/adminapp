@@ -10,7 +10,7 @@
         <#list menu.items as item>
             <li role="listitem" class="dib-ns bb b--main-lighter bn-ns fl-l">
               <a href="${item.url}"
-                  class="db pv2 no-underline white-80 fw7 pa3-ns dib-ns hover-bg-main-darker <#if item.active>bg-main-darker</#if>"
+                  class="db pv2 pl2 no-underline white-80 fw7 pa3-ns dib-ns hover-bg-main-darker <#if item.active>bg-main-darker</#if>"
                   title="${item.linkText} ${i18n().menu_item}"
                   >
                   ${item.linkText}
