@@ -2,7 +2,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 
 <h2>Data Sources
-<img class="add-individual" src="${urls.images}/individual/addIcon.gif" alt="${i18n().add}" /></a>
+<a href="${urls.base}/editForm?controller=Entity&VClassURI=http%3A%2F%2Fvivo.wheatinitiative.org%2Fontology%2Fadminapp%2FDataSource"><img class="add-individual" src="${urls.images}/individual/addIcon.gif" alt="${i18n().add}" /></a>
 </h2>
 
 <table class="adminTable">
@@ -29,7 +29,7 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
             <td>
 	        <form method="post" action="${urls.base}/invokeService">
 		    <input type="hidden" name="uri" value="${dataSource.configuration.URI}"/>
-		    <#if type?hasContent>
+		    <#if type?has_content>
 		        <input type="hidden" name="type" value="${type}"/>
 		    </#if>
                     <#if dataSource.status.running>
@@ -63,9 +63,9 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 	        </#if>
             </td>
 	    <td> 
-	        <#if dataSource.status.stopRequested?>
+	        <#if dataSource.status.stopRequested>
                     stop requested
-		<#elseif dataSource.status.message?hasContent>
+		<#elseif dataSource.status.message?has_content>
                     ${dataSource.status.message}
 		</#if>
             </td>
