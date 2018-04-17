@@ -77,9 +77,8 @@ public class DataSourceListController extends FreemarkerHttpServlet {
         for (DataSourceDescription dataSource : dataSources) {
             if (dataSource.getConfiguration().getDeploymentURI() != null) {
                 DataSourceDescription description = pollService(
-                        dataSource.getConfiguration().getDeploymentURI());
-                dataSource.getStatus().setRunning(
-                        description.getStatus().isRunning());
+                        dataSource.getConfiguration().getDeploymentURI());                
+                dataSource.setStatus(description.getStatus());
             }
         }
         return dataSources;
@@ -88,16 +87,17 @@ public class DataSourceListController extends FreemarkerHttpServlet {
     private DataSourceDescription pollService(String serviceURL) 
             throws IOException {
         DataSourceDescriptionSerializer serializer = 
-                new DataSourceDescriptionSerializer();
-        String result = httpUtils.getHttpResponse(serviceURL);
-        // TODO add wrapper / convenience method that retains status code
+                new DataSourceDescriptionSerializer();        
         try {
+            String result = httpUtils.getHttpResponse(serviceURL);
+            // TODO add wrapper / convenience method that retains status code
             return serializer.unserialize(result);
         } catch (Exception e) {
             log.error(e, e);
             DataSourceDescription error = new DataSourceDescription();
             DataSourceStatus errorStatus = new DataSourceStatus();
             errorStatus.setStatusOk(false);
+            errorStatus.setMessage("connector not responding");
             error.setStatus(errorStatus);
             return error;
         }
