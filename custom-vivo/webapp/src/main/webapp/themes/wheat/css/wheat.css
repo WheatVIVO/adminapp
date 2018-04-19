@@ -861,7 +861,7 @@ input.search-vivo {
     /* padding-bottom: 50px; */
 }
 body.loggedIn #intro {
-    width: 98%;
+    /* width: 98%; */
 }
 #intro h2 {
     /* padding: 35px 0 12px 24px; */
@@ -906,6 +906,7 @@ body.login #login {
     padding-left: 15px;
     padding-top: 18px;
     border-bottom: none;
+    margin-bottom: 20px;
 }
 h3.internal-auth:hover {
     color: #47B6D0;
@@ -944,6 +945,7 @@ h3.internal-auth:hover {
     width: 219px;
     height: 24px;
     margin-left: 38px;
+    margin-bottom: 16px;
     background: #fff;
     border: 1px solid #e0dfdf;
     border-radius: 5px;
@@ -1002,9 +1004,15 @@ p.request-account {
     border-top: 1px solid #e8ece9;
 }
 p.password-note {
+    margin-top: -8px;
+    margin-bottom: 16px;
     font-size: 12px;
     color: #949696;
     padding-left: 38px;
+}
+p.note {
+    margin-top: -8px;
+    margin-bottom: 16px;
 }
 #flash-message {
     border: 1px dotted #E2C822;
@@ -1169,10 +1177,8 @@ a.view-all-style {
 	/*	background-color: #fff; /* layer fill content */
 /* } */
 .home-sections h4 {
-		border-top: 1px solid rgba(220,228,227,.42); /* stroke */
-		border-bottom: 1px solid rgba(220,228,227,.42); /* stroke */
-		background-color: #395d7f; /* layer fill content */
-		border-bottom: 2px solid #62b6d7;
+    line-height: 34px;
+		background-color: var(--main-darker); /* layer fill content */
 		color: #fff;
 }
 /* #home-stats {
@@ -1404,7 +1410,7 @@ ul#individual-tools-people li a {
     color: #fff;
 }
 .green.button:hover {
-    background-color: #b2d15a;
+    background-color: #749a02;
 }
 .blue.button,
 .blue.button:visited {
@@ -1663,9 +1669,10 @@ article.property ul.property-list {
 
 /* ADMIN PANEL ------>  */
 #admin {
-    background-color: #f2f9fb;
-    position: absolute;
-    left: 35%;
+  background-color: #f2f9fb;
+  position: absolute;
+  top: -64px;
+  height: 60px;
 }
 #admin h3 {
     background: #2485AE;

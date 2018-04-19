@@ -44,7 +44,7 @@
             <p class="mb3">${i18n().intro_para1}</p>
             <p>${i18n().intro_para2}</p>
 
-            <section id="search-home" role="region" class="mt4 center cf">
+            <section id="search-home" role="region" class="mv4 center cf">
                 <h3 class="f3 mb3">${i18n().intro_searchvivo} <span class="search-filter-selected mb3">filteredSearch</span></h3>
 
                 <form id="search-homepage" action="${urls.search}" name="search-home" role="search" method="post" >
