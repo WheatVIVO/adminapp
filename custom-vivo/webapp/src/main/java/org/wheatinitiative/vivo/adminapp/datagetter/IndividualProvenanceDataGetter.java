@@ -9,7 +9,6 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.adminapp.datasource.RDFServiceModelConstructor;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
@@ -18,6 +17,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+import edu.cornell.mannlib.vitro.webapp.beans.Individual;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFServiceException;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.ResultSetConsumer;
@@ -61,23 +61,28 @@ public class IndividualProvenanceDataGetter implements DataGetter {
             List<Source> sources = getSources(individual);
             additionalData.put("sources", sources);
         } else {
-            throw new RuntimeException("Unexpected type for 'individual': expected " + 
+            String errorMsg = "Unexpected type for 'individual': expected " + 
                     IndividualTemplateModel.class.getSimpleName() + ", was " + 
-                    o.getClass().getSimpleName());
+                    o.getClass().getSimpleName();
+            log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
         }
         return additionalData;
     }
     
     private List<Source> getSources(IndividualTemplateModel ind) {
+        log.debug("Getting sources for " + ind.getUri());
         long start = System.currentTimeMillis();
         List<Source> sources = new ArrayList<Source>();
         String individualURI = ind.getUri();
         String query = "SELECT DISTINCT ?graph WHERE { GRAPH ?graph { <" + 
                 individualURI + "> ?p ?o } } ORDER BY DESC(?g)";
         GraphURIGetter graphGetter = new GraphURIGetter();
+        log.debug(query);
         try {
             vreq.getRDFService().sparqlSelectQuery(query, graphGetter);
         } catch (RDFServiceException e) {
+            log.error(e, e);
             throw new RuntimeException(e);
         }
         Set<String> graphURISet = new HashSet<String>();
@@ -100,12 +105,24 @@ public class IndividualProvenanceDataGetter implements DataGetter {
                     sources.add(new Source(dataSource.getConfiguration().getName(), 
                         dataSource.getConfiguration().getURI(), dateTime));
                 }
+            } else {
+                log.debug("Checking for merge rule with URI " + graphURI);
+                try {
+                    Individual mergeRuleInd = vreq.getWebappDaoFactory()
+                            .getIndividualDao().getIndividualByURI(graphURI);
+                    if(mergeRuleInd != null) {
+                        sources.add(new Source(
+                                mergeRuleInd.getName(), mergeRuleInd.getURI(), null));
+                    }
+                } catch (Exception e) {
+                    log.error(e, e);
+                }
             }
         }
         long duration = System.currentTimeMillis() - start;
         String logMessage = duration + " ms to get graphs for individual "
                 + individualURI;
-        if(duration <= 50) {
+        if(duration <= 100) {
             log.debug(logMessage);
         } else if (duration < 250) {
             log.info(logMessage);
