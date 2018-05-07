@@ -1,7 +1,8 @@
 ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css" />')}
+${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 
 <h2>Data Sources
-<img class="add-individual" src="${urls.images}/individual/addIcon.gif" alt="${i18n().add}" /></a>
+<a href="${urls.base}/editForm?controller=Entity&VClassURI=http%3A%2F%2Fvivo.wheatinitiative.org%2Fontology%2Fadminapp%2FDataSource"><img class="add-individual" src="${urls.images}/individual/addIcon.gif" alt="${i18n().add}" /></a>
 </h2>
 
 <table class="adminTable">
@@ -12,8 +13,13 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
             <td>Source</td>
 	    <td>Last updated</td>
 	    <td>Next update</td>
+	    <td>Status message</td>
+	    <td>% done</td>
+	    <td>Total records</td>
+	    <td>Processed records</td>
+	    <td>Error records</td>
+	    <td>OK?</td>
 	    <td>Status</td>
-	    <td><!-- edit controls --></td>
 	</tr>
     </thead>
     <tbody>
@@ -23,7 +29,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
             <td>
 	        <form method="post" action="${urls.base}/invokeService">
 		    <input type="hidden" name="uri" value="${dataSource.configuration.URI}"/>
-		    <#if type?hasContent>
+		    <#if type?has_content>
 		        <input type="hidden" name="type" value="${type}"/>
 		    </#if>
                     <#if dataSource.status.running>
@@ -56,18 +62,32 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.theme}/css/wheatvivo.css"
 		    ---
 	        </#if>
             </td>
-	    <td>
-	        <#if dataSource.status.running>
-		    <strong class="statusOK">RUNNING</strong></td>
-		<#else>
-                    <strong class="statusError">IDLE</strong></td>
+	    <td> 
+	        <#if dataSource.status.stopRequested>
+                    stop requested
+		<#elseif dataSource.status.message?has_content>
+                    ${dataSource.status.message}
 		</#if>
             </td>
+	    <td>${dataSource.status.completionPercentage}</td>
+	    <td>${dataSource.status.totalRecords}</td>
+	    <td>${dataSource.status.processedRecords}</td>
+	    <td>${dataSource.status.errorRecords}</td>
 	    <td>
-	        <a href="${urls.base}/individual?uri=${dataSource.configuration.URI?url}"><img class="edit-individual" src="${urls.images}/individual/editIcon.gif" alt="${i18n().edit_entry}" /></a>
-                <img class="delete-individual" src="${urls.images}/individual/deleteIcon.gif" alt="${i18n().delete_entry}" /></a>
-	    </td>
+	        <#if dataSource.status.statusOk>
+		    <strong class="statusOK">OK</strong></td>
+		<#else>
+                    <strong class="statusError">ERROR</strong></td>
+		</#if>
+            </td>
 
+	    <td>
+	        <#if dataSource.status.running>
+		    <strong class="statusRunning">RUNNING</strong></td>
+		<#else>
+                    <strong class="statusIdle">IDLE</strong></td>
+		</#if>
+            </td>
 	</tr>
     </#list>
     </tbody>

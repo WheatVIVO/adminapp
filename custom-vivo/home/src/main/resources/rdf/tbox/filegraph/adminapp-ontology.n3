@@ -87,7 +87,14 @@
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	rdfs:domain :QueryTermSet ;
 	rdfs:label "query term" .
-	
+
+:nextUpdate a owl:DatatypeProperty ;
+        vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        rdfs:domain :DataSource ;
+	rdfs:range xsd:dateTime ;
+        rdfs:label "next scheduled update" ;
+        vitro:displayRankAnnot 30 .
+
 # 
 # 
 # 
@@ -183,6 +190,18 @@ _:genid11 a owl:Restriction ;
 	owl:onProperty :usesQueryTermSet ;
 	owl:allValuesFrom :QueryTermSet .
 
+:UpdateFrequency a owl:Class ;
+        rdfs:label "Update Frequency" .
+
+:updateFrequencyDaily a :UpdateFrequency ;
+        rdfs:label "daily" .
+
+:updateFrequencyWeekly a :UpdateFrequency ;
+        rdfs:label "weekly" .
+
+:updateFrequencyMonthly a :UpdateFrequency ;
+        rdfs:label "monthly" .
+
 #####################
 # Object properties #
 #####################
@@ -200,6 +219,20 @@ _:genid11 a owl:Restriction ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
 	rdfs:range :QueryTermSet .
+
+:updateFrequency a owl:ObjectProperty ;
+        vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        rdfs:domain :DataSource ;
+	rdfs:range :UpdateFrequency ;
+        rdfs:label "update frequency" ;
+        vitro:displayRankAnnot 32 .
+
+:scheduleAfter a owl:ObjectProperty ;
+        vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        rdfs:domain :DataSource ;
+	rdfs:range :DataSource ;
+        rdfs:label "schedule to run immediately after" ;
+        vitro:displayRankAnnot 34 .
 
 
 # 

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.utils.URIBuilder;
-import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
 import org.wheatinitiative.vivo.adminapp.datasource.RDFServiceModelConstructor;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
@@ -17,6 +16,7 @@ import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
 import edu.cornell.mannlib.vitro.webapp.auth.permissions.SimplePermission;
 import edu.cornell.mannlib.vitro.webapp.auth.requestedAction.AuthorizationRequest;
+import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.RedirectResponseValues;
@@ -24,6 +24,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.Res
 
 public class ServiceInvoker extends FreemarkerHttpServlet {
 
+    private static final long serialVersionUID = 1L;
     private static final Log log = LogFactory.getLog(ServiceInvoker.class);
     private static final String REDIRECT_PAGE = "/listDataSources";
     private HttpUtils httpUtils = new HttpUtils();
@@ -55,6 +56,13 @@ public class ServiceInvoker extends FreemarkerHttpServlet {
                 new RDFServiceModelConstructor(vreq.getRDFService()));
         String dataSourceURI = vreq.getParameter("uri");
         DataSourceDescription dataSource = dsm.getDataSource(dataSourceURI);
+        String defaultNamespace = ConfigurationProperties.getBean(
+                request.getSession().getServletContext()).getProperty(
+                        "Vitro.defaultNamespace");
+        if(defaultNamespace != null) {
+            dataSource.getConfiguration().getParameterMap().put(
+                    "Vitro.defaultNamespace", defaultNamespace);
+        }
         String deploymentURL = dataSource.getConfiguration().getDeploymentURI();
         if(deploymentURL != null) {
             if(vreq.getParameter("start") != null) {

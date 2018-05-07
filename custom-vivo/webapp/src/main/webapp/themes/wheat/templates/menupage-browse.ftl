@@ -37,6 +37,23 @@
         </ul>
     </nav>
 
+<section id="search-home" role="region" class="mt4 center cf">
+                <h3 class="f3 mb3">Search ${vClassGroupPublicName} <span class="search-filter-selected mb3">filteredSearch</span></h3>
+
+                <form id="search-homepage" action="${urls.search}" name="search-home" role="search" method="post" >
+                    <div id="search-home-field cf">
+                        <input type="text" name="querytext" class="search-homepage fl dib pa2 w-70" value="" autocapitalize="off" />
+                        <input type="submit" value="${i18n().search_button}"
+                          class="search dib fl pa2 w-30 input-reset white bg-black bb bb-0 b--black br2 br--right" />
+                        <input type="hidden" name="classgroup"  value="${vClassGroupURI}" autocapitalize="off" />
+                    </div>
+  
+                </form>
+
+</section> <!-- #search-home -->
+
+
+
     <div class="fr-l w-70-l" role="main">
       <nav id="alpha-browse-container" role="navigation" class="sticky top-0 bg-white nowrap overflow-x-scroll">
           <h3 class="selected-class"></h3>
