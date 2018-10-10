@@ -87,6 +87,7 @@ edu.cornell.mannlib.vivo.orcid.OrcidContextSetup
 
 # WheatVIVO addition
 org.wheatinitiative.vivo.servlet.setup.FauxPropertyLabeler
+org.wheatinitiative.vivo.adminapp.datasource.DataSourceScheduler
 
 # This should be near the end, because it will issue a warning if the connection to Solr times out.
 edu.cornell.mannlib.vitro.webapp.servlet.setup.SolrSmokeTest
