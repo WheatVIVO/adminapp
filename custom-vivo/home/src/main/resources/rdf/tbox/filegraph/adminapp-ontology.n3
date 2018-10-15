@@ -88,12 +88,20 @@
 	rdfs:domain :QueryTermSet ;
 	rdfs:label "query term" .
 
+:lastUpdate a owl:DatatypeProperty ;
+        vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        rdfs:domain :DataSource ;
+    rdfs:range xsd:dateTime ;
+        rdfs:label "last update" ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#nobody> ;
+        vitro:displayRankAnnot 30 .
+
 :nextUpdate a owl:DatatypeProperty ;
         vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
         rdfs:domain :DataSource ;
 	rdfs:range xsd:dateTime ;
         rdfs:label "next scheduled update" ;
-        vitro:displayRankAnnot 30 .
+        vitro:displayRankAnnot 31 .
 
 # 
 # 

@@ -49,15 +49,15 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 		</a>
 	    </td>
 	    <td>
-	        <#if dataSource.status.lastUpdate??>
-	            ${dataSource.status.lastUpdate?datetime}
+	        <#if dataSource.lastUpdate??>
+	            ${dataSource.lastUpdate}
 		<#else>
 		    ---
 	        </#if>
             </td>
 	    <td>
-	        <#if dataSource.configuration.nextUpdate??>
-	            ${dataSource.configuration.nextUpdate?datetime}
+	        <#if dataSource.nextUpdate??>
+	            ${dataSource.nextUpdate}
 		<#else>
 		    ---
 	        </#if>

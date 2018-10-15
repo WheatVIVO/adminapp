@@ -1,5 +1,8 @@
 package org.wheatinitiative.vivo.adminapp.datasource;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.ScheduledFuture;
 
@@ -9,13 +12,19 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
+import com.hp.hpl.jena.datatypes.xsd.XSDDateTime;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
@@ -31,11 +40,12 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
     private HashMap<String, ScheduledFuture<?>> uriToFuture =  
             new HashMap<String, ScheduledFuture<?>>();
+    private Model aboxModel;
     private DataSourceDao dataSourceDao;
     private RDFService rdfService;
     private HttpUtils httpUtils = new HttpUtils();
     
-    private static final int TWENTYFOUR_HOURS = 60 * 60 * 24 * 1000; // ms
+    private static final int DAILY = 60 * 60 * 24 * 1000; // ms
     
     private static final Log log = LogFactory.getLog(DataSourceScheduler.class);
     
@@ -68,6 +78,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         try {
+            this.aboxModel = ModelAccess.on(sce.getServletContext()
+                    ).getOntModelSelector().getABoxModel();
             this.rdfService = ModelAccess.on(
                     sce.getServletContext()).getRDFService();
             this.dataSourceDao = new DataSourceDao(
@@ -96,11 +108,41 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             }            
         }
         log.info("Task scheduler set up");
-        // TODO schedule tasks based on RDF statements 
+        
+        // TODO schedule tasks based on RDF statements
+        scheduleRecurrent("http://vivo.wheatinitiative.org/individual/dataSource2",
+                17, 45, DAILY);
+    }
+    
+    private void scheduleRecurrent(String dataSourceURI, int hour, int minutes, 
+            int interval) {
+        Runnable task = new DataSourceStarter(
+                dataSourceURI, new DataSourceTimestamper(aboxModel));
+        LocalTime desiredTime = new LocalTime(hour, minutes);
+        LocalDateTime currentDay = new LocalDateTime();
+        LocalTime currentTime = new LocalTime(
+                currentDay.getHourOfDay(), currentDay.getMinuteOfHour());
+        LocalDateTime scheduleDay;
+        // if we haven't yet reached the desired time of day, 
+        // schedule first run today
+        if(currentTime.isBefore(desiredTime)) {
+            scheduleDay = currentDay;
+        // otherwise schedule first run tomorrow
+        } else {
+            scheduleDay = currentDay.plusDays(1); 
+        }
+        LocalDateTime firstRunTime = new LocalDateTime(
+                scheduleDay.getYear(), scheduleDay.getMonthOfYear(), 
+                scheduleDay.getDayOfMonth(), hour, minutes);
+        log.info("Scheduling task " + task.getClass().getSimpleName() 
+                + " for first run at " + firstRunTime.toString());
+        this.uriToFuture.put(dataSourceURI, scheduler.scheduleAtFixedRate(task,
+                firstRunTime.toDateTime().toDate(), interval));
     }
     
     public void startNow(String dataSourceURI) {
-        new DataSourceStarter(dataSourceURI).run();
+        new DataSourceStarter(
+                dataSourceURI, new DataSourceTimestamper(aboxModel)).run();
     }
     
     public void stopNow(String dataSourceURI) {
@@ -126,12 +168,36 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         return ds;
     }
     
+    private class DataSourceTimestamper {
+        
+        private Model model;
+        private SimpleDateFormat timestampFormat = new SimpleDateFormat(
+                "yyyy-MM-dd'T'HH:mm:ss");
+        private Calendar calendar = Calendar.getInstance();
+
+        public DataSourceTimestamper(Model model) {
+            this.model = model;
+        }
+        
+        private void timestampLastUpdate(String dataSourceURI) {
+            Date now = calendar.getTime();
+            String timestampStr = timestampFormat.format(now);
+            Resource dataSource = model.getResource(dataSourceURI);
+            Property lastUpdate = model.getProperty(DataSourceDao.LASTUPDATE);
+            model.removeAll(dataSource, lastUpdate, null);
+            model.add(dataSource, lastUpdate, timestampStr, XSDDatatype.XSDdateTime);
+        }
+        
+    }
+    
     private class DataSourceStarter implements Runnable {
 
         private String dataSourceURI;
+        private DataSourceTimestamper timestamper;
         
-        public DataSourceStarter(String dataSourceURI) {
+        public DataSourceStarter(String dataSourceURI, DataSourceTimestamper timestamper) {
             this.dataSourceURI = dataSourceURI;
+            this.timestamper = timestamper;
         }
         
         @Override
@@ -139,7 +205,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             DataSourceDescription desc = getDataSourceDescription(
                     dataSourceURI);            
             desc.getStatus().setRunning(true);
-            updateService(desc.getConfiguration().getDeploymentURI(), desc);            
+            updateService(desc.getConfiguration().getDeploymentURI(), desc);
+            timestamper.timestampLastUpdate(dataSourceURI);
         }
         
     }
