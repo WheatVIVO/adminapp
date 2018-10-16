@@ -50,14 +50,14 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 	    </td>
 	    <td>
 	        <#if dataSource.lastUpdate??>
-	            ${dataSource.lastUpdate}
+	            ${dataSource.lastUpdate?replace("T", " ")}
 		<#else>
 		    ---
 	        </#if>
             </td>
 	    <td>
 	        <#if dataSource.nextUpdate??>
-	            ${dataSource.nextUpdate}
+	            ${dataSource.nextUpdate?replace("T", " ")}
 		<#else>
 		    ---
 	        </#if>

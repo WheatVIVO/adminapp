@@ -1,9 +1,8 @@
 package org.wheatinitiative.vivo.adminapp.datasource;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
 
 import javax.servlet.ServletContext;
@@ -13,18 +12,20 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.LocalDateTime;
-import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
+import org.wheatinitiative.vivo.datasource.DataSourceUpdateFrequency;
 import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import com.hp.hpl.jena.datatypes.xsd.XSDDateTime;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
@@ -45,7 +46,7 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private RDFService rdfService;
     private HttpUtils httpUtils = new HttpUtils();
     
-    private static final int DAILY = 60 * 60 * 24 * 1000; // ms
+    private static final String DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
     
     private static final Log log = LogFactory.getLog(DataSourceScheduler.class);
     
@@ -62,16 +63,26 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         try {
-            for(ScheduledFuture<?> f : uriToFuture.values()) {
-                f.cancel(true);        
+            log.info("Attempting to cancel all scheduled tasks...");
+            try {
+                for(ScheduledFuture<?> f : uriToFuture.values()) {
+                    try {
+                        f.cancel(true);        
+                    } catch (Exception e) {
+                        log.debug(e, e);
+                    }
+                }
+            } catch (Exception e) {
+                log.debug(e, e);
             }
+            log.info("Attempting to shut down scheduler...");
             scheduler.shutdown();
             log.info("Task scheduler shut down successfully.");
             scheduler.destroy();
             log.info("Task scheduler destroyed successfully.");
             sce.getServletContext().setAttribute(this.getClass().getName(), null);         
         } catch (Exception e) {
-            // ignore for now - possible NPEs as things are destroyed
+            log.debug(e, e);
         }
     }
 
@@ -108,41 +119,98 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             }            
         }
         log.info("Task scheduler set up");
-        
-        // TODO schedule tasks based on RDF statements
-        scheduleRecurrent("http://vivo.wheatinitiative.org/individual/dataSource2",
-                17, 45, DAILY);
+        scheduleDataSources();
     }
     
-    private void scheduleRecurrent(String dataSourceURI, int hour, int minutes, 
-            int interval) {
-        Runnable task = new DataSourceStarter(
-                dataSourceURI, new DataSourceTimestamper(aboxModel));
-        LocalTime desiredTime = new LocalTime(hour, minutes);
-        LocalDateTime currentDay = new LocalDateTime();
-        LocalTime currentTime = new LocalTime(
-                currentDay.getHourOfDay(), currentDay.getMinuteOfHour());
-        LocalDateTime scheduleDay;
-        // if we haven't yet reached the desired time of day, 
-        // schedule first run today
-        if(currentTime.isBefore(desiredTime)) {
-            scheduleDay = currentDay;
-        // otherwise schedule first run tomorrow
-        } else {
-            scheduleDay = currentDay.plusDays(1); 
+    private void scheduleDataSources() {
+        for(DataSourceDescription dataSource : this.dataSourceDao.listDataSources()) {
+            cancel(dataSource.getConfiguration().getURI());
+            schedule(dataSource);
         }
-        LocalDateTime firstRunTime = new LocalDateTime(
-                scheduleDay.getYear(), scheduleDay.getMonthOfYear(), 
-                scheduleDay.getDayOfMonth(), hour, minutes);
-        log.info("Scheduling task " + task.getClass().getSimpleName() 
-                + " for first run at " + firstRunTime.toString());
-        this.uriToFuture.put(dataSourceURI, scheduler.scheduleAtFixedRate(task,
-                firstRunTime.toDateTime().toDate(), interval));
+    }
+    
+    private void schedule(DataSourceDescription dataSource) {
+        // If 'schedule immediately after' has been set, remove any specific 
+        // next update date and exit.
+        if(dataSource.getScheduleAfterURI() != null) {
+            deleteNextUpdateDateTime(dataSource.getConfiguration().getURI());
+        } else if (dataSource.getNextUpdate() == null) {
+            return;
+        } else if (dataSource.getUpdateFrequency() != null){
+            computeNextUpdateAndScheduleTask(dataSource);
+        }
+    }
+    
+    private void deleteNextUpdateDateTime(String dataSourceURI) {
+        muteChangeListener(dataSourceURI);
+        aboxModel.removeAll(
+                aboxModel.getResource(dataSourceURI),
+                aboxModel.getProperty(DataSourceDao.NEXTUPDATE), 
+                null);
+        unmuteChangeListener(dataSourceURI);
+        return;
+    }
+    
+    private void setNextUpdate(String dataSourceURI, LocalDateTime nextUpdate) {
+        deleteNextUpdateDateTime(dataSourceURI);
+        muteChangeListener(dataSourceURI);
+        aboxModel.add(
+                aboxModel.getResource(dataSourceURI),
+                aboxModel.getProperty(DataSourceDao.NEXTUPDATE), 
+                nextUpdate.toString(DateTimeFormat.forPattern(
+                        DATE_TIME_PATTERN)), XSDDatatype.XSDdateTime);
+        unmuteChangeListener(dataSourceURI);
+    }
+    
+    private void computeNextUpdateAndScheduleTask(DataSourceDescription dataSource) {
+        try {
+            LocalDateTime nextUpdate = DateTimeFormat.forPattern(
+                    DATE_TIME_PATTERN).parseDateTime(
+                            dataSource.getNextUpdate()).toLocalDateTime();
+            // Give ourselves a buffer of five minutes to avoid the chance 
+            // of scheduling something that won't get run because the time
+            // has already passed.
+            LocalDateTime now = new LocalDateTime().plusMinutes(5);
+            int giveUp = 100;
+            while(now.isAfter(nextUpdate) && giveUp > 0) {
+                giveUp--;
+                nextUpdate = advanceByFrequency(nextUpdate, 
+                        dataSource.getUpdateFrequency());
+            }
+            setNextUpdate(dataSource.getConfiguration().getURI(), nextUpdate);
+            scheduleTask(dataSource.getConfiguration().getURI(), nextUpdate);
+        } catch (Exception e) {
+            log.error(e, e);
+            deleteNextUpdateDateTime(dataSource.getConfiguration().getURI());
+        }
+    }
+    
+    private void scheduleTask(String dataSourceURI, LocalDateTime dateTime) {
+        Runnable task = new DataSourceStarter(
+                dataSourceURI, true, new DataSourceTimestamper(aboxModel));
+        this.uriToFuture.put(dataSourceURI, scheduler.schedule(task,
+                dateTime.toDateTime().toDate()));
+        log.info("Scheduled " + dataSourceURI + " for " + dateTime.toString());
+    }
+    
+    private LocalDateTime advanceByFrequency(LocalDateTime nextUpdate, 
+            DataSourceUpdateFrequency updateFrequency) {
+        if(DataSourceUpdateFrequency.DAILY == updateFrequency) {
+            return nextUpdate.plusDays(1);
+        } else if(DataSourceUpdateFrequency.WEEKLY == updateFrequency) {
+            return nextUpdate.plusWeeks(1);
+        } else if(DataSourceUpdateFrequency.MONTHLY == updateFrequency) {
+            // For now, schedule next run on same day of the week instead of
+            // truly monthly.
+            return nextUpdate.plusWeeks(4);
+        } else {
+            return nextUpdate;
+        }
     }
     
     public void startNow(String dataSourceURI) {
         new DataSourceStarter(
-                dataSourceURI, new DataSourceTimestamper(aboxModel)).run();
+                dataSourceURI, false, new DataSourceTimestamper(aboxModel)).run();
     }
     
     public void stopNow(String dataSourceURI) {
@@ -171,17 +239,15 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private class DataSourceTimestamper {
         
         private Model model;
-        private SimpleDateFormat timestampFormat = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ss");
-        private Calendar calendar = Calendar.getInstance();
 
         public DataSourceTimestamper(Model model) {
             this.model = model;
         }
         
         private void timestampLastUpdate(String dataSourceURI) {
-            Date now = calendar.getTime();
-            String timestampStr = timestampFormat.format(now);
+            LocalDateTime now = new LocalDateTime();
+            String timestampStr = now.toString(DateTimeFormat.forPattern(
+                    DATE_TIME_PATTERN));
             Resource dataSource = model.getResource(dataSourceURI);
             Property lastUpdate = model.getProperty(DataSourceDao.LASTUPDATE);
             model.removeAll(dataSource, lastUpdate, null);
@@ -194,19 +260,52 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
 
         private String dataSourceURI;
         private DataSourceTimestamper timestamper;
+        private boolean runNextSourceInChain = false;
+        private int START_POLL_INTERVAL = 100; // ms
+        private int FINISH_POLL_INTERVAL = 3000; // ms
         
-        public DataSourceStarter(String dataSourceURI, DataSourceTimestamper timestamper) {
+        public DataSourceStarter(String dataSourceURI, boolean runNextSourceInChain,
+                DataSourceTimestamper timestamper) {
             this.dataSourceURI = dataSourceURI;
             this.timestamper = timestamper;
+            this.runNextSourceInChain = runNextSourceInChain;
         }
         
         @Override
         public void run() {
+            timestamper.timestampLastUpdate(dataSourceURI);
             DataSourceDescription desc = getDataSourceDescription(
                     dataSourceURI);            
             desc.getStatus().setRunning(true);
             updateService(desc.getConfiguration().getDeploymentURI(), desc);
-            timestamper.timestampLastUpdate(dataSourceURI);
+            schedule(desc);
+            int polls = 50;
+            while(!isRunning(desc.getConfiguration().getDeploymentURI()) && polls > 0) {
+                polls--;
+                try {
+                    Thread.sleep(START_POLL_INTERVAL);
+                } catch(InterruptedException e) {
+                    this.runNextSourceInChain = false;
+                }
+            }
+            if(runNextSourceInChain) {
+                boolean brk = false;
+                while(brk || isRunning(desc.getConfiguration().getDeploymentURI())) {
+                    try {
+                        Thread.sleep(FINISH_POLL_INTERVAL);                        
+                    } catch (InterruptedException e) {
+                        brk = true;
+                        this.runNextSourceInChain = false;
+                    }
+                }
+                for(DataSourceDescription dataSource : dataSourceDao.listDataSources()) {
+                    log.info(dataSource.getConfiguration().getURI() + " is scheduled to run after " + dataSource.getScheduleAfterURI());
+                    if(dataSourceURI.equals(dataSource.getScheduleAfterURI())) {
+                        log.info("Starting");
+                        startNow(dataSource.getConfiguration().getURI());
+                    }
+                }
+            }
         }
         
     }
@@ -227,6 +326,19 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             updateService(desc.getConfiguration().getDeploymentURI(), desc);            
         }
         
+    }
+    
+    protected boolean isRunning(String deploymentURI) {
+        DataSourceDescriptionSerializer serializer = 
+                new DataSourceDescriptionSerializer();        
+        try {
+            String result = httpUtils.getHttpResponse(deploymentURI);
+            DataSourceDescription dataSource = serializer.unserialize(result);
+            return dataSource.getStatus().isRunning();
+        } catch (Exception e) {
+            log.error(e, e);
+            return false;
+        }    
     }
     
     protected DataSourceDescription updateService(
@@ -251,7 +363,7 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
 
     @Override
     public void notifyEvent(String arg0, Object arg1) {
-        // don't care        
+             
     }
 
     @Override
@@ -269,12 +381,47 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         }
     }
     
+    Set<String> mutedForChangeListening = new HashSet<String>();
+    
+    private void muteChangeListener(String dataSourceURI) {
+        mutedForChangeListening.add(dataSourceURI);
+    }
+    
+    private void unmuteChangeListener(String dataSourceURI) {
+        mutedForChangeListening.remove(dataSourceURI);
+    }
+    
     protected void doAddedModel(Model additions) {
-        // TODO method stub
+        doChangedDataSources(additions);
     }
     
     protected void doRemovedModel(Model removals) {
-        // TODO method stub
+        doChangedDataSources(removals);
     }
 
+    private void doChangedDataSources(Model changes) {
+        if(log.isDebugEnabled()) {
+            log.debug("Heard " + changes.size() + " changes");
+        }
+        StmtIterator sit = changes.listStatements();
+        while(sit.hasNext()) {
+            Statement stmt = sit.next();
+            if(stmt.getSubject().isURIResource() 
+                    && mutedForChangeListening.contains(
+                            stmt.getSubject().asResource().getURI())) {
+                continue;
+            }
+            if(DataSourceDao.NEXTUPDATE.equals(stmt.getPredicate().getURI())
+                    || DataSourceDao.UPDATEFREQUENCY.equals(stmt.getPredicate().getURI())
+                    || DataSourceDao.SCHEDULEAFTER.equals(stmt.getPredicate().getURI())
+                    ) {
+                if(stmt.getSubject().isURIResource()) {
+                    log.debug("Scheduling based on heard change");
+                    schedule(dataSourceDao.getDataSource(
+                            stmt.getSubject().asResource().getURI()));   
+                }                
+            }
+        }
+    }
+    
 }
