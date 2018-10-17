@@ -20,6 +20,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI
 
 :deploymentURI a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:anyURI ;
 	vitro:displayRankAnnot 50 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -28,6 +29,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/endpointURI
 
 :endpointURI a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:domain :SparqlEndpoint ;
 	rdfs:range xsd:anyURI ;
 	vitro:displayRankAnnot 10 ;
@@ -37,6 +39,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/endpointUpdateURI
 
 :endpointUpdateURI a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:domain :SparqlEndpoint ;
 	rdfs:range xsd:anyURI ;
 	vitro:displayRankAnnot 11 ;
@@ -46,6 +49,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/graphURI
 
 :graphURI a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:anyURI ;
 	vitro:displayRankAnnot 70 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -54,6 +58,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/password
 
 :password a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:string ;
 	vitro:displayRankAnnot 21 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -62,6 +67,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/priority
 
 :priority a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:int ;
 	vitro:displayRankAnnot 10 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -70,6 +76,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI
 
 :serviceURI a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:anyURI ;
 	vitro:displayRankAnnot 20 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -78,6 +85,7 @@
 # http://vivo.wheatinitiative.org/ontology/adminapp/username
 
 :username a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:range xsd:string ;
 	vitro:displayRankAnnot 20 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
@@ -89,14 +97,16 @@
 	rdfs:label "query term" .
 
 :lastUpdate a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
         vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
         rdfs:domain :DataSource ;
-    rdfs:range xsd:dateTime ;
+        rdfs:range xsd:dateTime ;
         rdfs:label "last update" ;
         vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#nobody> ;
         vitro:displayRankAnnot 30 .
 
 :nextUpdate a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
         vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
         rdfs:domain :DataSource ;
 	rdfs:range xsd:dateTime ;

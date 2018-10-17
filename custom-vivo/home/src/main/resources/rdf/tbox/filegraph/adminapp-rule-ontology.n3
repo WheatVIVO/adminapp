@@ -15,6 +15,7 @@
 # 
 
 :matchDegree a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
 	rdfs:domain :MergeRuleAtom ;
 	rdfs:range xsd:integer ;
 	vitro:displayRankAnnot 30 ;
