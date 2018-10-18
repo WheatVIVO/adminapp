@@ -16,6 +16,7 @@
 </div></form></div>
   </div></div>
 
+<#-- Remove social media links per Xuan 08-2018
 <div id="block-block-33" class="block block-block no-title" ><div class="block-inner clearfix">
 
 <div class="block-content content">
@@ -26,6 +27,7 @@
         <li><a href="https://plus.google.com/+WheatinitiativeOrg" class="google-plus">G+</a></li>
     </ul>
 </div>
+-->
 
 </div></div>
 
