@@ -1671,7 +1671,7 @@ article.property ul.property-list {
 #admin {
   background-color: #f2f9fb;
   position: absolute;
-  top: -64px;
+  /* top: -64px; hides panel if in effect */
   height: 60px;
 }
 #admin h3 {
