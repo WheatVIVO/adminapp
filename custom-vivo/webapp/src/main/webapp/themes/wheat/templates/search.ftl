@@ -2,6 +2,7 @@
 
 <#--Breaking this out so this can be utilized by other pages such as the jsp advanced tools pages-->
 
+<#-- Not needed in Wheat theme, where search is included in the header
 <section id="search" role="region">
     <fieldset>
         <legend>${i18n().search_form}</legend>
@@ -14,4 +15,4 @@
         </form>
     </fieldset>
 </section>
-        
+-->        
