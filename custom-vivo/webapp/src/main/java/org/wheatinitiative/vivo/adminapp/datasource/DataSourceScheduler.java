@@ -2,6 +2,7 @@ package org.wheatinitiative.vivo.adminapp.datasource;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
 
@@ -45,6 +46,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private DataSourceDao dataSourceDao;
     private RDFService rdfService;
     private HttpUtils httpUtils = new HttpUtils();
+    private static final String DATASOURCE_CONFIG_PROPERTY_PREFIX = "datasource.";
+    private Map<String, String> datasourceConfigurationProperties = new HashMap<String, String>();
     
     private static final String DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
     
@@ -88,6 +91,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        populateDataSourceRelatedConfigurationProperties(
+                ConfigurationProperties.getBean(sce).getPropertyMap());
         try {
             this.aboxModel = ModelAccess.on(sce.getServletContext()
                     ).getOntModelSelector().getABoxModel();
@@ -120,6 +125,27 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         }
         log.info("Task scheduler set up");
         scheduleDataSources();
+    }
+    
+    private void populateDataSourceRelatedConfigurationProperties(
+            Map<String, String> configurationProperties) {
+        for(String key : configurationProperties.keySet()) {
+            if(!key.startsWith(DATASOURCE_CONFIG_PROPERTY_PREFIX)) {
+                continue;
+            }
+            datasourceConfigurationProperties.put(
+                    key, configurationProperties.get(key));
+        }
+    }
+    
+    /*
+     * Add the global configuration properties to a parameter map
+     */
+    private void includeDataSourceRelatedConfigurationProperties(
+            Map<String, Object> parameters) {
+        for(String key : this.datasourceConfigurationProperties.keySet()) {
+            parameters.put(key, this.datasourceConfigurationProperties.get(key));
+        }
     }
     
     private void scheduleDataSources() {
@@ -275,7 +301,9 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         public void run() {
             timestamper.timestampLastUpdate(dataSourceURI);
             DataSourceDescription desc = getDataSourceDescription(
-                    dataSourceURI);            
+                    dataSourceURI);
+            includeDataSourceRelatedConfigurationProperties(
+                    desc.getConfiguration().getParameterMap());
             desc.getStatus().setRunning(true);
             updateService(desc.getConfiguration().getDeploymentURI(), desc);
             schedule(desc);
