@@ -1,0 +1,828 @@
+@prefix tsri:  <http://vivo.scripps.edu/ontology/tsri#> .
+@prefix ocrer: <http://purl.org/net/OCRe/research.owl#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix swrl:  <http://www.w3.org/2003/11/swrl#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix cito:  <http://purl.org/spar/cito/> .
+@prefix geo:   <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix vivo:  <http://vivoweb.org/ontology/core#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix vs:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix c4o:   <http://purl.org/spar/c4o/> .
+
+<http://vivo.wheatinitiative.org/individual/n3818>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Organization fax number match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/orgFaxContext> .
+
+<http://vivo.wheatinitiative.org/individual/n1448>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Organization funding org match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/orgAwardsGrantContext> .
+
+<http://vivo.wheatinitiative.org/individual/n690>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant title match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                85 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n1184>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "organization name match"@en-US ;
+        vitro:modTime           "2017-02-24T14:14:45"^^xsd:dateTime ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                90 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n3595>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Texas A&M"@en-US ;
+        vitro:modTime  "2017-09-08T15:29:58"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/tamu"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/tamu"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                11 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://scholars.library.tamu.edu/vivo"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n4320>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Florida"@en-US ;
+        vitro:modTime  "2017-09-08T15:22:07"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/florida"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/florida"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                9 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://vivo.ufl.edu/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n5033>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication PMID match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                bibo:pmid .
+
+<http://vivo.wheatinitiative.org/individual/n148>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication DOI match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                bibo:doi .
+
+<http://vivo.wheatinitiative.org/individual/n1097>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "UPenn"@en-US ;
+        vitro:modTime  "2017-09-08T15:32:19"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/upenn"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/upenn"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                12 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "https://vivo.upenn.edu/vivo/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n6465>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Organization contact email match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/organizationEmailContext> .
+
+<http://vivo.wheatinitiative.org/individual/dataSource4>
+        a           <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label  "RCUK"@en-US ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/rcuk"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/RCUK"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                4 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://http://gtr.rcuk.ac.uk/gtr/api/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n3433>
+        a                       <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeDataSource> , owl:Thing ;
+        rdfs:label              "Standard merge source"@en-US ;
+        vitro:modTime           "2017-02-21T12:45:37"^^xsd:dateTime ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeDataSource> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/merge"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vivo.wheatinitiative.org/graph/merge"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasMergeRule>
+                <http://vivo.wheatinitiative.org/individual/n6476> , <http://vivo.wheatinitiative.org/individual/n3343> , <http://vivo.wheatinitiative.org/individual/n7611> , <http://vivo.wheatinitiative.org/individual/n6814> , <http://vivo.wheatinitiative.org/individual/n2837> , <http://vivo.wheatinitiative.org/individual/n4402> , <http://vivo.wheatinitiative.org/individual/n2649> , <http://vivo.wheatinitiative.org/individual/n3136> , <http://vivo.wheatinitiative.org/individual/n264> , <http://vivo.wheatinitiative.org/individual/n6135> , <http://vivo.wheatinitiative.org/individual/n3349> , <http://vivo.wheatinitiative.org/individual/n3498> , <http://vivo.wheatinitiative.org/individual/n1447> , <http://vivo.wheatinitiative.org/individual/n3432> , <http://vivo.wheatinitiative.org/individual/n5689> , <http://vivo.wheatinitiative.org/individual/n6082> , <http://vivo.wheatinitiative.org/individual/n5983> , <http://vivo.wheatinitiative.org/individual/n1883> , <http://vivo.wheatinitiative.org/individual/n1707> , <http://vivo.wheatinitiative.org/individual/n8180> , <http://vivo.wheatinitiative.org/individual/n2357> , <http://vivo.wheatinitiative.org/individual/n1586> , <http://vivo.wheatinitiative.org/individual/n6143> , <http://vivo.wheatinitiative.org/individual/n2343> , <http://vivo.wheatinitiative.org/individual/n7896> , <http://vivo.wheatinitiative.org/individual/n3764> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://localhost:8080/wheatvivo-adminapp/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n5910>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Project participant match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/bfo_0000055Context> .
+
+<http://vivo.wheatinitiative.org/individual/n1321>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant funding org match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/grantAwardedByContext> .
+
+<http://vivo.wheatinitiative.org/individual/n7571>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Cornell"@en-US ;
+        vitro:modTime  "2017-09-08T15:19:47"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/cornell"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/cornell"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                8 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "https://scholars.cornell.edu/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n1447>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Publication PMCID Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n3385> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Document .
+
+<http://vivo.wheatinitiative.org/individual/n7750>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Concepts"@en-US ;
+        vitro:modTime  "2018-03-15T13:30:49"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/concept"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/kconcepts"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                99 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n8077>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person authorship rank on same publication match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vivo:rank ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/authorInAuthorshipContext> .
+
+<http://vivo.wheatinitiative.org/individual/n4360>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/PublishDataSource> ;
+        rdfs:label     "Publish to Staging WheatVIVO"@en-US ;
+        vitro:modTime  "2017-02-21T12:58:33"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                1 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://localhost:8080/wheatvivo-adminapp/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/n571> .
+
+<http://vivo.wheatinitiative.org/individual/n3965>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Journal title match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n2267>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "OpenAire"@en-US ;
+        vitro:modTime  "2017-09-08T15:24:04"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/openaire"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/openaire"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                10 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://api.openaire.eu/oai_pmh/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n7428>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/SparqlEndpoint> ;
+        rdfs:label     "Public Portal Endpoint"@en-US ;
+        vitro:modTime  "2017-05-16T15:50:14"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointURI>
+                "http://localhost:8080/wheatvivo/api/sparqlQuery"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointUpdateURI>
+                "http://localhost:8080/wheatvivo/api/sparqlUpdate"^^xsd:anyURI .
+
+<http://vivo.wheatinitiative.org/individual/n1247>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication date match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/publicationDateContext> .
+
+<http://vivo.wheatinitiative.org/individual/dataSource3>
+        a           <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label  "VIVO USDA"@en-US ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/usda"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/USDA"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                3 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://vivo.usda.gov"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n7896>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Publication DOI Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n148> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Document .
+
+<http://vivo.wheatinitiative.org/individual/n3432>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Grant Sponsor ID Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n7420> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                vivo:Grant .
+
+<http://vivo.wheatinitiative.org/individual/n5429>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "ORCID"@en-US ;
+        vitro:modTime  "2017-05-15T18:13:26"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/orcid"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/ORCID"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                5 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://localhost:8080/wheatvivo-adminapp/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n6208>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication date match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/publicationDateContext> .
+
+<http://vivo.wheatinitiative.org/individual/n566>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant PI match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/grantRelatesContext> .
+
+<http://vivo.wheatinitiative.org/individual/n4431>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person additional email match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/additionalEmailContext> .
+
+<http://vivo.wheatinitiative.org/individual/n6814>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Project Participant Plus Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n5910> , <http://vivo.wheatinitiative.org/individual/n3408> , <http://vivo.wheatinitiative.org/individual/n4928> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                vivo:Project .
+
+<http://vivo.wheatinitiative.org/individual/n2837>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Journal Title Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n3965> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Journal .
+
+<http://vivo.wheatinitiative.org/individual/n4928>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Project title match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                75 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n4636>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person first name match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                70 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vcard:givenName .
+
+<http://vivo.wheatinitiative.org/individual/n6143>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Address Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n4408> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n7521>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant date interval match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                vivo:dateTimeInterval .
+
+<http://vivo.wheatinitiative.org/individual/n6476>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Publication PMID Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n5033> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Document .
+
+<http://vivo.wheatinitiative.org/individual/n7590>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person last name inexact match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                80 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vcard:familyName .
+
+<http://vivo.wheatinitiative.org/individual/n5983>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Name Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n4636> , <http://vivo.wheatinitiative.org/individual/n6156> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/dataSource2>
+        a           <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label  "Wheat Initiative Website"@en-US ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/wheatinitiative"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/wheatinitiative"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                2 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://www.wheatinitiative.org/administration/users/csv"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n6156>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person last name match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                95 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vcard:familyName .
+
+<http://vivo.wheatinitiative.org/individual/n3764>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Journal ISSN Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n607> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Journal .
+
+<http://vivo.wheatinitiative.org/individual/n8121>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Organization lead organization on same grant match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/orgHasLeaderRoleContext> .
+
+<http://vivo.wheatinitiative.org/individual/n4408>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "organization address match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/mailingAddressOrgContext> .
+
+<http://vivo.wheatinitiative.org/individual/n5689>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Phone Number Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n8166> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n1586>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Publication Authorship Plus Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n6208> , <http://vivo.wheatinitiative.org/individual/n3057> , <http://vivo.wheatinitiative.org/individual/n7704> , <http://vivo.wheatinitiative.org/individual/n3257> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Document .
+
+<http://vivo.wheatinitiative.org/individual/n3498>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Name and Position Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n7590> , <http://vivo.wheatinitiative.org/individual/n6918> , <http://vivo.wheatinitiative.org/individual/n5774> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n16>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person email match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/primaryEmailContext> .
+
+<http://vivo.wheatinitiative.org/individual/n72>
+        a           owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label  "Concept label merge pattern" ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                99 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n6135>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Email Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n16> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n3385>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication PMCID match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vivo:pmcid .
+
+<http://vivo.wheatinitiative.org/individual/n4402>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Fax Number Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n3818> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n6342>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/PublishDataSource> ;
+        rdfs:label     "Publish to Public WheatVIVO Portal"@en-US ;
+        vitro:modTime  "2017-02-24T16:54:21"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                2 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://localhost:8080/wheatvivo-adminapp/"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/n7428> .
+
+<http://vivo.wheatinitiative.org/individual/n3257>
+        a           owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label  "Publication title match" ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                95 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n3408>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Project date interval match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                vivo:dateTimeInterval .
+
+<http://vivo.wheatinitiative.org/individual/n4064>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/QueryTermSet> ;
+        rdfs:label     "Standard Wheat Query Term set"@en-US ;
+        vitro:modTime  "2017-02-16T18:45:40"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/queryTerm>
+                "ble" , "tritici" , "blé" , "wheat" , "triticum" .
+
+<http://vivo.wheatinitiative.org/individual/dataSource1>
+        a           <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label  "Prodinra"@en-US ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/prodinra"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/Prodinra"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                1 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://oai.prodinra.inra.fr/ft"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n6918>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person position match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/personInPositionContext> .
+
+<http://vivo.wheatinitiative.org/individual/n2357>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Lead Organization on Same Grant Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n8121> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n3349>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Researcher ID Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n3327> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n2649>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Funding Org on Same Grant Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n1448> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n3057>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication venue match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                vivo:hasPublicationVenue .
+
+<http://vivo.wheatinitiative.org/individual/n7420>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant sponsor ID match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vivo:sponsorAwardId .
+
+<http://vivo.wheatinitiative.org/individual/n3136>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Additional Email Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n4431> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n3343>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Name Merge Rule"@en-US , "Organization Merge Rule"@en-US ;
+        vitro:modTime           "2017-02-24T14:13:53"^^xsd:dateTime ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n1184> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n7704>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication authorship match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/informationResourceInAuthorshipContext> .
+
+<http://vivo.wheatinitiative.org/individual/n7120>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/QueryTermSet> ;
+        rdfs:label     "Standard Wheat Query Term set"@en-US ;
+        vitro:modTime  "2017-02-16T18:45:27"^^xsd:dateTime .
+
+<http://vivo.wheatinitiative.org/individual/n571>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/SparqlEndpoint> ;
+        rdfs:label     "Portal endpoint"@en-US ;
+        vitro:modTime  "2017-02-22T15:20:54"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointURI>
+                "http://localhost:8080/wheatvivo/api/sparqlQuery"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointUpdateURI>
+                "http://localhost:8080/wheatvivo/api/sparqlUpdate"^^xsd:anyURI .
+
+<http://vivo.wheatinitiative.org/individual/n8166>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Organization phone number match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/orgTelephoneContext> .
+
+<http://vivo.wheatinitiative.org/individual/n1009>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Cordis"@en-US ;
+        vitro:modTime  "2017-09-08T15:08:35"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/cordis"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/cordis"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                7 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "http://cordis.europa.eu/search/result_en"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
+<http://vivo.wheatinitiative.org/individual/n264>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Publication Title Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n1247> , <http://vivo.wheatinitiative.org/individual/n14> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                bibo:Document .
+
+<http://vivo.wheatinitiative.org/individual/n5774>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person first name inexact match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                19 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vcard:givenName .
+
+<http://vivo.wheatinitiative.org/individual/n2343>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person ORCID iD Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n2463> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n6082>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Grant Local Award ID Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n4326> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                vivo:Grant .
+
+<http://vivo.wheatinitiative.org/individual/n607>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Journal ISSN match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                bibo:issn .
+
+<http://vivo.wheatinitiative.org/individual/n7611>
+        a                       <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> , owl:Thing ;
+        rdfs:label              "Grant PI Plus Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n3926> , <http://vivo.wheatinitiative.org/individual/n566> , <http://vivo.wheatinitiative.org/individual/n1321> , <http://vivo.wheatinitiative.org/individual/n7521> , <http://vivo.wheatinitiative.org/individual/n690> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                vivo:Grant .
+
+<http://vivo.wheatinitiative.org/individual/n3926>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant lead org match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/grantAdministeredByContext> .
+
+<http://vivo.wheatinitiative.org/individual/n2463>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person ORCID iD match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomObjectProperty>
+                vivo:orcidId .
+
+<http://vivo.wheatinitiative.org/individual/n1707>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Organization Contact Email Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n6465> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Organization .
+
+<http://vivo.wheatinitiative.org/individual/n14>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Publication title match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/matchDegree>
+                99 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                rdfs:label .
+
+<http://vivo.wheatinitiative.org/individual/n3327>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Person Researcher ID match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vivo:researcherId .
+
+<http://vivo.wheatinitiative.org/individual/n1883>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label              "Person Authorship Rank on Same Publication Merge Rule" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n8077> , <http://vivo.wheatinitiative.org/individual/n6156> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                foaf:Person .
+
+<http://vivo.wheatinitiative.org/individual/n8180>
+        a           owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRule> ;
+        rdfs:label  "Concept Name Merge Rule" ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/hasAtom>
+                <http://vivo.wheatinitiative.org/individual/n72> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeRuleClass>
+                skos:Concept .
+
+<http://vivo.wheatinitiative.org/individual/n4326>
+        a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        rdfs:label              "Grant local award ID match" ;
+        vitro:mostSpecificType  <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/mergeAtomDataProperty>
+                vivo:localAwardId .
+
+<http://vivo.wheatinitiative.org/individual/sparqlEndpoint1>
+        a           <http://vivo.wheatinitiative.org/ontology/adminapp/SparqlEndpoint> ;
+        rdfs:label  "Built-in SPARQL Endpoint"@en-US ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointURI>
+                "http://localhost:8080/wheatvivo-adminapp/api/sparqlQuery"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/endpointUpdateURI>
+                "http://localhost:8080/wheatvivo-adminapp/api/sparqlUpdate"^^xsd:anyURI .

@@ -17,6 +17,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.DataSourceUpdateFrequency;
+import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
 import org.wheatinitiative.vivo.datasource.dao.DataSourceDao;
 import org.wheatinitiative.vivo.datasource.service.DataSourceDescriptionSerializer;
 import org.wheatinitiative.vivo.datasource.util.http.HttpUtils;
@@ -48,6 +49,10 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private HttpUtils httpUtils = new HttpUtils();
     private static final String DATASOURCE_CONFIG_PROPERTY_PREFIX = "datasource.";
     private Map<String, String> datasourceConfigurationProperties = new HashMap<String, String>();
+    private String ENDPOINT_USERNAME_PROPERTY = "sparqlEndpoint.username";
+    private String endpointUsername;
+    private String ENDPOINT_PASSWORD_PROPERTY = "sparqlEndpoint.password";
+    private String endpointPassword;
     
     private static final String DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
     
@@ -136,6 +141,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             datasourceConfigurationProperties.put(
                     key, configurationProperties.get(key));
         }
+        this.endpointUsername = configurationProperties.get(ENDPOINT_USERNAME_PROPERTY);
+        this.endpointPassword = configurationProperties.get(ENDPOINT_PASSWORD_PROPERTY);
     }
     
     /*
@@ -146,6 +153,20 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         for(String key : this.datasourceConfigurationProperties.keySet()) {
             parameters.put(key, this.datasourceConfigurationProperties.get(key));
         }
+    }
+    
+    /*
+     * Allow username and password for endpoint to be specified in 
+     * runtime.properties instead of RDF
+     */
+    private void addSparqlEndpointCredentialsFromConfigurationProperties(
+            SparqlEndpointParams endpointParameters) {
+        if(endpointParameters.getUsername() == null) {
+            endpointParameters.setUsername(endpointUsername);
+        }
+        if(endpointParameters.getPassword() == null) {
+            endpointParameters.setPassword(endpointPassword);
+        }        
     }
     
     private void scheduleDataSources() {
@@ -304,6 +325,8 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
                     dataSourceURI);
             includeDataSourceRelatedConfigurationProperties(
                     desc.getConfiguration().getParameterMap());
+            addSparqlEndpointCredentialsFromConfigurationProperties(
+                    desc.getConfiguration().getEndpointParameters());
             desc.getStatus().setRunning(true);
             updateService(desc.getConfiguration().getDeploymentURI(), desc);
             schedule(desc);
@@ -329,7 +352,7 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
                 for(DataSourceDescription dataSource : dataSourceDao.listDataSources()) {
                     log.info(dataSource.getConfiguration().getURI() + " is scheduled to run after " + dataSource.getScheduleAfterURI());
                     if(dataSourceURI.equals(dataSource.getScheduleAfterURI())) {
-                        log.info("Starting");
+                        log.info("Starting" + dataSource.getConfiguration().getURI());
                         startNow(dataSource.getConfiguration().getURI());
                     }
                 }

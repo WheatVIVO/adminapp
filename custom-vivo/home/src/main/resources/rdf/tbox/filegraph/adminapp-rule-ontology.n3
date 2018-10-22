@@ -20,6 +20,9 @@
 	rdfs:range xsd:integer ;
 	vitro:displayRankAnnot 30 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	rdfs:label "match percentage"@en .
 # 
 # #################################################################
@@ -82,6 +85,9 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 10 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	rdfs:range :MergeRule .
 
 :hasAtom a owl:ObjectProperty ;
@@ -89,6 +95,9 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 15 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	rdfs:range :MergeRuleAtom .
 
 :mergeRuleClass a owl:ObjectProperty ;
@@ -96,6 +105,9 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 10 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	rdfs:range owl:Class .
 
 :mergeAtomDataProperty a owl:ObjectProperty ;
@@ -103,6 +115,9 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 20 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	rdfs:range owl:DatatypeProperty .
 
 :mergeAtomObjectProperty a owl:ObjectProperty ;
@@ -110,6 +125,9 @@ _:genid1 a owl:Restriction ;
 	vitro:displayRankAnnot 22 ;
 	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
 	vitro:offerCreateNewOptionAnnot true ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
 	vitro:customEntryFormAnnot "org.wheatinitiative.vivo.adminapp.form.generator.MergesOnObjectPropertyGenerator"^^xsd:string ;
 	rdfs:range owl:ObjectProperty .
 
