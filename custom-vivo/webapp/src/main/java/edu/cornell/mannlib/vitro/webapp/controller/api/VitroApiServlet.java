@@ -64,7 +64,7 @@ public class VitroApiServlet extends HttpServlet {
 			AuthorizationRequest requiredActions) throws AuthException {
 	    
 	    // allow requests from localhost to connect without email/password
-	    if(false && isLocalRequest(req)) {
+	    if(isLocalRequest(req)) {
 	        log.debug("Authorized: request is from localhost");
 	        return;
 	    }
