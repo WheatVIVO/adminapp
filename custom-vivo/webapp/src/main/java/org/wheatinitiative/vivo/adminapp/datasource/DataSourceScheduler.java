@@ -49,9 +49,10 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private HttpUtils httpUtils = new HttpUtils();
     private static final String DATASOURCE_CONFIG_PROPERTY_PREFIX = "datasource.";
     private Map<String, String> datasourceConfigurationProperties = new HashMap<String, String>();
-    private String ENDPOINT_USERNAME_PROPERTY = "sparqlEndpoint.username";
+    private static final String DEFAULT_NAMESPACE_PROPERTY = "Vitro.defaultNamespace"; 
+    private static final String ENDPOINT_USERNAME_PROPERTY = "sparqlEndpoint.username";
     private String endpointUsername;
-    private String ENDPOINT_PASSWORD_PROPERTY = "sparqlEndpoint.password";
+    private static final String ENDPOINT_PASSWORD_PROPERTY = "sparqlEndpoint.password";
     private String endpointPassword;
     
     private static final String DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
@@ -141,8 +142,10 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
             datasourceConfigurationProperties.put(
                     key, configurationProperties.get(key));
         }
+        datasourceConfigurationProperties.put(DEFAULT_NAMESPACE_PROPERTY, 
+                configurationProperties.get(DEFAULT_NAMESPACE_PROPERTY));
         this.endpointUsername = configurationProperties.get(ENDPOINT_USERNAME_PROPERTY);
-        this.endpointPassword = configurationProperties.get(ENDPOINT_PASSWORD_PROPERTY);
+        this.endpointPassword = configurationProperties.get(ENDPOINT_PASSWORD_PROPERTY);        
     }
     
     /*
