@@ -1467,6 +1467,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>VivoDataSourceService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.service.VivoDataSourceService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VivoDataSourceService</servlet-name>
+    <url-pattern>/dataSource/vivo/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>PublisherService</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.datasource.publish.PublisherService</servlet-class>
   </servlet>
