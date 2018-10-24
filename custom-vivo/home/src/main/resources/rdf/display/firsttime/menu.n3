@@ -1,0 +1,150 @@
+# $This file is distributed under the terms of the license in /doc/license.txt$ 
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix display: <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix core: <http://vivoweb.org/ontology/core#> .
+@prefix vivoweb: <http://vivoweb.org/ontology#> .
+@prefix ocrer: <http://purl.org/net/OCRe/research.owl#> .
+@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix cito:  <http://purl.org/spar/cito/> .
+@prefix geo:   <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix vivo:  <http://vivoweb.org/ontology/core#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix c4o:   <http://purl.org/spar/c4o/> .
+
+### This file defines the default menu for vivo. ###
+### It overrides the menu.n3 from vitro.
+
+#### Default Menu ####
+
+display:DefaultMenu 
+    a  display:MainMenu ;
+    rdfs:label "Default Menu" ;
+    display:hasElement display:HomeMenuItem ;
+    display:hasElement display:OrganizationsMenuItem ;
+    display:hasElement display:PeopleMenuItem ;
+    display:hasElement display:ResearchMenuItem .
+
+#### Menu Items for Default Menu ####
+
+display:HomeMenuItem 
+    a display:NavigationElement ;
+    display:menuPosition 1;
+    display:linkText "Home";
+    display:toPage display:Home .
+
+display:PeopleMenuItem 
+    a display:NavigationElement ;
+    display:menuPosition 2;
+    display:linkText "People";
+    display:toPage display:People .
+
+display:OrganizationsMenuItem 
+    a display:NavigationElement ;
+    display:menuPosition 3;
+    display:linkText "Organisations";
+    display:toPage display:Organizations .
+
+display:ResearchMenuItem     
+    a display:NavigationElement ;
+    display:menuPosition 4;
+    display:linkText "Publications";
+    display:toPage display:Research .
+
+display:Home
+    a display:HomePage ;    
+    a display:Page ;
+    display:title "Home" ;    
+    display:urlMapping "/" ;
+    display:hasDataGetter display:homeDataGetter;
+    display:cannotDeletePage "true" .
+
+display:Events 
+    a display:Page ;    
+    a display:ClassGroupPage;
+    display:forClassGroup vivoweb:vitroClassGroupevents ;
+    display:title "Events" ;
+    display:urlMapping "/events" ; 
+    display:hasDataGetter display:eventsDataGetter .
+
+display:Organizations 
+    a display:Page ;
+    a display:ClassGroupPage;
+    display:forClassGroup vivoweb:vitroClassGrouporganizations ;
+    display:title "Organisations" ;
+    display:urlMapping "/organisations";
+    display:hasDataGetter display:organizationsDataGetter .
+
+display:People 
+    a display:Page ;    
+    a display:ClassGroupPage;
+    display:forClassGroup vivoweb:vitroClassGrouppeople ;
+    display:title "People" ;
+    display:urlMapping "/people" ;
+   	display:hasDataGetter display:peopleDataGetter .
+
+display:Research 
+    a display:Page ;        
+    a display:ClassGroupPage;
+    display:forClassGroup vivoweb:vitroClassGrouppublications ;
+    display:title "Publications" ;
+    display:urlMapping "/publications" ;
+    display:hasDataGetter display:researchDataGetter .
+
+display:CapabilityMap
+    a display:Page ;
+    display:title "Capability Map" ;
+    display:urlMapping "/vis/capabilitymap" ;
+    display:hasDataGetter display:capabilityMapDataGetter .
+
+#The data getter objects used above
+display:peopleDataGetter
+    a       <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.InternalClassesDataGetter> ;
+    display:forClassGroup
+                  vivoweb:vitroClassGrouppeople ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#getIndividualsForClass>
+	        foaf:Person ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#restrictResultsByInternalClass>
+		"false" .
+
+display:researchDataGetter
+    a       <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.InternalClassesDataGetter> ;
+    display:forClassGroup
+                  vivoweb:vitroClassGrouppublications ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#getIndividualsForClass>
+	                      skos:Concept , vivo:Credential , obo:ERO_0000071 , vivo:Award , obo:ERO_0000020 , obo:ERO_0000007 , bibo:AcademicArticle , bibo:EditedBook , vivo:Certificate , fabio:Comment , bibo:Letter , vivo:WorkingPaper , bibo:AudioDocument , vivo:ResearchProposal , obo:ERO_0000595 , bibo:Patent , bibo:Thesis , vivo:Newsletter , vivo:Speech , bibo:Website , bibo:Article , obo:ERO_0000006 , vivo:License , vivo:BlogPosting , vivo:EditorialArticle , bibo:Report , vivo:Database , bibo:Book , obo:OBI_0000272 , vivo:Video , vivo:Dataset , vivo:ConferencePaper , vivo:Review , vivo:ConferencePoster , obo:ERO_0000015 , fabio:Erratum , c4o:BibliographicInformationSource , bibo:Film , vivo:NewsRelease , vivo:Abstract , scires:Phase2ClinicalTrial , scires:Phase1ClinicalTrial , scires:Phase4ClinicalTrial , bibo:Webpage , fabio:ClinicalGuideline , vivo:Catalog , scires:Phase0ClinicalTrial , bibo:Proceedings , bibo:Chapter , vivo:CaseStudy , scires:Phase3ClinicalTrial , bibo:Journal , bibo:Series , obo:OBI_0100026 ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#restrictResultsByInternalClass>
+                "false" .
+
+display:organizationsDataGetter
+    a       <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.InternalClassesDataGetter> ;
+    display:forClassGroup
+                  vivoweb:vitroClassGrouporganizations ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#getIndividualsForClass>
+	                    foaf:Organization ;
+    <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#restrictResultsByInternalClass>
+		"false" .
+
+display:eventsDataGetter
+      a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
+      display:forClassGroup
+              vivoweb:vitroClassGroupevents .
+              
+display:homeDataGetter
+      a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.BrowseDataGetter> .
+
+display:capabilityMapDataGetter
+      a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter>;
+      display:htmlValue "Capability Map"@en ;
+      display:saveToVar "capabilityMap" .
