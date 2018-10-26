@@ -14,6 +14,17 @@
 # 
 # 
 
+:disabled a owl:DatatypeProperty ;
+        a owl:FunctionalProperty ;
+	rdfs:domain :MergeRule ;
+	rdfs:range xsd:boolean ;
+	vitro:displayRankAnnot 1;
+	vitro:inPropertyGroupAnnot <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+	vitro:prohibitedFromUpdateBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromDisplayBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	vitro:hiddenFromPublishBelowRoleLevelAnnot <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+	rdfs:label "disable"@en .
+
 :matchDegree a owl:DatatypeProperty ;
         a owl:FunctionalProperty ;
 	rdfs:domain :MergeRuleAtom ;
