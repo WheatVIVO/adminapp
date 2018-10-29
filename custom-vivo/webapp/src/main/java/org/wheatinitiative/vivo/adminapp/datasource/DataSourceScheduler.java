@@ -37,6 +37,8 @@ import edu.cornell.mannlib.vitro.webapp.rdfservice.ModelChange.Operation;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFService;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFServiceException;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.impl.RDFServiceUtils;
+import edu.cornell.mannlib.vitro.webapp.utils.threads.VitroBackgroundThread;
+import edu.cornell.mannlib.vitro.webapp.utils.threads.VitroBackgroundThread.WorkLevel;
 
 public class DataSourceScheduler implements ServletContextListener, ChangeListener {
 
@@ -259,12 +261,20 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     }
     
     public void startNow(String dataSourceURI) {
-        new DataSourceStarter(
-                dataSourceURI, false, new DataSourceTimestamper(aboxModel)).run();
+        VitroBackgroundThread starter = new VitroBackgroundThread( 
+                new DataSourceStarter(dataSourceURI, true, 
+                        new DataSourceTimestamper(aboxModel)), 
+                                dataSourceURI + "-starter");
+        starter.setWorkLevel(WorkLevel.WORKING);
+        starter.start();
     }
     
     public void stopNow(String dataSourceURI) {
-        new DataSourceStopper(dataSourceURI).run();
+        VitroBackgroundThread starter = new VitroBackgroundThread( 
+                new DataSourceStopper(dataSourceURI), 
+                                dataSourceURI + "-stopper");
+        starter.setWorkLevel(WorkLevel.WORKING);
+        starter.start();
     }
     
     private void cancel(String dataSourceURI) {
