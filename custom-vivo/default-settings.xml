@@ -5,12 +5,12 @@
         <profile>
             <id>defaults</id>
             <properties>
-                <app-name>adminapp</app-name>
+                <app-name>wheatvivo-adminapp</app-name>
 
-                <vivo-dir>/home/tdk/Work/onto/vivo-data/adminapp</vivo-dir>
-                <tomcat-dir>/home/tdk/Programs/tomcat-9.0.2</tomcat-dir>
+                <vivo-dir>/opt/portailble/vivo-home/wheatvivo-adminapp</vivo-dir>
+                <tomcat-dir>/opt/portailble/tomcat.portailble</tomcat-dir>
 
-                <default-theme>wilma</default-theme>
+                <default-theme>wheat</default-theme>
             </properties>
         </profile>
     </profiles>
