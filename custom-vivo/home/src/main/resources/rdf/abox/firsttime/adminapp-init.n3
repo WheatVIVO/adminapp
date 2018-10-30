@@ -227,7 +227,7 @@
         rdfs:label     "Publish to Staging WheatVIVO"@en-US ;
         vitro:modTime  "2017-02-21T12:58:33"^^xsd:dateTime ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
-                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish"^^xsd:anyURI ;
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish/staging"^^xsd:anyURI ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
                 1 ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
@@ -546,7 +546,7 @@
         rdfs:label     "Publish to Public WheatVIVO Portal"@en-US ;
         vitro:modTime  "2017-02-24T16:54:21"^^xsd:dateTime ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
-                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish"^^xsd:anyURI ;
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/publish/public"^^xsd:anyURI ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
                 2 ;
         <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
