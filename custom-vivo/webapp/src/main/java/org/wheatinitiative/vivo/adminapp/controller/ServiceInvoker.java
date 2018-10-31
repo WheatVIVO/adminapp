@@ -44,6 +44,11 @@ public class ServiceInvoker extends FreemarkerHttpServlet {
             log.info("Stopping data source");
             scheduler.stopNow(dataSourceURI);
         }
+        try {
+            Thread.sleep(1000); // wait for things to start before redirecting user
+        } catch (InterruptedException e) {
+            // ignore
+        }
         URIBuilder locationB = new URIBuilder(REDIRECT_PAGE);
         String type = vreq.getParameter("type");
         if(type != null) {
