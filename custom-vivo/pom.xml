@@ -32,6 +32,13 @@
         </plugins>
     </build>
 
+	<repositories>
+		  <repository>
+			  <id>jboss-repo</id>
+			  <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		  </repository>
+	</repositories>
+
     <modules>
         <module>home</module>
         <module>solr</module>
