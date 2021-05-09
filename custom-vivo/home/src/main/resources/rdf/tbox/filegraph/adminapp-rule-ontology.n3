@@ -66,7 +66,8 @@ _:genid3 a owl:Restriction ;
         a owl:Class ;
 	rdfs:subClassOf _:genid4 ;
 	rdfs:subClassOf _:genid5 ;
-	rdfs:subCLassOf _:genid7 .
+	rdfs:subCLassOf _:genid7 ; 
+	rdfs:subCLassOf _:genid8 .
 
 _:genid4 a owl:Restriction ;
 	owl:onProperty :mergeAtomDataProperty ;
@@ -78,6 +79,10 @@ _:genid5 a owl:Restriction ;
 
 _:genid7 a owl:Restriction ;
 	owl:onProperty :matchDegree ;
+	owl:allValuesFrom xsd:integer .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty :priority ;
 	owl:allValuesFrom xsd:integer .
 
 :MergeDataSource rdfs:label "Merge Data Source"@en ;
