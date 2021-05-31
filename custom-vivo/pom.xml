@@ -154,7 +154,7 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
-        <version>4.3.18.RELEASE</version>
+        <version>4.3.21.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -180,13 +180,20 @@
       <version>2.0</version> 
       <scope>provided</scope> 
     </dependency>
-	  
-	<dependency>
-	  <groupId>com.sun.media</groupId> 
-	  <artifactId>jai-codec</artifactId> 
-	  <version>1.1.3</version>
-	</dependency>
+    
+    <dependency>
+      <groupId>com.sun.media</groupId>
+      <artifactId>jai-codec</artifactId> 
+      <version>1.1.3</version>
+    </dependency>
+
+    <!-- Upgrade icu4j so that it remains compatible with current JVM (2020-11-26) -->
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>67.1</version>
+    </dependency>
 		
-    </dependencies>
+  </dependencies>
 
 </project>
