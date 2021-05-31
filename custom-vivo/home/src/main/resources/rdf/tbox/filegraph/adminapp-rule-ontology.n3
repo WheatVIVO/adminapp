@@ -14,6 +14,9 @@
 # 
 # 
 
+<https://wheatvivo.org/ontology/local/labelForSameAs> a owl:ObjectProperty ;
+        rdfs:label "normalized name (non-person)" .
+
 :disabled a owl:DatatypeProperty ;
         a owl:FunctionalProperty ;
 	rdfs:domain :MergeRule ;
@@ -95,6 +98,9 @@ _:genid1 a owl:Restriction ;
 #####################
 # Object properties #
 #####################
+
+<https://wheatvivo.org/ontology/local/hasNN> a owl:ObjectProperty ;
+        rdfs:label "normalized name (person)" .
 
 :hasMergeRule a owl:ObjectProperty ;
         rdfs:label "merge rule"@en ;
