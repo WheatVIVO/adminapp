@@ -14,7 +14,7 @@
 # 
 # 
 
-<https://wheatvivo.org/ontology/local/labelForSameAs> a owl:ObjectProperty ;
+<https://wheatvivo.org/ontology/local/labelForSameAs> a owl:DatatypeProperty ;
         rdfs:label "normalized name (non-person)" .
 
 :disabled a owl:DatatypeProperty ;
