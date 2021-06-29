@@ -5,6 +5,10 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 <a href="${urls.base}/editForm?controller=Entity&VClassURI=http%3A%2F%2Fvivo.wheatinitiative.org%2Fontology%2Fadminapp%2FDataSource"><img class="add-individual" src="${urls.images}/individual/addIcon.gif" alt="${i18n().add}" /></a>
 </h2>
 
+<#if !type?has_content>
+  <a href="${urls.base}/wheatInitiativeUpload">Upload Wheat Initiative spreadsheet</a>
+</#if>
+
 <table class="adminTable">
     <thead>
         <tr>

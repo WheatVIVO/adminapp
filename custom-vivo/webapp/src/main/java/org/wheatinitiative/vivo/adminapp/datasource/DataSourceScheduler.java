@@ -29,6 +29,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
+import edu.cornell.mannlib.vitro.webapp.application.ApplicationUtils;
 import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.ChangeListener;
@@ -49,6 +50,9 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
     private DataSourceDao dataSourceDao;
     private RDFService rdfService;
     private HttpUtils httpUtils = new HttpUtils();
+    // the subdirectory of the VIVO home directory that will hold data
+    // files to be ingested locally
+    public static final String DATA_DIR = "/connectorData";
     private static final String DATASOURCE_CONFIG_PROPERTY_PREFIX = "datasource.";
     private Map<String, String> datasourceConfigurationProperties = new HashMap<String, String>();
     private static final String DEFAULT_NAMESPACE_PROPERTY = "Vitro.defaultNamespace"; 
@@ -146,6 +150,11 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
         }
         datasourceConfigurationProperties.put(DEFAULT_NAMESPACE_PROPERTY, 
                 configurationProperties.get(DEFAULT_NAMESPACE_PROPERTY));
+        // Some connectors may read files out of a subdirectory of the 
+        // VIVO home directory instead of retrieving them from remote URLs.
+        datasourceConfigurationProperties.put("dataDir", 
+                    ApplicationUtils.instance().getHomeDirectory().getPath()
+                    .toAbsolutePath().toString() + DATA_DIR);
         this.endpointUsername = configurationProperties.get(ENDPOINT_USERNAME_PROPERTY);
         this.endpointPassword = configurationProperties.get(ENDPOINT_PASSWORD_PROPERTY);        
     }

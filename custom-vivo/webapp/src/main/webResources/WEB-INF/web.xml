@@ -1377,6 +1377,15 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>WheatInitiativeUploadController</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.adminapp.controller.WheatInitiativeUploadController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WheatInitiativeUploadController</servlet-name>
+    <url-pattern>/wheatInitiativeUpload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>UsdaService</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.datasource.connector.usda.UsdaService</servlet-class>
   </servlet>
