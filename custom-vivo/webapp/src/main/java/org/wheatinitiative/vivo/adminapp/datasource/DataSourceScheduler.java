@@ -2,6 +2,7 @@ package org.wheatinitiative.vivo.adminapp.datasource;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
@@ -15,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.wheatinitiative.vivo.datasource.DataSource;
 import org.wheatinitiative.vivo.datasource.DataSourceDescription;
 import org.wheatinitiative.vivo.datasource.DataSourceUpdateFrequency;
 import org.wheatinitiative.vivo.datasource.SparqlEndpointParams;
@@ -371,7 +373,10 @@ public class DataSourceScheduler implements ServletContextListener, ChangeListen
                         this.runNextSourceInChain = false;
                     }
                 }
-                for(DataSourceDescription dataSource : dataSourceDao.listDataSources()) {
+                List<DataSourceDescription> dataSources = dataSourceDao.listDataSources();
+                dataSources.addAll(dataSourceDao.listMergeDataSources());
+                dataSources.addAll(dataSourceDao.listPublishDataSources());
+                for(DataSourceDescription dataSource : dataSources) {
                     log.info(dataSource.getConfiguration().getURI() + " is scheduled to run after " + dataSource.getScheduleAfterURI());
                     if(dataSourceURI.equals(dataSource.getScheduleAfterURI())) {
                         log.info("Starting" + dataSource.getConfiguration().getURI());
