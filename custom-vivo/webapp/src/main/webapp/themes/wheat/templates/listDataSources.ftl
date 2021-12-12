@@ -6,7 +6,7 @@ ${stylesheets.add('<meta http-equiv="refresh" content="5">')}
 </h2>
 
 <#if !type?has_content>
-  <a href="${urls.base}/wheatInitiativeUpload">Upload Wheat Initiative spreadsheet</a>
+  <a href="${urls.base}/wheatInitiativeUpload">Upload spreadsheet</a>
 </#if>
 
 <table class="adminTable">

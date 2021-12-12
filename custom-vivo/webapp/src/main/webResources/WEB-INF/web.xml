@@ -1377,6 +1377,24 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>ArcConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.arc.ArcConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArcConnectorService</servlet-name>
+    <url-pattern>/dataSource/arc/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GrdcConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.grdc.GrdcConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GrdcConnectorService</servlet-name>
+    <url-pattern>/dataSource/grdc/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>WheatInitiativeUploadController</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.adminapp.controller.WheatInitiativeUploadController</servlet-class>
   </servlet>
@@ -1410,6 +1428,15 @@
   <servlet-mapping>
     <servlet-name>OrcidConnectorService</servlet-name>
     <url-pattern>/dataSource/orcid/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MicrosoftAcademicConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.msracad.MicrosoftAcademicConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MicrosoftAcademicConnectorService</servlet-name>
+    <url-pattern>/dataSource/msracad/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
