@@ -7,6 +7,8 @@
   <form method="post" enctype="multipart/form-data" action="">
     <div style="padding-top:1em;padding-bottom:1em;">
       <p><input type="radio" id="wheatInitiativeSubdir" style="display:inline;margin-right:0.5em;" name="subdir" value="/wheatInitiative"/><label style="display:inline;" for="wheatInitiativeSubdir">Wheat Initiative researcher signups</label></p>
+      <p><input type="radio" id="organizationsSubdir" style="display:inline;margin-right:0.5em;" name="subdir" value="/organizations"/><label style="display:inline;" for="organizationsSubdir">organizations</label></p>
+      <p><input type="radio" id="projectsSubdir" style="display:inline;margin-right:0.5em;" name="subdir" value="/projects"/><label style="display:inline;" for="projectsSubdir">projects</label></p>
       <p><input type="radio" id="arcSubdir" style="display:inline;margin-right:0.5em;" name="subdir" value="/arc"/><label style="display:inline;" for="arcSubdir">ARC grants</label></p>
       <p><input type="radio" id="grdcSubdir" style="display:inline;margin-right:0.5em;" name="subdir" value="/grdc"/><label style="display:inline;" for="grdcSubdir">GRDC grants</label></p>
     </div>

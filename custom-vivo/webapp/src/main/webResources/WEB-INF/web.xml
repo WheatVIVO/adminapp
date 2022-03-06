@@ -1377,6 +1377,24 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>ProjectsConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.wheatinitiative.ProjectsConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProjectsConnectorService</servlet-name>
+    <url-pattern>/dataSource/projects/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrganizationsConnectorService</servlet-name>
+    <servlet-class>org.wheatinitiative.vivo.datasource.connector.wheatinitiative.OrganizationsConnectorService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrganizationsConnectorService</servlet-name>
+    <url-pattern>/dataSource/organizations/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>ArcConnectorService</servlet-name>
     <servlet-class>org.wheatinitiative.vivo.datasource.connector.arc.ArcConnectorService</servlet-class>
   </servlet>

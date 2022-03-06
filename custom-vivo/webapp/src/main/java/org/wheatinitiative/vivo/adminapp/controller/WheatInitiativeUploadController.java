@@ -17,6 +17,8 @@ import org.wheatinitiative.vivo.adminapp.datasource.DataSourceScheduler;
 import org.wheatinitiative.vivo.datasource.connector.arc.ArcConnector;
 import org.wheatinitiative.vivo.datasource.connector.grdc.GrdcConnector;
 import org.wheatinitiative.vivo.datasource.connector.wheatinitiative.WheatInitiative;
+import org.wheatinitiative.vivo.datasource.connector.wheatinitiative.ProjectsConnector;
+import org.wheatinitiative.vivo.datasource.connector.wheatinitiative.OrganizationsConnector;
 
 import edu.cornell.mannlib.vitro.webapp.application.ApplicationUtils;
 import edu.cornell.mannlib.vitro.webapp.auth.permissions.SimplePermission;
@@ -31,8 +33,10 @@ public class WheatInitiativeUploadController extends FreemarkerHttpServlet {
     private static final long serialVersionUID = 1L;
     private static final String TEMPLATE = "wheatInitiativeUpload.ftl";
     private static final Log log = LogFactory.getLog(WheatInitiativeUploadController.class);
-    private static final List<String> allowableSubdirs = Arrays.asList(WheatInitiative.EXCEL_SUBDIR, 
-            ArcConnector.EXCEL_SUBDIR, GrdcConnector.EXCEL_SUBDIR);
+    private static final List<String> allowableSubdirs = Arrays.asList(
+            WheatInitiative.EXCEL_SUBDIR, ArcConnector.EXCEL_SUBDIR,
+            GrdcConnector.EXCEL_SUBDIR, ProjectsConnector.EXCEL_SUBDIR,
+            OrganizationsConnector.EXCEL_SUBDIR);
     
     @Override
     protected AuthorizationRequest requiredActions(VitroRequest vreq) {
