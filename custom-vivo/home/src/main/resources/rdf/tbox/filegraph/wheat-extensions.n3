@@ -27,4 +27,5 @@ PREFIX afn:      <http://jena.hpl.hp.com/ARQ/function#>
 
 wheat:InternationalOrganisation a owl:Class ;
     rdfs:label "International Organisation" ;
+    vitro:inClassGroup <http://vivoweb.org/ontology#vitroClassGrouporganizations> ;
     rdfs:subClassOf foaf:Organization .
