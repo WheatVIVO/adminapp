@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.annotation.WebServlet;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wheatinitiative.vivo.adminapp.datasource.DataSourceManager;
@@ -28,6 +30,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.Tem
  * @author Brian Lowe
  *
  */
+@WebServlet(name = "DataSourceListController", urlPatterns = {"/listDataSources/*"} )
 public class DataSourceListController extends FreemarkerHttpServlet {
 
     private static final String LIST_DATA_SOURCES_TEMPLATE = 

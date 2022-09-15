@@ -326,6 +326,23 @@
         <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
                 <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
 
+<http://vivo.wheatinitiative.org/individual/n190>
+        a              <http://vivo.wheatinitiative.org/ontology/adminapp/DataSource> ;
+        rdfs:label     "Microsoft Academic"@en-US ;
+        vitro:modTime  "2021-03-07T13:03:18"^^xsd:dateTime ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/deploymentURI>
+                "http://localhost:8080/wheatvivo-adminapp/dataSource/msracad"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/graphURI>
+                "http://vitro.mannlib.cornell.edu/a/graph/msracad"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/priority>
+                3 ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/serviceURI>
+                "https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate"^^xsd:anyURI ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesQueryTermSet>
+                <http://vivo.wheatinitiative.org/individual/n4064> ;
+        <http://vivo.wheatinitiative.org/ontology/adminapp/usesSparqlEndpoint>
+                <http://vivo.wheatinitiative.org/individual/sparqlEndpoint1> .
+
 <http://vivo.wheatinitiative.org/individual/n6208>
         a                       owl:Thing , <http://vivo.wheatinitiative.org/ontology/adminapp/MergeRuleAtom> ;
         rdfs:label              "Publication date match" ;

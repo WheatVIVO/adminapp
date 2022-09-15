@@ -14,17 +14,14 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.jena.riot.RiotReader;
-import org.apache.jena.riot.tokens.Tokenizer;
-import org.apache.jena.riot.tokens.TokenizerFactory;
 
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.rdf.listeners.StatementListener;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelChangedListener;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.vocabulary.OWL;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.rdf.listeners.StatementListener;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelChangedListener;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.vocabulary.OWL;
 
 import edu.cornell.mannlib.vitro.webapp.dao.jena.event.EditEvent;
 import edu.cornell.mannlib.vitro.webapp.modules.searchIndexer.SearchIndexer;
@@ -145,34 +142,6 @@ public class IndexingChangeListener extends StatementListener
 					+ event);
 		}
 	}
-
-//	private Statement parseTriple(String serializedTriple) {
-//        try {
-//            // Use RiotReader to parse a Triple
-//            // NB A Triple can be serialized correctly with: FmtUtils.stringForTriple(triple, PrefixMapping.Factory.create()) + " .";'
-//        	Tokenizer tokenizer = TokenizerFactory.makeTokenizerString(serializedTriple);
-//			Iterator<Triple> it = RiotReader.createParserNTriples(tokenizer, null);
-//
-//            if (it.hasNext()) {
-//                Triple triple = it.next();
-//
-//                if (it.hasNext()) {
-//                    log.warn("More than one triple parsed from change event: '" + serializedTriple + "'");
-//                }
-//
-//                // Use the retained defaultModel instance to convert the Triple to a Statement
-//                // This does not add the Statement to the Model, so the Statement can be disposed when unused
-//                // And whilst the Model is attached to the Statement, using a single instance means only one Model
-//                // is created and attached to all of the Statements created by this instance
-//                return defaultModel.asStatement(triple);
-//            } else {
-//                throw new RuntimeException("no triple parsed from change event: '" + serializedTriple + "'");
-//            }
-//        } catch (RuntimeException riot) {
-//            log.error("Failed to parse triple " + serializedTriple, riot);
-//            throw riot;
-//        }
-//	}
 
 	// ----------------------------------------------------------------------
 	// helper classes

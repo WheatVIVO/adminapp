@@ -3,6 +3,7 @@ package org.wheatinitiative.vivo.adminapp.controller;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 
@@ -24,6 +25,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
  * @author Brian Lowe
  *
  */
+@WebServlet(name = "FauxPropertyContextExportController", urlPatterns = {"/fauxPropertyContexts/*"} )
 public class FauxPropertyContextExportController extends HttpServlet {
 
     private static final String APPLICATION_CONTEXT_NS = "http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationConfiguration#";

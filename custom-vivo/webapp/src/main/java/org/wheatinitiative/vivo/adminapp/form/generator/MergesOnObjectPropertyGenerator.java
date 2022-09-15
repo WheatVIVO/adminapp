@@ -23,6 +23,7 @@ import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.fields.FieldOptions;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.fields.FieldVTwo;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.generators.DefaultObjectPropertyFormGenerator;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.generators.EditConfigurationGenerator;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18nBundle;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFService;
 
 public class MergesOnObjectPropertyGenerator 
@@ -62,9 +63,10 @@ public class MergesOnObjectPropertyGenerator
     protected class ObjectAndFauxPropertyFieldOptions implements FieldOptions {
 
         public Map<String, String> getOptions(
-                EditConfigurationVTwo editConfig, 
-                String fieldName, 
-                WebappDaoFactory wDaoFact) throws Exception {
+                EditConfigurationVTwo editConfig,
+                String fieldName,
+                WebappDaoFactory wDaoFact,
+                I18nBundle i18n) throws Exception {
             Map<String, String> optionsMap = new HashMap<String, String>();
             List<ObjectProperty> objectProperties = 
                     unfilteredWadf.getObjectPropertyDao().getAllObjectProperties();

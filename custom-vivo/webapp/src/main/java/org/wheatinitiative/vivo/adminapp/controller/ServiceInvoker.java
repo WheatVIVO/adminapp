@@ -3,6 +3,7 @@ package org.wheatinitiative.vivo.adminapp.controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -17,6 +18,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServ
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.RedirectResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 
+@WebServlet(name = "ServiceInvoker", urlPatterns = {"/invokeService/*"} )
 public class ServiceInvoker extends FreemarkerHttpServlet {
 
     private static final long serialVersionUID = 1L;

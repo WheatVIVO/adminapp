@@ -1,9 +1,13 @@
 #
 # ServletContextListeners for VIVO, to be instantiated and run by the StartupManager.
-# 
-# For more information, 
+#
+# For more information,
 #     https://sourceforge.net/apps/mediawiki/vivo/index.php?title=The_StartupManager
 #
+
+# This listener must be run before any other code that uses resource bundles, 
+# otherwise there will be problems with i18n-support.
+org.vivoweb.webapp.startup.i18nSetup
 
 edu.cornell.mannlib.vitro.webapp.servlet.setup.JvmSmokeTests
 
@@ -20,6 +24,9 @@ edu.cornell.mannlib.vitro.webapp.application.ApplicationImpl$ComponentsSetup
 edu.cornell.mannlib.vitro.webapp.config.RevisionInfoSetup
 
 edu.cornell.mannlib.vitro.webapp.email.FreemarkerEmailFactory$Setup
+
+# For multiple language support
+edu.cornell.mannlib.vitro.webapp.i18n.selection.LocaleSelectionSetup
 
 edu.cornell.mannlib.vitro.webapp.servlet.setup.ConfigurationModelsSetup
 edu.cornell.mannlib.vitro.webapp.servlet.setup.ContentModelSetup
@@ -61,15 +68,13 @@ org.vivoweb.webapp.startup.DataGetterN3Setup
 org.vivoweb.webapp.startup.GeneratorSetup
 org.vivoweb.webapp.startup.JSONWrapperSetup
 org.vivoweb.webapp.startup.MenuManagementSetup
+org.vivoweb.webapp.startup.SiteAdminSetup
 org.vivoweb.webapp.startup.TemplateModelSetup
 org.vivoweb.webapp.startup.SearchResultTemplateModelSetup
 
 edu.ucsf.vitro.opensocial.OpenSocialSmokeTests
 
-# For multiple language support
-edu.cornell.mannlib.vitro.webapp.i18n.selection.LocaleSelectionSetup
-
-# The search indexer uses a "public" permission, so the PropertyRestrictionPolicyHelper 
+# The search indexer uses a "public" permission, so the PropertyRestrictionPolicyHelper
 #   and the PermissionRegistry must already be set up.
 edu.cornell.mannlib.vitro.webapp.searchindex.SearchIndexerSetup
 
@@ -79,15 +84,18 @@ edu.cornell.mannlib.vitro.webapp.freemarker.config.FreemarkerConfiguration$Setup
 # On shutdown, this will kill the background thread started by Apache Commons File Upload
 org.apache.commons.fileupload.servlet.FileCleanerCleanup
 
-# The VClassGroupCache index uses a "public" permission, so the PropertyRestrictionPolicyHelper 
+# The VClassGroupCache index uses a "public" permission, so the PropertyRestrictionPolicyHelper
 #   and the PermissionRegistry must already be set up.
 edu.cornell.mannlib.vitro.webapp.dao.jena.VClassGroupCache$Setup
 
 edu.cornell.mannlib.vivo.orcid.OrcidContextSetup
 
+# Register the extensions to the IndividualResponseBuilder (e.g. alt metric, plum analytics)
+edu.cornell.mannlib.vitro.webapp.controller.individual.VIVOIndividualResponseBuilderExtension$Setup
+
 # WheatVIVO addition
 org.wheatinitiative.vivo.servlet.setup.FauxPropertyLabeler
 org.wheatinitiative.vivo.adminapp.datasource.DataSourceScheduler
 
-# This should be near the end, because it will issue a warning if the connection to Solr times out.
-edu.cornell.mannlib.vitro.webapp.servlet.setup.SolrSmokeTest
+# This should be near the end, because it will issue a warning if the connection to the SearchEngine times out.
+edu.cornell.mannlib.vitro.webapp.servlet.setup.SearchEngineSmokeTest
